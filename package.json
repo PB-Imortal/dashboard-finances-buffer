@@ -11,7 +11,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest --watch=false",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "@mui/base": "^5.0.0-beta.40",
@@ -46,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
+    "husky": "^9.1.1",
     "i": "^0.3.7",
     "jsdom": "^24.1.0",
     "lint-staged": "^15.2.7",
@@ -60,7 +62,7 @@
     "vitest": "^2.0.3"
   },
   "lint-staged": {
-    "*": "npm run lint",
+    "*.{ts,tsx}": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "*.{ts,tsx,css}": "npx prettier . --write"
   }
 }
