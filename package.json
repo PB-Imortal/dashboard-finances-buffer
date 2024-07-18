@@ -34,6 +34,7 @@
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
@@ -47,13 +48,19 @@
     "eslint-plugin-storybook": "^0.8.0",
     "i": "^0.3.7",
     "jsdom": "^24.1.0",
+    "lint-staged": "^15.2.7",
     "npm": "^10.8.2",
     "path": "^0.12.7",
     "postcss": "^8.4.39",
+    "prettier": "3.3.3",
     "storybook": "^8.2.4",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.3.4",
     "vitest": "^2.0.3"
+  },
+  "lint-staged": {
+    "*": "npm run lint",
+    "*.{ts,tsx,css}": "npx prettier . --write"
   }
 }
