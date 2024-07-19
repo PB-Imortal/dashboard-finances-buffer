@@ -71,5 +71,11 @@
   "lint-staged": {
     "*.{ts,tsx}": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "*.{ts,tsx,css}": "npx prettier . --write"
-  }
+  },
+  "lint": [
+    {
+      "project": "src/",
+      "exclude": "/node_modules//"
+    }
+  ]
 }
