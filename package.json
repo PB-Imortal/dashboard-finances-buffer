@@ -12,7 +12,8 @@
     "build-storybook": "storybook build",
     "test": "vitest --watch=false",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cypress": "npx cypress open"
   },
   "dependencies": {
     "@mui/base": "^5.0.0-beta.40",
@@ -43,6 +44,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "@vitest/coverage-v8": "^2.0.3",
     "autoprefixer": "^10.4.19",
+    "cypress": "^13.13.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
