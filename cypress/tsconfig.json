@@ -1,10 +1,10 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": "./",
-    "types": ["cypress", "node"],
-    "strict": false
-  },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "types": ["cypress", "node"],
+        "strict": false
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["node_modules"]
 }
