@@ -9,9 +9,10 @@ export default {
         bggrey: "#EFEFF0",
         bgred: "#E4482B",
         bggreen: "#0CB97B",
-        bglilac: "#6816D6",
-        txwhite: "EFEFF0",
-        bordergrey: "#DFDFE0",
+        bglilac: "#0CB97B",
+        txwhite: "#EFEFF0",
+        borderln: "#DFDFE0",
+        txinput: "#68686E",
       },
       fontFamily: {
         inter: ["Inter"],

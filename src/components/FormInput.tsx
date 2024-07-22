@@ -2,33 +2,17 @@ import { Input } from "@mui/base/Input";
 import { ComponentPropsWithRef } from "react";
 
 interface FormInputProps extends ComponentPropsWithRef<"input"> {
-  inputstyles?: string;
-  labelstyles?: string;
-  placeholdertext: string;
   label: string;
   id: string;
 }
 
-export default function FormInput({
-  inputstyles,
-  labelstyles,
-  placeholdertext,
-  label,
-  id,
-  ...rest
-}: FormInputProps) {
+export default function FormInput({ label, id, ...rest }: FormInputProps) {
   return (
-    <div>
-      <label htmlFor={id} className={labelstyles}>
+    <div className="space-y-3">
+      <label htmlFor={id} className="font-semibold">
         {label}
       </label>
-      <Input
-        id={id}
-        className={inputstyles}
-        placeholder={placeholdertext}
-        aria-label={label}
-        {...rest}
-      ></Input>
+      <Input id={id} aria-label={label} {...rest} />
     </div>
   );
 }

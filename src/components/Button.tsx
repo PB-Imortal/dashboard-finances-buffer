@@ -1,5 +1,5 @@
-import { ComponentPropsWithRef, ReactNode } from "react"
-import { Button } from "@mui/base/Button"
+import { ComponentPropsWithRef, ReactNode } from "react";
+import { Button } from "@mui/base/Button";
 
 interface ButtonProps extends ComponentPropsWithRef<"button"> {
   styles: string;
@@ -9,12 +9,15 @@ interface ButtonProps extends ComponentPropsWithRef<"button"> {
 
 export default function ButtonComponent({
   children,
-  styles,
   arialabeltext,
   ...rest
 }: ButtonProps) {
   return (
-    <Button className={styles} aria-label={arialabeltext} {...rest}>
+    <Button
+      className="p-3 bg-bgblack text-txwhite rounded-md font-semibold"
+      aria-label={arialabeltext}
+      {...rest}
+    >
       {children}
     </Button>
   );
