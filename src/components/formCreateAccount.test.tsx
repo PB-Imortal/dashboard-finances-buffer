@@ -16,12 +16,12 @@ describe("FormCreateAccount", () => {
       screen.getByPlaceholderText("E-mail");
 
     const passwordLabel = screen.getByLabelText("Password");
-    const passwordPlaceholder: HTMLInputElement =
-      screen.getByPlaceholderText("Password");
+    const passwordPlaceholder: HTMLInputElement[] =
+      screen.getAllByPlaceholderText("Password");
 
     const confirmPasswordLabel = screen.getByLabelText("Confirm password");
-    const confirmPasswordPlaceholder: HTMLInputElement =
-      screen.getByPlaceholderText("Password");
+    const confirmPasswordPlaceholder: HTMLInputElement[] =
+      screen.getAllByPlaceholderText("Password", {});
 
     const button = screen.getByRole("button", { name: "Create account" });
 
@@ -33,15 +33,15 @@ describe("FormCreateAccount", () => {
 
     expect(emailLabel).toBeInTheDocument();
     expect(emailPlaceholder).toBeInTheDocument();
-    expect(emailPlaceholder.type).toBe("e-mail");
+    expect(emailPlaceholder.type).toBe("email");
 
     expect(passwordLabel).toBeInTheDocument();
-    expect(passwordPlaceholder).toBeInTheDocument();
-    expect(passwordPlaceholder.type).toBe("password");
+    expect(passwordPlaceholder[0]).toBeInTheDocument();
+    expect(passwordPlaceholder[0].type).toBe("password");
 
     expect(confirmPasswordLabel).toBeInTheDocument();
-    expect(confirmPasswordPlaceholder).toBeInTheDocument();
-    expect(confirmPasswordPlaceholder.type).toBe("password");
+    expect(confirmPasswordPlaceholder[1]).toBeInTheDocument();
+    expect(confirmPasswordPlaceholder[1].type).toBe("password");
 
     expect(button).toBeInTheDocument();
   });

@@ -4,45 +4,20 @@ import FormInput from "./FormInput";
 export default function FormCreateAccount() {
   return (
     <form action="">
+      <FormInput id="lastName" label="Last Name" placeholder="Last name" />
+      <FormInput id="firstName" label="First Name" placeholder="First name" />
+      <FormInput id="email" label="E-mail" placeholder="E-mail" type="email" />
       <FormInput
-        inputstyles=""
-        labelstyles=""
-        arialabeltext=""
-        id="lastName"
-        label="Last Name"
-        placeholdertext="Last name"
-      />
-      <FormInput
-        inputstyles=""
-        labelstyles=""
-        arialabeltext=""
-        id="firstName"
-        label="First Name"
-        placeholdertext="First name"
-      />
-      <FormInput
-        inputstyles=""
-        labelstyles=""
-        arialabeltext=""
-        id="email"
-        label="E-mail"
-        placeholdertext="E-mail"
-      />
-      <FormInput
-        inputstyles=""
-        labelstyles=""
-        arialabeltext=""
         id="password"
         label="Password"
-        placeholdertext="Password"
+        placeholder="Password"
+        type="password"
       />
       <FormInput
-        inputstyles=""
-        labelstyles=""
-        arialabeltext=""
         id="confirm-password"
         label="Confirm password"
-        placeholdertext="Password"
+        placeholder="Password"
+        type="password"
       />
       <ButtonComponent arialabeltext="Create account" styles="">
         Create account
