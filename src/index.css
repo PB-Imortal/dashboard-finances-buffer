@@ -11,5 +11,5 @@ body {
 }
 
 .base-Input-input {
-  @apply p-3 border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput;
+  @apply p-3 border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full;
 }
