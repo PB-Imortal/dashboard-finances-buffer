@@ -6,6 +6,7 @@ interface FormInputProps {
   arialabeltext: string;
   placeholdertext: string;
   label: string;
+  id: string;
 }
 
 export default function FormInput({
@@ -14,11 +15,15 @@ export default function FormInput({
   arialabeltext,
   placeholdertext,
   label,
+  id,
 }: FormInputProps) {
   return (
     <div>
-      <label className={labelstyles}>{label}</label>
+      <label htmlFor={id} className={labelstyles}>
+        {label}
+      </label>
       <Input
+        id={id}
         className={inputstyles}
         placeholder={placeholdertext}
         aria-label={arialabeltext}
