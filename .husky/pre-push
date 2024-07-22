@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-=======
-. "$(dirname "$0")/h"
->>>>>>> Stashed changes
 npm run test
