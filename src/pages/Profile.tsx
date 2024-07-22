@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import Button from "../components/Button"
 import FormInput from "../components/FormInput"
@@ -7,7 +7,7 @@ export default function Profile() {
 
         const [userImage, setUserImage] = useState("");
 
-        useEffect(() => {
+        if (!userImage) {
             fetch("/database/db.json")
                 .then((response) => response.json())
                 .then((data) => {
@@ -17,7 +17,7 @@ export default function Profile() {
                 .catch((error) => {
                     console.error("Error retrieving user image:", error);
                 });
-        }, []);
+        }
 
     
     return (
