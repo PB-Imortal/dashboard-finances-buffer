@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Button } from "@mui/base"
+import Button from "../components/Button"
 
 export default function Profile() {
     return (
@@ -24,7 +24,7 @@ export default function Profile() {
                 <label htmlFor="country">Country</label>
                 <input type="text" name="country" />
 
-                <Button type="submit">Save</Button>
+                <Button styles={""} arialabeltext={"button"} children={""}></Button>
             </form>
         </>
     )
