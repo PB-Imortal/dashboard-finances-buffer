@@ -1,25 +1,23 @@
-import { useState } from "react";
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import Button from "../components/Button"
 import FormInput from "../components/FormInput"
 
 export default function Profile() {
+    const [userImage, setUserImage] = useState("")
 
-        const [userImage, setUserImage] = useState("");
+    if (!userImage) {
+        fetch("/database/db.json")
+            .then((response) => response.json())
+            .then((data) => {
+                const user = data.users.id
+                setUserImage(user.image)
+            })
+            .catch((error) => {
+                console.error("Error retrieving user image:", error)
+            })
+    }
 
-        if (!userImage) {
-            fetch("/database/db.json")
-                .then((response) => response.json())
-                .then((data) => {
-                    const user = data.users.id;
-                    setUserImage(user.image);
-                })
-                .catch((error) => {
-                    console.error("Error retrieving user image:", error);
-                });
-        }
-
-    
     return (
         <>
             <nav>
@@ -34,7 +32,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"last name input area"}
                     placeholdertext={"Insert here your last name..."}
                     label={"Last Name"}
                     id={"last-name"}
@@ -42,7 +39,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"first name input area"}
                     placeholdertext={"Insert here your first name..."}
                     label={"First Name"}
                     id={"first-name"}
@@ -50,7 +46,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"date of birth input area"}
                     placeholdertext={"Insert here your date of birth..."}
                     label={"Date of Birth"}
                     id={"date-of-birth"}
@@ -58,7 +53,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"email input area"}
                     placeholdertext={"Insert here your email address..."}
                     label={"Email"}
                     id={"email"}
@@ -66,7 +60,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"address input area"}
                     placeholdertext={"Insert here your home address..."}
                     label={"Address"}
                     id={"address"}
@@ -74,7 +67,6 @@ export default function Profile() {
                 <FormInput
                     inputstyles={""}
                     labelstyles={""}
-                    arialabeltext={"country input areea"}
                     placeholdertext={"Insert here your residing country..."}
                     label={"Country"}
                     id={"country"}
