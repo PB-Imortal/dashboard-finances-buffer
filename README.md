@@ -4,7 +4,6 @@
 
 [https://www.figma.com/design/Q44nlEVrODE7W6iBFRVPZL/Desafio-para-devs---App-%2F-Dashboard-%7C-UX%2FUI?node-id=13-5855&t=tUBMBPpD27NQIcDo-0](https://www.figma.com/design/Q44nlEVrODE7W6iBFRVPZL/Desafio-para-devs---App-%2F-Dashboard-%7C-UX%2FUI?node-id=13-5855&t=tUBMBPpD27NQIcDo-0)
 
-
 ### 🚀 Features
 
 ✅ Login
@@ -15,8 +14,7 @@
 
 ✅ ………
 
-
-### ☂️  Libraries
+### ☂️ Libraries
 
 RRD →
 
@@ -40,10 +38,9 @@ Express →
 
 Typescript →
 
-
 ### 🚩 Husky
 
-Para evitar commits problemáticos, utilizamos a lib Husky para implementar verificações pré-commit e pré-push, abaixo estão os scripts que rodam conforme comando realizado. 
+Para evitar commits problemáticos, utilizamos a lib Husky para implementar verificações pré-commit e pré-push, abaixo estão os scripts que rodam conforme comando realizado.
 
 scripts pre-commit:
 
@@ -56,7 +53,6 @@ scripts pré-push
 ```jsx
 npm run test
 ```
-
 
 ### 🔨 Build
 

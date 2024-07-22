@@ -10,9 +10,14 @@ export default {
         bgred: "#E4482B",
         bggreen: "#0CB97B",
         bglilac: "#0CB97B",
+        txwhite: "EFEFF0",
       },
       fontFamily: {
         inter: ["Inter"],
+      },
+      screens: {
+        md: "767px",
+        sm: "320px",
       },
     },
   },
