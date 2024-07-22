@@ -11,7 +11,7 @@ export default {
         bggreen: "#0CB97B",
         bglilac: "#6816D6",
         txwhite: "EFEFF0",
-        bordergrey: "#DFDFE0"
+        bordergrey: "#DFDFE0",
       },
       fontFamily: {
         inter: ["Inter"],
