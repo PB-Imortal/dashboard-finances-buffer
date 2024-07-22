@@ -14,11 +14,7 @@ export default function ButtonComponent({
   ...rest
 }: ButtonProps) {
   return (
-    <Button
-      className={`p-3 bg-bgblack text-txwhite rounded-md font-semibold ${styles}`}
-      aria-label={arialabeltext}
-      {...rest}
-    >
+    <Button className={styles} aria-label={arialabeltext} {...rest}>
       {children}
     </Button>
   );

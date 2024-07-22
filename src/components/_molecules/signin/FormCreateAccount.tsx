@@ -27,7 +27,10 @@ export default function FormCreateAccount() {
         placeholder="Password"
         type="password"
       />
-      <ButtonComponent styles="col-span-2" arialabeltext="Create account">
+      <ButtonComponent
+        styles=" p-3 bg-bgblack text-txwhite rounded-md font-semibold col-span-2"
+        arialabeltext="Create account"
+      >
         Create account
       </ButtonComponent>
     </form>
