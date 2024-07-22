@@ -1,18 +1,10 @@
-<<<<<<< Updated upstream
 import { ComponentPropsWithRef, ReactNode } from "react";
-=======
-import { ComponentPropsWithRef } from "react";
->>>>>>> Stashed changes
 import { Button } from "@mui/base/Button";
 
 interface ButtonProps extends ComponentPropsWithRef<"button"> {
   styles: string;
   arialabeltext: string;
-<<<<<<< Updated upstream
   children?: ReactNode;
-=======
-  children: string;
->>>>>>> Stashed changes
 }
 
 export default function ButtonComponent({
