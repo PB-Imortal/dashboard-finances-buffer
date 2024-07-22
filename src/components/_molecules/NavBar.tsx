@@ -1,8 +1,9 @@
 import { Input } from "@mui/base";
-import ButtonComponent from "./Button";
-import SettingUpperbarIcon from "./setting-upperbar-icon";
-import NotificationUpperbarIcon from "./NotificationUpperBarIcon";
+
 import userprofileicon from "../assets/user-profile-icon.svg";
+import ButtonComponent from "../_atoms/Button";
+import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
+import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
 
 export default function NavBar() {
   return (
@@ -18,22 +19,19 @@ export default function NavBar() {
             styles=" sm:hidden md:flex my-auto"
             arialabeltext="Settings button"
           >
-            {" "}
             <SettingUpperbarIcon />
           </ButtonComponent>
           <ButtonComponent
             styles="sm:hidden md:flex my-auto"
             arialabeltext="Notifications button"
           >
-            {" "}
             <NotificationUpperbarIcon />{" "}
           </ButtonComponent>
           <ButtonComponent styles="flex" arialabeltext="Settings button">
-            {" "}
             <img
               className="flex shrink-0 my-auto w-[48px] h-[48px]"
               src={userprofileicon}
-            />{" "}
+            />
             {/*   será necessário pegar a imagem de usuario do banco de dados */}
           </ButtonComponent>
         </div>

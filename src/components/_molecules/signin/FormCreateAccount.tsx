@@ -1,5 +1,5 @@
-import ButtonComponent from "./Button";
-import FormInput from "./FormInput";
+import ButtonComponent from "../../_atoms/Button";
+import FormInput from "../../_atoms/FormInput";
 
 export default function FormCreateAccount() {
   return (
