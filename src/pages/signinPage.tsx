@@ -1,4 +1,5 @@
+import FormCreateAccount from "../components/FormCreateAccount";
+
 export default function SigninPage() {
-    return <div>SigninPage - Página de teste</div>;
+  return <FormCreateAccount />;
 }
-  
