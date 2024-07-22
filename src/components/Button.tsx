@@ -1,17 +1,21 @@
-import React from "react";
+import { ComponentPropsWithRef } from "react";
+import { Button } from "@mui/base/Button";
 
-interface ButtonProps {
-  text: string;
+interface ButtonProps extends ComponentPropsWithRef<"button"> {
   styles: string;
-  onClick: () => void;
+  arialabeltext: string;
+  children: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, styles, onClick }) => {
+export default function ButtonComponent({
+  children,
+  styles,
+  arialabeltext,
+  ...rest
+}: ButtonProps) {
   return (
-    <button className={styles} onClick={onClick}>
-      {text}
-    </button>
+    <Button className={styles} aria-label={arialabeltext} {...rest}>
+      {children}
+    </Button>
   );
-};
-
-export default Button;
+}
