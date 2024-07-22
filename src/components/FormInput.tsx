@@ -1,21 +1,33 @@
 import { Input } from "@mui/base/Input";
 
 interface FormInputProps {
-  styles: string;
+  inputstyles: string;
+  labelstyles: string;
   arialabeltext: string;
   placeholdertext: string;
+  label: string;
+  id: string;
 }
 
 export default function FormInput({
-  styles,
+  inputstyles,
+  labelstyles,
   arialabeltext,
   placeholdertext,
+  label,
+  id,
 }: FormInputProps) {
   return (
-    <Input
-      className={styles}
-      placeholder={placeholdertext}
-      aria-label={arialabeltext}
-    ></Input>
+    <div>
+      <label htmlFor={id} className={labelstyles}>
+        {label}
+      </label>
+      <Input
+        id={id}
+        className={inputstyles}
+        placeholder={placeholdertext}
+        aria-label={arialabeltext}
+      ></Input>
+    </div>
   );
 }
