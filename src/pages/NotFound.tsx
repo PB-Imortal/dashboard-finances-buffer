@@ -1,4 +1,4 @@
-import Statement from "../components/Statement/Statement.tsx"
+import Statement from "../components/_organisms/Statement.tsx"
 
 const NotFound = () => {
   return (
