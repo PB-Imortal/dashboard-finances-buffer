@@ -6,10 +6,12 @@ import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
 import { Link } from "react-router-dom";
 import SearchIcon from "../common/svg/SearchIcon";
+import SideBar from "../SideBar/SideBar";
 
 export default function NavBar() {
   return (
-    <div className="bg-bglilac py-96 ">
+    <div className="">
+      <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
       <div className="bg-white flex justify-around lg:w-90 gap-5 py-4 rounded-lg">
         <Input
           className="flex flex-grow w-52 h-14 my-auto border  border-bordergrey rounded-md ml-10"
