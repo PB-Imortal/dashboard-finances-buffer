@@ -2,6 +2,10 @@ import MoneyIcon from '../../assets/money-icon.svg'
 import ExpensesIcon from '../../assets/expanses-icon.svg'
 import EarningsIcon from '../../assets/earnings-icon.svg'
 
+import { TableRow } from '../_atoms/TableRow'
+import { TableData } from '../_atoms/TableData'
+import { TableHeader } from '../_atoms/TableHeader'
+
 export default function Statement () {
 
     const simulateApiData = {
@@ -47,47 +51,64 @@ export default function Statement () {
     ]
 
     return (
-        <div className='bg-bggrey flex flex-col items-center'>
-            <section className='flex justify-between sm:w-11/12'>
+        <div className='bg-bggrey flex flex-col gap-3 items-center p-3'>
+            <section className='flex gap-6 sm:w-11/12'>
 
                 {
                     accounting.map(data => 
-                        <div className='bg-bgwhite gap-3 p-4 rounded-2xl'>
-                            <div className='flex'>
+                        <div className='bg-bgwhite gap-3 p-4 rounded-2xl w-full	'>
+
+                            <div className='flex items-center gap-4'>
                                 <img src={data.icon} />
 
                                 <div className=' flex flex-col'>
                                     <span>{data.label}</span>
-                                    <span className='text-txtpurple'>${data.amount}</span>
+                                    <span className='font-semibold text-txtpurple text-xl'>${data.amount}</span>
                                 </div>
                             </div>
+                            
                         </div>)
                 }
 
             </section>
 
             <table className='bg-bgwhite gap-3 p-6 rounded-2xl text-center sm:w-11/12'>
-                <tr>
-                    <th>Description</th>
-                    <th>Transaction ID</th>
-                    <th>Type</th>
-                    <th>Card</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Receipt</th>
-                </tr>
-                {simulateApiData.transactions.map(transaction => (
-                    <tr>
-                        <td>{transaction.description}</td>
-                        <td>{transaction.id}</td>
-                        <td>{transaction.type}</td>
-                        <td>{transaction.card}</td>
-                        <td>{transaction.date}</td>
-                        <td>{transaction.amount}</td>
-                        <td><button>Download</button></td>
-                    </tr>
-                )
-                )}
+
+                <thead>
+                    <TableRow innerHtml={
+                        <>
+                            <TableHeader content='Description' />
+                            <TableHeader content='Transaction ID' />
+                            <TableHeader content='Type' />
+                            <TableHeader content='Card' />
+                            <TableHeader content='Date' />
+                            <TableHeader content='Amount' />
+                            <TableHeader content='Receipt' />
+                        </>}
+                    />
+
+                </thead>
+
+                <tbody>
+
+                    {simulateApiData.transactions.map(transaction => 
+                        <TableRow key={transaction.id} innerHtml={
+                            <>
+                                <TableData content={transaction.description}/>
+                                <TableData content={transaction.id} />
+                                <TableData content={transaction.type} />
+                                <TableData content={transaction.card} />
+                                <TableData content={transaction.date} />
+                                <TableData content={transaction.amount} />
+    
+                                <TableData content='download'/>
+                            </>}
+                        />)
+                    }
+
+                </tbody>
+
+                
             </table>
         
         </div>
