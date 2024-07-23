@@ -1,4 +1,3 @@
-import userprofileicon from "../../assets/user-profile-icon.svg";
 import ButtonComponent from "../_atoms/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
@@ -6,20 +5,21 @@ import { Link } from "react-router-dom";
 import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/FormInput";
+import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 export default function NavBar() {
   return (
-    <div className="flex flex-row grow">
-      <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
+    <div className="flex flex-row grow ">
+      <SideBar styles="sm:flex md:hidden " />
 
-      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5  ">
+      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
         <FormInput
           id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="space-y-0 justify-start  grow "
+          styles="space-y-0 justify-start  grow lg:ml-12 "
      
       
         >
@@ -50,7 +50,7 @@ export default function NavBar() {
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >
-              <img className="my-auto h-12 w-12" src={userprofileicon} />
+             <UserProfileIcon/>
               {/*   será necessário pegar a imagem de usuario do banco de dados */}
             </ButtonComponent>
           </Link>
