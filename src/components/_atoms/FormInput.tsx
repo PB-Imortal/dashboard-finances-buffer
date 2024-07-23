@@ -7,7 +7,7 @@ import {
 } from "react";
 
 interface FormInputProps extends ComponentPropsWithRef<"input"> {
-  label: string;
+  label?: string
   id: string;
   styles?: string;
   startSvg?: ReactNode;
