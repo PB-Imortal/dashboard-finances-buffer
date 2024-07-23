@@ -1,5 +1,5 @@
-import FormCreateAccount from "../components/_molecules/signin/FormCreateAccount";
+import FormCreateAccount from "../components/_molecules/sign-in/FormCreateAccount";
 
-export default function SigninPage() {
+export default function SignInPage() {
   return <FormCreateAccount />;
 }
