@@ -4,6 +4,8 @@ import FormInput from "../components/_atoms/FormInput"
 import ButtonComponent from "../components/_atoms/Button"
 import CarouselNav from "../components/_atoms/CarouselNav"
 
+import  userAvatar  from "../assets/user-profile-icon.svg"
+
 export default function Profile() {
     const [userImage, setUserImage] = useState("")
 
@@ -24,7 +26,7 @@ export default function Profile() {
             <CarouselNav />
 
             <div className="flex content-center  justify-center p-10">
-                <img src={userImage} alt="user avatar" />
+                <img src={userAvatar} alt="user avatar" />
             </div>
 
             <form action="submit" method="post" className="grid grid-cols-2 gap-x-4 gap-y-5 px-1">
