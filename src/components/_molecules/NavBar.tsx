@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/FormInput";
+import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 
 export default function NavBar() {
   return (
     <div className="">
+      <DeskTopSideBar />
       <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
 
       <div className="ml-16 mr-4 bg-white flex sm:justify-start justify-around  gap-5 py-4 ">
