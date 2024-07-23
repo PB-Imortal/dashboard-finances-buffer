@@ -50,7 +50,7 @@ const SideBar: React.FC<SideBarProps> = (Props) => {
       <div>
         {/* Button to change the visibility */}
         <button
-          className={`fixed top-0 left-0 p-4 m-4 text-white rounded flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
+          className={`fixed top-0 left-0 p-4 m-4 rounded flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className="block w-5 h-0.5 bg-black"></span>
@@ -60,7 +60,7 @@ const SideBar: React.FC<SideBarProps> = (Props) => {
 
         {/* Drawer */}
         <div
-          className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-[16px] h-[98vh] p-5 ${
+          className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] h-[98vh] p-5 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
