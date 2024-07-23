@@ -1,36 +1,35 @@
-import React, { useState, useEffect, useRef } from "react"
-import { Link } from "react-router-dom"
-import styles from "./CarouselNav.module.css"
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 type Item = {
-    label: string
-    to: string
-}
+    label: string;
+    to: string;
+};
 
 const CarouselNav: React.FC = () => {
-    const [selectedIndex, setSelectedIndex] = useState<number>(1)
-    const selectedRef = useRef<HTMLAnchorElement>(null)
+    const [selectedIndex, setSelectedIndex] = useState<number>(1);
+    const selectedRef = useRef<HTMLAnchorElement>(null);
 
     const items: Item[] = [
         { label: "Back", to: "/" },
         { label: "Edit Profile", to: "edit" },
         { label: "Preferences", to: "preferences" },
         { label: "Security", to: "security" },
-    ]
+    ];
 
     useEffect(() => {
         if (selectedRef.current) {
-            selectedRef.current.scrollIntoView({ inline: "center", behavior: "smooth" })
+            selectedRef.current.scrollIntoView({ inline: "center", behavior: "smooth" });
         }
-    }, [selectedIndex])
+    }, [selectedIndex]);
 
     const highlightItem = (index: number) => {
-        setSelectedIndex(index)
-    }
+        setSelectedIndex(index);
+    };
 
     return (
         <nav className="relative bg-white">
-            <div className={`${styles.container} scrollbar-hide`}>
+            <div className="overflow-x-auto whitespace-nowrap flex items-center space-x-4 p-4 scrollbar-hide">
                 {items.map((item, index) => (
                     <Link
                         key={index}
@@ -47,17 +46,17 @@ const CarouselNav: React.FC = () => {
                     </Link>
                 ))}
             </div>
-            <div
-                className={styles.bar}
-                style={{
-                    width: selectedRef.current ? `${selectedRef.current.offsetWidth}px` : "0px",
-                    transform: selectedRef.current
-                        ? `translateX(${selectedRef.current.offsetLeft}px)`
-                        : "translateX(0)",
-                }}
-            ></div>
+            <div className="relative">
+                <div
+                    className="bg-black h-1 absolute bottom-0 transition-all duration-300"
+                    style={{
+                        width: selectedRef.current?.offsetWidth,
+                        transform: `translateX(${selectedRef.current?.offsetLeft}px)`,
+                    }}
+                />
+            </div>
         </nav>
-    )
-}
+    );
+};
 
-export default CarouselNav
+export default CarouselNav;
