@@ -7,12 +7,13 @@ export default function RootLayout() {
     return (
         <>
             {/* <Header /> */}
-
+          
             {/* <SideNav */}
             <SideBar />
             {/* <Main /> */}
             <Outlet />
             {/* <Footer /> */}
+            
         </>
     )
 }
