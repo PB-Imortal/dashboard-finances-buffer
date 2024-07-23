@@ -1,46 +1,61 @@
-import { Input } from "@mui/base";
-
-import userprofileicon from "../../assets/user-profile-icon.svg";
 import ButtonComponent from "../_atoms/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
+import { Link } from "react-router-dom";
+import SearchIcon from "../common/svg/SearchIcon";
+import SideBar from "../SideBar/SideBar";
+import FormInput from "../_atoms/FormInput";
+import DeskTopSideBar from "../SideBar/DeskTopSideBar";
+import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 export default function NavBar() {
   return (
-    <div className="bg-bglilac py-96 ">
-      <div className="bg-white flex justify-around lg:w-90 gap-5 py-4 rounded-lg">
-        <Input
-          className="flex flex-grow w-52 h-14 my-auto border  border-bordergrey rounded-md ml-10"
+    <div className="flex flex-row grow ">
+      <DeskTopSideBar />
+      <SideBar styles="sm:flex md:hidden " />
+
+      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
+        <FormInput
+          id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
-        />
-        <div className="flex justify-around  gap-7 mx-7">
-          <ButtonComponent
-            styles=" sm:hidden md:flex my-auto"
-            arialabeltext="Settings button"
-            bgcolor="bgwhite"
-          >
-            <SettingUpperbarIcon />
-          </ButtonComponent>
-          <ButtonComponent
-            styles="sm:hidden md:flex my-auto"
-            arialabeltext="Notifications button"
-            bgcolor="bgwhite"
-          >
-            <NotificationUpperbarIcon />{" "}
-          </ButtonComponent>
-          <ButtonComponent
-            styles="flex"
-            arialabeltext="Settings button"
-            bgcolor="bgwhite"
-          >
-            <img
-              className="flex shrink-0 my-auto w-[48px] h-[48px]"
-              src={userprofileicon}
-            />
-            {/*   será necessário pegar a imagem de usuario do banco de dados */}
-          </ButtonComponent>
+          endSvg={<SearchIcon />}
+          styles="space-y-0 justify-start  grow lg:ml-12 "
+     
+      
+        >
+          {" "}
+        </FormInput>
+        <div className="  sm:hidden md:flex  justify-around   mx-7">
+          <Link to="">
+            <ButtonComponent
+              styles="my-auto"
+              arialabeltext="Settings button"
+              bgcolor="bg-bgwhite"
+            >
+              <SettingUpperbarIcon />
+            </ButtonComponent>
+          </Link>
+          <Link to="">
+            <ButtonComponent
+              styles="my-auto"
+              arialabeltext="Notifications button"
+              bgcolor="bg-bgwhite"
+            >
+              <NotificationUpperbarIcon />{" "}
+            </ButtonComponent>{" "}
+          </Link>
+          <Link to="Profile" className="w-12 h-12">
+            <ButtonComponent
+              styles="flex w-12 h-12 my-auto"
+              arialabeltext="Profile button"
+              bgcolor="bg-bgwhite"
+            >
+             <UserProfileIcon/>
+              {/*   será necessário pegar a imagem de usuario do banco de dados */}
+            </ButtonComponent>
+          </Link>
         </div>
       </div>
     </div>

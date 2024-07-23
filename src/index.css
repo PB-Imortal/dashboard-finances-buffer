@@ -10,6 +10,20 @@ body {
   text-decoration: none;
 }
 
+.base-Input-root {
+  @apply flex p-3 space-x-2 items-center border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full;
+}
+
 .base-Input-input {
-  @apply p-3 border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full;
+  @apply rounded-md outline-none text-base text-txinput placeholder-txinput w-full;
+}
+
+/* carousel profile navbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

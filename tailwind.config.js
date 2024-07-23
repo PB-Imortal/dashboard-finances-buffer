@@ -23,7 +23,7 @@ export default {
         inter: ["Inter"],
       },
       screens: {
-        md: "767px",
+        md: "769px",
         sm: "320px",
       },
     },
