@@ -9,7 +9,7 @@ export default function RootLayout() {
             {/* <Header /> */}
           
             {/* <SideNav */}
-            
+
             {/* <Main /> */}
             <Outlet />
             {/* <Footer /> */}
