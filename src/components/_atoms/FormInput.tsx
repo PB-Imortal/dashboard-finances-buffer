@@ -2,7 +2,7 @@ import { Input } from "@mui/base/Input";
 import { ComponentPropsWithRef, ReactNode } from "react";
 
 interface FormInputProps extends ComponentPropsWithRef<"input"> {
-  label: string;
+  label?: string
   id: string;
   styles?: string;
   startSvg?: ReactNode;
