@@ -12,7 +12,7 @@ export function ExtractTable() {
                 type: 'Shopping',
                 card: '142343423',
                 date: '26 Jan, 12.30 AM',
-                amount: 2500
+                amount: -2500
             },
             {   
                 description: 'Freepik Sales',
@@ -57,9 +57,17 @@ export function ExtractTable() {
                                 <TableData content={transaction.type} />
                                 <TableData content={transaction.card} />
                                 <TableData content={transaction.date} />
-                                <TableData content={transaction.amount} />
-    
-                                <TableData content='Download'/>
+
+                                <TableData tags={
+                                    <span className={(transaction.amount < 0) ? 'text-txtred' : 'text-txtgreen'}>
+                                        {transaction.amount}
+                                    </span>} 
+                                />
+
+                                <TableData tags={
+                                    <button>Download</button>}
+                                />
+                                
                             </>}
                         />)
                     }
