@@ -4,6 +4,8 @@ import userprofileicon from "../../assets/user-profile-icon.svg";
 import ButtonComponent from "../_atoms/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
+import { Link } from "react-router-dom";
+import SearchIcon from "../common/svg/SearchIcon";
 
 export default function NavBar() {
   return (
@@ -14,33 +16,42 @@ export default function NavBar() {
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
-        />
+        >
+          {" "}
+          <SearchIcon />{" "}
+        </Input>
         <div className="flex justify-around  gap-7 mx-7">
-          <ButtonComponent
-            styles=" sm:hidden md:flex my-auto"
-            arialabeltext="Settings button"
-            bgcolor="bgwhite"
-          >
-            <SettingUpperbarIcon />
-          </ButtonComponent>
-          <ButtonComponent
-            styles="sm:hidden md:flex my-auto"
-            arialabeltext="Notifications button"
-            bgcolor="bgwhite"
-          >
-            <NotificationUpperbarIcon />{" "}
-          </ButtonComponent>
-          <ButtonComponent
-            styles="flex"
-            arialabeltext="Settings button"
-            bgcolor="bgwhite"
-          >
-            <img
-              className="flex shrink-0 my-auto w-[48px] h-[48px]"
-              src={userprofileicon}
-            />
-            {/*   será necessário pegar a imagem de usuario do banco de dados */}
-          </ButtonComponent>
+          <Link to="">
+            <ButtonComponent
+              styles=" sm:hidden md:flex my-auto"
+              arialabeltext="Settings button"
+              bgcolor="bgwhite"
+            >
+              <SettingUpperbarIcon />
+            </ButtonComponent>
+          </Link>
+          <Link to="">
+            <ButtonComponent
+              styles="sm:hidden md:flex my-auto"
+              arialabeltext="Notifications button"
+              bgcolor="bgwhite"
+            >
+              <NotificationUpperbarIcon />{" "}
+            </ButtonComponent>{" "}
+          </Link>
+          <Link to="Profile">
+            <ButtonComponent
+              styles="flex"
+              arialabeltext="Settings button"
+              bgcolor="bgwhite"
+            >
+              <img
+                className="flex shrink-0 my-auto w-[48px] h-[48px]"
+                src={userprofileicon}
+              />
+              {/*   será necessário pegar a imagem de usuario do banco de dados */}
+            </ButtonComponent>
+          </Link>
         </div>
       </div>
     </div>
