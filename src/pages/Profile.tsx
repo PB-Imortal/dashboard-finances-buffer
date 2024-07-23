@@ -61,7 +61,8 @@ export default function Profile() {
         />
 
         <Button
-          styles="p-3 bg-bgblack text-txwhite rounded-md font-semibold "
+          bgcolor="bgblack"
+          styles="p-3 bgblack text-txwhite rounded-md font-semibold "
           arialabeltext={"button"}
         ></Button>
       </form>
