@@ -4,7 +4,6 @@ const NotFound = () => {
   return (
     <>
     <h1>Nothing</h1>
-    <Statement />
     </>
   )
 }
