@@ -1,13 +1,48 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import ButtonComponent from "../../_atoms/Button";
 import FormInput from "../../_atoms/FormInput";
+import {
+  CreateAccountFields,
+  formCreateAccount,
+} from "../../common/functions/validations";
 import LockIcon from "../../common/svg/LockIcon";
 
 export default function FormCreateAccount() {
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { isLoading },
+  } = useForm<CreateAccountFields>({
+    resolver: zodResolver(formCreateAccount),
+  });
+
+  function onSubmit(data: CreateAccountFields) {
+    console.log(data);
+    reset();
+  }
+
   return (
-    <form className="grid grid-cols-2 gap-x-8 gap-y-4">
-      <FormInput id="lastName" label="Last Name" placeholder="Last name" />
-      <FormInput id="firstName" label="First Name" placeholder="First name" />
+    <form
+      noValidate
+      onSubmit={handleSubmit(onSubmit)}
+      className="grid grid-cols-2 gap-x-8 gap-y-4"
+    >
       <FormInput
+        {...register("lastName")}
+        id="lastName"
+        label="Last Name"
+        placeholder="Last name"
+      />
+      <FormInput
+        {...register("firstName")}
+        id="firstName"
+        label="First Name"
+        placeholder="First name"
+      />
+      <FormInput
+        {...register("email")}
         id="email"
         label="E-mail"
         placeholder="E-mail"
@@ -15,6 +50,7 @@ export default function FormCreateAccount() {
         type="email"
       />
       <FormInput
+        {...register("password")}
         id="password"
         label="Password"
         placeholder="Password"
@@ -23,6 +59,7 @@ export default function FormCreateAccount() {
         startSvg={<LockIcon />}
       />
       <FormInput
+        {...register("confirmPassword")}
         styles="col-span-2"
         id="confirm-password"
         label="Confirm password"
@@ -31,6 +68,7 @@ export default function FormCreateAccount() {
         startSvg={<LockIcon />}
       />
       <ButtonComponent
+        disabled={isLoading}
         bgcolor="bgblack"
         styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
