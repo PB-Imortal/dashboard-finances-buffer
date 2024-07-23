@@ -6,10 +6,13 @@ import LoginPage from "../pages/loginPage";
 import Profile from "../pages/Profile";
 import SignInPage from "../pages/SignInPage";
 
+import NotFound from "../pages/NotFound";
+
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -20,4 +23,5 @@ export const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
   { path: "/profile", element: <Profile /> },
+  // { path: "/statement", elment: <Statement /> },
 ]);

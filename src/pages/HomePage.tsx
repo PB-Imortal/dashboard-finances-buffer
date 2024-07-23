@@ -1,3 +1,5 @@
+import NavBar from "../components/_molecules/NavBar";
+
 export default function HomePage() {
-    return <div>HomePage - Página de teste</div>
+    return <div><NavBar/></div>
 }
