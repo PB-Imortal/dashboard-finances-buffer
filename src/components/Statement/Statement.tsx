@@ -49,7 +49,7 @@ export default function Statement () {
     return (
         <div className='bg-bggrey flex flex-col items-center'>
             <section className='flex justify-between sm:w-11/12'>
-            
+
                 {
                     accounting.map(data => 
                         <div className='bg-bgwhite gap-3 p-4 rounded-2xl'>
@@ -58,7 +58,7 @@ export default function Statement () {
 
                                 <div className=' flex flex-col'>
                                     <span>{data.label}</span>
-                                    <span>${data.amount}</span>
+                                    <span className='text-txtpurple'>${data.amount}</span>
                                 </div>
                             </div>
                         </div>)
@@ -76,7 +76,6 @@ export default function Statement () {
                     <th>Amount</th>
                     <th>Receipt</th>
                 </tr>
-                
                 {simulateApiData.transactions.map(transaction => (
                     <tr>
                         <td>{transaction.description}</td>
