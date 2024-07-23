@@ -4,7 +4,7 @@ import RootLayout from "./RootLayout";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/loginPage";
 import Profile from "../pages/Profile";
-import SignInPage from "../pages/SignInPage";
+import SignInPage from "../pages/signinPage";
 
 import NotFound from "../pages/NotFound";
 
