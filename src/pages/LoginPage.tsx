@@ -1,6 +1,7 @@
 import statementImg from "../assets/name-and-logo.svg";
 import ButtonComponent from "../components/_atoms/Button";
 import FormInput from "../components/_atoms/FormInput";
+import Title from "../components/_atoms/Title";
 
 export default function LoginPage() {
   return (
@@ -10,7 +11,7 @@ export default function LoginPage() {
       </div>
       <section className="flex flex-col p-3 justify-items-center border-solid rounded-t-2xl bg-bgwhite">
         <div className="flex flex-col items-center">
-          <h2 className="font-extrabold text-2xl">Log in</h2>
+          <Title>Log in</Title>
           <p>
             Welcome to My Statement, please fill in the fields below to log into
             your account.
