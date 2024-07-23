@@ -32,16 +32,16 @@ export default function Profile() {
             <section className="h-dvh bg-bgwhite flex flex-col items-center lg:flex-row">
                 <form action="submit" method="post" className="flex flex-col space-y-4">
                     <div className="flex flex-row">
-                    <FormInput
-                        placeholder={"Insert here your last name..."}
-                        label={"Last Name"}
-                        id={"last-name"}
-                    />
-                    <FormInput
-                        placeholder={"Insert here your first name..."}
-                        label={"First Name"}
-                        id={"first-name"}
-                    />
+                        <FormInput
+                            placeholder={"Insert here your last name..."}
+                            label={"Last Name"}
+                            id={"last-name"}
+                        />
+                        <FormInput
+                            placeholder={"Insert here your first name..."}
+                            label={"First Name"}
+                            id={"first-name"}
+                        />
                     </div>
                     <FormInput
                         placeholder={"Insert here your date of birth..."}
@@ -54,20 +54,20 @@ export default function Profile() {
                         id={"email"}
                     />
                     <div className="flex flex-row">
-                    <FormInput
-                        placeholder={"Insert here your home address..."}
-                        label={"Address"}
-                        id={"address"}
-                    />
-                    <FormInput
-                        placeholder={"Insert here your residing country..."}
-                        label={"Country"}
-                        id={"country"}
-                    />
+                        <FormInput
+                            placeholder={"Insert here your home address..."}
+                            label={"Address"}
+                            id={"address"}
+                        />
+                        <FormInput
+                            placeholder={"Insert here your residing country..."}
+                            label={"Country"}
+                            id={"country"}
+                        />
                     </div>
                     <ButtonComponent
                         arialabeltext={"send button"}
-                        bgcolor="bg-black"
+                        bgcolor="bgblack"
                         textColor="txwhite"
                         styles="h-12 p-4"
                     >

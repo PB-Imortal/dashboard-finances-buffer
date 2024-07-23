@@ -5,7 +5,7 @@ interface ButtonProps extends ComponentPropsWithRef<"button"> {
   styles?: string;
   arialabeltext: string;
   children?: ReactNode;
-  bgcolor: "bg-black" | "bg-white";
+  bgcolor: "bgblack" | "bgwhite";
   textColor?: "txwhite" | "txblack";
 }
 
@@ -19,7 +19,7 @@ export default function ButtonComponent({
 }: ButtonProps) {
   return (
     <Button
-      className={`p-3 ${bgcolor} text-${textColor} rounded-md font-semibold ${styles}`}
+      className={`p-3 bg-${bgcolor} text-${textColor} rounded-md font-semibold ${styles}`}
       aria-label={arialabeltext}
       {...rest}
     >
