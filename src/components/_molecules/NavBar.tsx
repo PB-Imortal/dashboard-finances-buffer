@@ -30,7 +30,7 @@ export default function NavBar() {
             <ButtonComponent
               styles="my-auto"
               arialabeltext="Settings button"
-              bgcolor="bgwhite"
+              bgcolor="bg-bgwhite"
             >
               <SettingUpperbarIcon />
             </ButtonComponent>
