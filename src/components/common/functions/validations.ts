@@ -10,7 +10,7 @@ export const formCreateAccount = z
       .min(1, "Required*")
       .regex(
         /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
-        "Invalid sequence"
+        "Requirements not met"
       )
       .trim(),
     confirmPassword: z.string().min(1, "Required*").trim(),

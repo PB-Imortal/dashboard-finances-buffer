@@ -1,5 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Snackbar } from "@mui/base";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../../_atoms/Button";
 import FormInput from "../../_atoms/FormInput";
 import {
@@ -8,21 +11,28 @@ import {
 } from "../../common/functions/validations";
 import InfiniteSpinner from "../../common/svg/InfiniteSpinner";
 import LockIcon from "../../common/svg/LockIcon";
+import OkIcon from "../../common/svg/OkIcon";
 
 export default function FormCreateAccount() {
   const {
     register,
     reset,
     handleSubmit,
-    formState: { errors, isLoading },
+    formState: { errors, isSubmitting },
   } = useForm<CreateAccountFields>({
     resolver: zodResolver(formCreateAccount),
   });
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   function onSubmit(data: CreateAccountFields) {
+    // envia os dados para o servidor
     console.log(data);
-
+    setOpen(true);
     reset();
+    setInterval(() => {
+      navigate("/");
+    }, 3000);
   }
 
   return (
@@ -36,12 +46,14 @@ export default function FormCreateAccount() {
         id="lastName"
         label="Last Name"
         placeholder="Last name"
+        error={errors.lastName?.message}
       />
       <FormInput
         {...register("firstName")}
         id="firstName"
         label="First Name"
         placeholder="First name"
+        error={errors.firstName?.message}
       />
       <FormInput
         {...register("email")}
@@ -50,6 +62,7 @@ export default function FormCreateAccount() {
         placeholder="E-mail"
         styles="col-span-2"
         type="email"
+        error={errors.email?.message}
       />
       <FormInput
         {...register("password")}
@@ -59,8 +72,8 @@ export default function FormCreateAccount() {
         type="password"
         styles="col-span-2"
         startSvg={<LockIcon />}
+        error={errors.password?.message}
       />
-      <p>{errors.password?.message}</p>
       <FormInput
         {...register("confirmPassword")}
         styles="col-span-2"
@@ -69,16 +82,27 @@ export default function FormCreateAccount() {
         placeholder="Password"
         type="password"
         startSvg={<LockIcon />}
+        error={errors.confirmPassword?.message}
       />
       <ButtonComponent
-        disabled={isLoading}
+        disabled={isSubmitting}
         type="submit"
-        bgcolor="bgblack"
+        bgcolor="bg-black"
         styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
       >
-        {isLoading ? <InfiniteSpinner /> : "Create account"}
+        {!isSubmitting ? <InfiniteSpinner /> : "Create account"}
       </ButtonComponent>
+      <Snackbar
+        className="fixed bottom-1 w-11/12 gap-x-2 flex items-center left-1 rounded-2xl bg-bgblack text-white py-4 px-8"
+        autoHideDuration={2000}
+        onClose={() => setOpen(false)}
+        open={open}
+        exited={true}
+      >
+        <OkIcon />
+        <p>Registration completed</p>
+      </Snackbar>
     </form>
   );
 }
