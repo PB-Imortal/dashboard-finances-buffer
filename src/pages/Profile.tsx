@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+
 import FormInput from "../components/_atoms/FormInput"
 import ButtonComponent from "../components/_atoms/Button"
+import CarouselNav from "../components/_atoms/CarouselNav"
 
 export default function Profile() {
     const [userImage, setUserImage] = useState("")
@@ -20,14 +21,9 @@ export default function Profile() {
 
     return (
         <>
-            <nav className="flex justify-center space-x-4">
-                <Link to="profile">Back</Link>
-                <Link to="edit">Edit Profile</Link>
-                <Link to="preferences">Preferences</Link>
-                <Link to="security">Security</Link>
-            </nav>
+            <CarouselNav />
 
-            <div className="flex justify-center">
+            <div className="flex content-center  justify-center p-10">
                 <img src={userImage} alt="user avatar" />
             </div>
 
@@ -68,9 +64,9 @@ export default function Profile() {
 
                 <ButtonComponent
                     arialabeltext={"send button"}
-                    bgcolor="bgblack"
-                    textColor="txwhite"
-                    styles="h-12 p-4"
+                    bgcolor="bg-bgblack"
+                    textColor="text-txwhite"
+                    styles="h-12 p-3 text-txwhite rounded-md font-semibold col-span-2"
                 >
                     Save
                 </ButtonComponent>
