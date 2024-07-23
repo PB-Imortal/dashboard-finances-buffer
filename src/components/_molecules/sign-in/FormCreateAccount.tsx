@@ -1,5 +1,6 @@
 import ButtonComponent from "../../_atoms/Button";
 import FormInput from "../../_atoms/FormInput";
+import LockIcon from "../../common/svg/LockIcon";
 
 export default function FormCreateAccount() {
   return (
@@ -19,6 +20,7 @@ export default function FormCreateAccount() {
         placeholder="Password"
         type="password"
         styles="col-span-2"
+        startSvg={<LockIcon />}
       />
       <FormInput
         styles="col-span-2"
@@ -26,6 +28,7 @@ export default function FormCreateAccount() {
         label="Confirm password"
         placeholder="Password"
         type="password"
+        startSvg={<LockIcon />}
       />
       <ButtonComponent
         bgcolor="bgblack"

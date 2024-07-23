@@ -1,16 +1,20 @@
 import { Input } from "@mui/base/Input";
-import { ComponentPropsWithRef } from "react";
+import { ComponentPropsWithRef, ReactNode } from "react";
 
 interface FormInputProps extends ComponentPropsWithRef<"input"> {
   label: string;
   id: string;
   styles?: string;
+  startSvg?: ReactNode;
+  endSvg?: ReactNode;
 }
 
 export default function FormInput({
   styles,
   label,
   id,
+  startSvg,
+  endSvg,
   ...rest
 }: FormInputProps) {
   return (
@@ -18,7 +22,13 @@ export default function FormInput({
       <label htmlFor={id} className="font-semibold">
         {label}
       </label>
-      <Input id={id} aria-label={label} {...rest} />
+      <Input
+        id={id}
+        aria-label={label}
+        {...rest}
+        startAdornment={startSvg}
+        endAdornment={endSvg}
+      />
     </div>
   );
 }
