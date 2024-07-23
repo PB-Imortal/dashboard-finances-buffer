@@ -1,5 +1,3 @@
-import { Input } from "@mui/base";
-
 import userprofileicon from "../../assets/user-profile-icon.svg";
 import ButtonComponent from "../_atoms/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
@@ -14,14 +12,16 @@ export default function NavBar() {
     <div className="">
       <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
 
-      <div className="bg-white flex justify-around lg:w-90 gap-5 py-4 ">
+      <div className="ml-16 mr-4 bg-white flex sm:justify-start justify-around  gap-5 py-4 ">
         <FormInput
           id="search"
-          className="flex lg:flex-grow w-52 h-14 my-auto border  border-bordergrey rounded-md ml-20 "
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
+          styles="grow justify-start"
+     
+      
         >
           {" "}
         </FormInput>
