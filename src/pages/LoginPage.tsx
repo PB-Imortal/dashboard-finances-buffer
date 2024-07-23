@@ -22,9 +22,9 @@ export default function LoginPage() {
           <FormInput id="password" label="Password" placeholder="Password"/>
         </div>
         <div className="flex flex-col justify-items-center justify-between mt-3">
-          <ButtonComponent arialabeltext="Login button" bgcolor="bgblack" textColor="txwhite" styles="h-12">Log in</ButtonComponent>
+          <ButtonComponent arialabeltext="Login button" bgcolor="bg-bgblack" textColor="text-txwhite" styles="h-12">Log in</ButtonComponent>
           <p className="self-center">Or</p>
-          <ButtonComponent arialabeltext="create account button" bgcolor="bgwhite" textColor="txblack" styles="border border-zinc-600/[.35] h-12">Create account</ButtonComponent>
+          <ButtonComponent arialabeltext="create account button" bgcolor="bg-bgwhite" textColor="text-txblack" styles="border border-zinc-600/[.35] h-12">Create account</ButtonComponent>
         </div>
       </section>
     </main>

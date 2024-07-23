@@ -72,8 +72,8 @@ export default function FormCreateAccount() {
       />
       <ButtonComponent
         disabled={isLoading}
+        bgcolor="bg-bgblack"
         type="submit"
-        bgcolor="bgblack"
         styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
       >
