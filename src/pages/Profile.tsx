@@ -60,7 +60,10 @@ export default function Profile() {
           id={"country"}
         />
 
-        <Button styles={""} arialabeltext={"button"} children={""}></Button>
+        <Button
+          styles="p-3 bg-bgblack text-txwhite rounded-md font-semibold "
+          arialabeltext={"button"}
+        ></Button>
       </form>
     </>
   );
