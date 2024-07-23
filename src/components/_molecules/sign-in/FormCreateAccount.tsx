@@ -28,7 +28,8 @@ export default function FormCreateAccount() {
         type="password"
       />
       <ButtonComponent
-        styles=" p-3 bg-bgblack text-txwhite rounded-md font-semibold col-span-2"
+        bgcolor="bgblack"
+        styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
       >
         Create account
