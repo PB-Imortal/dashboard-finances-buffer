@@ -44,7 +44,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 
 const DeskTopSideBar = () => {
   return (
-    <div className="top-0 left-0 z-40 w-64 h-full bg-white shadow-md h-[98vh] p-5">
+    <div className="top-0 left-0 z-40 w-64  bg-white shadow-md h-[98vh] p-5 sm:hidden md:flex md:flex-col">
       <ul>
         <li>
           <div className="flex justify-center p-2">

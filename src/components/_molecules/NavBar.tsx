@@ -1,4 +1,3 @@
-import userprofileicon from "../../assets/user-profile-icon.svg";
 import ButtonComponent from "../_atoms/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
@@ -7,21 +6,22 @@ import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
+import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 export default function NavBar() {
   return (
-    <div className="">
+    <div className="flex flex-row grow ">
       <DeskTopSideBar />
-      <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
+      <SideBar styles="sm:flex md:hidden " />
 
-      <div className="ml-16 mr-4 bg-white flex sm:justify-start justify-around  gap-5 py-4 ">
+      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
         <FormInput
           id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="grow justify-start"
+          styles="space-y-0 justify-start  grow lg:ml-12 "
      
       
         >
@@ -41,7 +41,7 @@ export default function NavBar() {
             <ButtonComponent
               styles="my-auto"
               arialabeltext="Notifications button"
-              bgcolor="bgwhite"
+              bgcolor="bg-bgwhite"
             >
               <NotificationUpperbarIcon />{" "}
             </ButtonComponent>{" "}
@@ -50,9 +50,9 @@ export default function NavBar() {
             <ButtonComponent
               styles="flex w-12 h-12 my-auto"
               arialabeltext="Profile button"
-              bgcolor="bgwhite"
+              bgcolor="bg-bgwhite"
             >
-              <img className="my-auto h-12 w-12" src={userprofileicon} />
+             <UserProfileIcon/>
               {/*   será necessário pegar a imagem de usuario do banco de dados */}
             </ButtonComponent>
           </Link>
