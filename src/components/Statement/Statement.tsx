@@ -28,35 +28,45 @@ export default function Statement () {
         earnings: 32
     }
 
+    const accounting = [
+        {
+            label: 'Money',
+            icon: MoneyIcon,
+            amount: simulateApiData.balance
+        },
+        {
+            label: 'Expenses',
+            icon: ExpensesIcon,
+            amount: simulateApiData.expenses
+        },
+        {
+            label: 'Earnings',
+            icon: EarningsIcon,
+            amount: simulateApiData.earnings
+        }
+    ]
+
     return (
-        <div>
-            <section>
-                <div>
-                    <p>
-                        {MoneyIcon}
-                        <span>Money</span>
-                        <span>${simulateApiData.balance}</span>
-                    </p>
-                </div>
+        <div className='bg-bggrey flex flex-col items-center'>
+            <section className='flex justify-between sm:w-11/12'>
+            
+                {
+                    accounting.map(data => 
+                        <div className='bg-bgwhite gap-3 p-4 rounded-2xl'>
+                            <div className='flex'>
+                                <img src={data.icon} />
 
-                <div>
-                    <p>
-                        {ExpensesIcon}
-                        <span>Expenses</span>
-                        <span>${simulateApiData.expenses}</span>
-                    </p>
-                </div>
+                                <div className=' flex flex-col'>
+                                    <span>{data.label}</span>
+                                    <span>${data.amount}</span>
+                                </div>
+                            </div>
+                        </div>)
+                }
 
-                <div>
-                    <p>
-                        {EarningsIcon}
-                        <span>Earning</span>
-                        <span>${simulateApiData.earnings}</span>
-                    </p>
-                </div>
             </section>
 
-            <table>
+            <table className='bg-bgwhite gap-3 p-6 rounded-2xl text-center sm:w-11/12'>
                 <tr>
                     <th>Description</th>
                     <th>Transaction ID</th>
