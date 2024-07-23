@@ -9,17 +9,17 @@ import FormInput from "../_atoms/FormInput";
 
 export default function NavBar() {
   return (
-    <div className="">
+    <div className="flex flex-row grow">
       <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
 
-      <div className="ml-16 mr-4 bg-white flex sm:justify-start justify-around  gap-5 py-4 ">
+      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5  ">
         <FormInput
           id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="grow justify-start"
+          styles="space-y-0 justify-start  grow "
      
       
         >
@@ -39,7 +39,7 @@ export default function NavBar() {
             <ButtonComponent
               styles="my-auto"
               arialabeltext="Notifications button"
-              bgcolor="bgwhite"
+              bgcolor="bg-bgwhite"
             >
               <NotificationUpperbarIcon />{" "}
             </ButtonComponent>{" "}
@@ -48,7 +48,7 @@ export default function NavBar() {
             <ButtonComponent
               styles="flex w-12 h-12 my-auto"
               arialabeltext="Profile button"
-              bgcolor="bgwhite"
+              bgcolor="bg-bgwhite"
             >
               <img className="my-auto h-12 w-12" src={userprofileicon} />
               {/*   será necessário pegar a imagem de usuario do banco de dados */}
