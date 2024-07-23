@@ -6,7 +6,7 @@ import LoginPage from "../pages/loginPage";
 import Profile from "../pages/Profile";
 
 import NotFound from "../pages/NotFound";
-import SignInPage from "../pages/SignInPage";
+import SignInPage from "../pages/signinPage";
 
 export const router = createBrowserRouter([
   {
