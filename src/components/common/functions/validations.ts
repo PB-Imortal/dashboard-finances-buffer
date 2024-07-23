@@ -2,19 +2,20 @@ import { z } from "zod";
 
 export const formCreateAccount = z
   .object({
-    lastName: z.string().min(2, "Required*"),
-    firstName: z.string().min(2, "Required*"),
-    email: z.string().email("Invalid value").min(1, "Required*"),
+    lastName: z.string().min(2, "Required*").trim(),
+    firstName: z.string().min(2, "Required*").trim(),
+    email: z.string().email("Invalid value").min(1, "Required*").trim(),
     password: z
       .string()
       .min(1, "Required*")
-      .regex(/^(?=.*[A-Z])$/, "capital letter")
-      .regex(/^(?=.*\d)$/, "digit")
-      .regex(/^(?=.*[\W_])$/, "symbol (#,$,%,&,*,@,!,_)")
-      .regex(/^[A-Za-z\d\W_]{8,}$/, "8 characters"),
-    confirmPassword: z.string().min(1, "Required*"),
+      .regex(
+        /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/,
+        "Invalid sequence"
+      )
+      .trim(),
+    confirmPassword: z.string().min(1, "Required*").trim(),
   })
-  .refine((data) => data.confirmPassword !== data.password, {
+  .refine((data) => data.confirmPassword === data.password, {
     message: "Divergent passwords",
     path: ["confirmPassword"],
   });

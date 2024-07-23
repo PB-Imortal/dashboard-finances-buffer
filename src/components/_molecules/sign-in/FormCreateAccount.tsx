@@ -6,6 +6,7 @@ import {
   CreateAccountFields,
   formCreateAccount,
 } from "../../common/functions/validations";
+import InfiniteSpinner from "../../common/svg/InfiniteSpinner";
 import LockIcon from "../../common/svg/LockIcon";
 
 export default function FormCreateAccount() {
@@ -13,13 +14,14 @@ export default function FormCreateAccount() {
     register,
     reset,
     handleSubmit,
-    formState: { isLoading },
+    formState: { errors, isLoading },
   } = useForm<CreateAccountFields>({
     resolver: zodResolver(formCreateAccount),
   });
 
   function onSubmit(data: CreateAccountFields) {
     console.log(data);
+
     reset();
   }
 
@@ -58,6 +60,7 @@ export default function FormCreateAccount() {
         styles="col-span-2"
         startSvg={<LockIcon />}
       />
+      <p>{errors.password?.message}</p>
       <FormInput
         {...register("confirmPassword")}
         styles="col-span-2"
@@ -70,10 +73,11 @@ export default function FormCreateAccount() {
       <ButtonComponent
         disabled={isLoading}
         bgcolor="bg-bgblack"
+        type="submit"
         styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
       >
-        Create account
+        {isLoading ? <InfiniteSpinner /> : "Create account"}
       </ButtonComponent>
     </form>
   );
