@@ -1,6 +1,10 @@
 export default function InfiniteSpinner() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150">
+    <svg
+      className="m-auto p-0 w-[45px]"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 300 150"
+    >
       <path
         fill="none"
         stroke="#FFFFFF"
