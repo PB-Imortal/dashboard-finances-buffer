@@ -16,6 +16,8 @@ import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
 import LogoutSideBarInactive from "../../assets/logout-sidebar-icon.svg";
 import LogoutSideBarActive from "../../assets/LogoutSideBar-active.svg";
 
+import BurgerMenu from './BurgerMenu';
+
 interface NavLinkProps {
     to: string;
     activeImgSrc: string;
@@ -49,14 +51,7 @@ const SideBar: React.FC<SideBarProps> = (Props) => {
     <>
       <div>
         {/* Button to change the visibility */}
-        <button
-          className={`fixed top-0 left-0 p-4 m-4 rounded flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span className="block w-5 h-0.5 bg-black"></span>
-          <span className="block w-5 h-0.5 bg-black"></span>
-          <span className="block w-5 h-0.5 bg-black"></span>
-        </button>
+        <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
 
         {/* Drawer */}
         <div
@@ -107,7 +102,6 @@ const SideBar: React.FC<SideBarProps> = (Props) => {
               <NavLink to="#"  activeImgSrc={SettingSideBarActive} inactiveImgSrc={SettingSideBar}>
                 Setting
               </NavLink>
-
 
               <NavLink to="/login" activeImgSrc={LogoutSideBarActive} inactiveImgSrc={LogoutSideBarInactive}>
                 Logout
