@@ -12,18 +12,22 @@ interface FormInputProps extends ComponentPropsWithRef<"input"> {
   styles?: string;
   startSvg?: ReactNode;
   endSvg?: ReactNode;
+  error?: string;
 }
 
 const FormInput = forwardRef(
   (
-    { styles, label, id, startSvg, endSvg, ...rest }: FormInputProps,
+    { styles, label, id, startSvg, endSvg, error, ...rest }: FormInputProps,
     ref: ForwardedRef<HTMLDivElement>
   ) => {
     return (
       <div ref={ref} className={`space-y-3 ${styles} flex flex-col`}>
-        <label htmlFor={id} className="font-semibold">
-          {label}
-        </label>
+        <div className="flex justify-between">
+          <label htmlFor={id} className="font-semibold">
+            {label}
+          </label>
+          <span className="text-red-500">{error}</span>
+        </div>
         <Input
           id={id}
           aria-label={label}

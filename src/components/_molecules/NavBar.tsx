@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/FormInput";
+import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 export default function NavBar() {
   return (
     <div className="flex flex-row grow ">
+      <DeskTopSideBar />
       <SideBar styles="sm:flex md:hidden " />
 
       <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
