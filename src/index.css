@@ -17,3 +17,13 @@ body {
 .base-Input-input {
   @apply rounded-md outline-none text-base text-txinput placeholder-txinput w-full;
 }
+
+/* carousel profile navbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
