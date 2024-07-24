@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-{
-  /* Importing the assets */
-}
 import LogoIcon from "../../assets/BlackLogo.svg";
 import HomeIconActive from "../../assets/home-active-icon.svg";
 import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
