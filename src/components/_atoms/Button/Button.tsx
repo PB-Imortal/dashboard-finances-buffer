@@ -2,11 +2,11 @@ import { Button } from "@mui/base/Button";
 import { ComponentPropsWithRef, ReactNode } from "react";
 
 interface ButtonProps extends ComponentPropsWithRef<"button"> {
-  styles?: string;
-  arialabeltext: string;
-  children?: ReactNode;
-  bgcolor: "bg-bgblack" | "bg-bgwhite";
-  textColor?: "text-txwhite" | "text-txblack";
+  readonly styles?: string;
+  readonly arialabeltext: string;
+  readonly children?: ReactNode;
+  readonly bgcolor: "bg-bgblack" | "bg-bgwhite";
+  readonly textColor?: "text-txwhite" | "text-txblack";
 }
 
 export default function ButtonComponent({
