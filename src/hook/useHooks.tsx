@@ -23,7 +23,19 @@ export const useHooks = () => {
     return screenSize;
   };
 
+  const [userAvatar, setUserAvatar] = useState(
+    "https://xsgames.co/randomusers/assets/avatars/pixel/49.jpg"
+  );
+
+  const changeAvatar = () => {
+    const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
+    setUserAvatar(newAvatarUrl);
+  };
+
   return {
     useScreenSize,
+    changeAvatar,
+    userAvatar,
+    setUserAvatar,
   };
 };
