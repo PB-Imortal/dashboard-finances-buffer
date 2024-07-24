@@ -48,7 +48,7 @@ export function StatementTable() {
     });
 
     return (
-        <table className='bg-bgwhite gap-3 overflow-scroll p-6 rounded-2xl text-center sm:w-11/12'>
+        <table className='bg-bgwhite border-separate gap-3 overflow-scroll px-6 py-3 rounded-2xl text-center sm:w-11/12'>
 
             <thead>
                 <TableRow>

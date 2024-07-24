@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
 export function TableData({children}: {children: ReactNode}) {
-    return <td className="text-left	p-5">{children}</td>
+    return <td className="text-left border-t py-3 md:p-2">{children}</td>
 } 
