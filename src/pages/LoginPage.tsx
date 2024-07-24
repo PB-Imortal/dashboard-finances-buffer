@@ -4,6 +4,7 @@ import FormInput from "../components/_atoms/FormInput";
 import Title from "../components/_atoms/Title";
 import { Link } from "react-router-dom";
 import LoginBg from "../assets/login-bg.svg";
+import LockIcon from "../components/common/svg/LockIcon";
 
 export default function LoginPage() {
   return (
@@ -17,7 +18,10 @@ export default function LoginPage() {
         />
       </div>
       <section className="h-3/4 sm:w-full max-w-[30.75rem] lg:max-w-[50%] p-3  border-solid rounded-t-2xl md:rounded-2xl md:mb-5 lg:mb-0 lg:rounded-none lg:h-full lg:py-28 lg:px-20 md:justify-evenly bg-bgwhite">
-        <form action="|" className="flex flex-col justify-evenly gap-8">
+        <form
+          action="|"
+          className="flex flex-col justify-evenly xl:w-[75%] 2xl:w-[65%] lg:m-auto gap-8"
+        >
           <div className="flex flex-col gap-y-4 items-center">
             <Title>Log in</Title>
             <p className="w-72 text-center lg:w-[85%]">
@@ -27,7 +31,12 @@ export default function LoginPage() {
           </div>
           <div className="flex flex-col gap-y-2">
             <FormInput id="email" label="E-mail" placeholder="E-mail" />
-            <FormInput id="password" label="Password" placeholder="Password" />
+            <FormInput
+              id="password"
+              label="Password"
+              placeholder="Password"
+              startSvg={<LockIcon />}
+            />
           </div>
           <div className="flex flex-col gap-y-2.5 justify-items-center justify-between ">
             <ButtonComponent
