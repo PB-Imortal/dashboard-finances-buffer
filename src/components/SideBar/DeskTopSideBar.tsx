@@ -7,8 +7,6 @@ import HomeIconActive from "../../assets/home-active-icon.svg";
 import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
 import StatementIconActive from "../../assets/statement-active-icon.svg";
 import StatementIconInactive from "../../assets/statement-icon.svg";
-import ProfileIconActive from "../../assets/user-profile-active-icon.svg";
-import ProfileIconInactive from "../../assets/user-profile-icon.svg";
 import SettingSideBar from "../../assets/setting-sidebar-icon.svg";
 import NotificationSideBar from "../../assets/notification-sidebar-icon.svg";
 import NotificationSideBarActive from "../../assets/notification-sidebar-icon-active.svg";
@@ -49,7 +47,7 @@ interface DeskTopSideBarProps {
 const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
   return (
     <div className={`${styles}`}>
-    <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px] `}>
+    <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px]`}>
       <ul>
         <li>
           <div className="flex justify-center p-2">
@@ -63,7 +61,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
       {/* Sidebar Content */}
       <div className="p-4">
-        <nav className="flex flex-col gap-10 font-[600]">
+        <nav className="flex flex-col gap-12 font-[600]">
           <NavLink
             to="/"
             activeImgSrc={HomeIconActive}
@@ -80,13 +78,6 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
             Statement
           </NavLink>
 
-          <NavLink
-            to="/profile"
-            activeImgSrc={ProfileIconActive}
-            inactiveImgSrc={ProfileIconInactive}
-          >
-            Profile
-          </NavLink>
 
           {/* Additional Links */}
           <NavLink
