@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
-{
-  /* Importing the assets */
-}
 import LogoIcon from "../../assets/BlackLogo.svg";
 import HomeIconActive from "../../assets/home-active-icon.svg";
 import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
@@ -17,7 +13,6 @@ import NotificationSideBarActive from "../../assets/notification-sidebar-icon-ac
 import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
 import LogoutSideBarInactive from "../../assets/logout-sidebar-icon.svg";
 import LogoutSideBarActive from "../../assets/LogoutSideBar-active.svg";
-
 import BurgerMenu from "./BurgerMenu";
 
 interface NavLinkProps {
@@ -35,8 +30,6 @@ const NavLink: React.FC<NavLinkProps> = ({
 }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
-
-  // Conditional Class to Change the text color
   const textColorClass = isActive ? "text-[#8E48EC]" : "";
 
   return (
@@ -53,13 +46,19 @@ interface SideBarProps {
 
 const SideBar: React.FC<SideBarProps> = ({ styles }) => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div className={`${styles}`}>
-        {/* Button to change the visibility */}
         <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        {/* Drawer */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-30"
+            onClick={() => setIsOpen(false)}
+          ></div>
+        )}
+
         <div
           className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
@@ -74,8 +73,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
 
             <li className="p-4">
               <div className="border-t border-#DFDFE0"></div>
-
-              {/* Close button */}
               <button
                 className="absolute top-0 right-0 mt-4 mr-4 text-black"
                 onClick={() => setIsOpen(false)}
@@ -85,7 +82,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
             </li>
           </ul>
 
-          {/* Drawer Content */}
           <div className="p-4">
             <nav className="flex flex-col gap-10 font-[600]">
               <NavLink
@@ -95,7 +91,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               >
                 Home
               </NavLink>
-
               <NavLink
                 to="/statement"
                 activeImgSrc={StatementIconActive}
@@ -103,7 +98,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               >
                 Statement
               </NavLink>
-
               <NavLink
                 to="/profile"
                 activeImgSrc={ProfileIconActive}
@@ -111,8 +105,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               >
                 Profile
               </NavLink>
-
-              {/* Additional Links */}
               <NavLink
                 to="#"
                 activeImgSrc={NotificationSideBarActive}
@@ -120,7 +112,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               >
                 Notification
               </NavLink>
-
               <NavLink
                 to="#"
                 activeImgSrc={SettingSideBarActive}
@@ -128,7 +119,6 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               >
                 Setting
               </NavLink>
-
               <NavLink
                 to="/login"
                 activeImgSrc={LogoutSideBarActive}
