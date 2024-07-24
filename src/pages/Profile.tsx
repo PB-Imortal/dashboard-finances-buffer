@@ -4,30 +4,47 @@ import FormInput from "../components/_atoms/Input/FormInput";
 import ButtonComponent from "../components/_atoms/Button/Button";
 import CarouselNav from "../components/_atoms/CarouselNav";
 
-import userAvatar from "../assets/user-profile-icon.svg";
+
+import editIcon from "../assets/edit-icon.svg"
 
 export default function Profile() {
-  const [userImage, setUserImage] = useState("");
+    const [userAvatar, setUserAvatar] = useState(
+        "https://xsgames.co/randomusers/assets/avatars/pixel/49.jpg"
+    )
 
-  if (!userImage) {
-    fetch("/database/db.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const user = data.users.id;
-        setUserImage(user.image);
-      })
-      .catch((error) => {
-        console.error("Error retrieving user image:", error);
-      });
-  }
+    const changeAvatar = () => {
+        const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
+        setUserAvatar(newAvatarUrl);
+    };
+
 
   return (
     <>
       <CarouselNav />
 
-      <div className="flex content-center  justify-center p-10">
-        <img src={userAvatar} alt="user avatar" />
-      </div>
+            <div className="flex content-center justify-center p-10">
+                <div className="relative">
+                    <img
+                        className="rounded-full ring-1 ring-gray-300 z-0"
+                        src={userAvatar}
+                        alt="user avatar"
+                    />
+                    <button
+                        type="button"
+                        className="bg-bgblack rounded-md z-1 max-w-md absolute right-6 bottom-0 p-2 group"
+                    >
+                        <img
+                            className="w-full h-full"
+                            src={editIcon}
+                            alt="edit button"
+                            onClick={changeAvatar}
+                        />
+                        <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2">
+                            Change Avatar
+                        </div>
+                    </button>
+                </div>
+            </div>
 
       <form
         action="submit"

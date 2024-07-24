@@ -9,10 +9,17 @@ type Item = {
 const CarouselNav: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(1);
   const selectedRef = useRef<HTMLAnchorElement>(null);
+  const [highlightStyle, setHighlightStyle] = useState<{
+    width: number;
+    left: number;
+  }>({
+    width: 0,
+    left: 0,
+  });
 
   const items: Item[] = [
     { label: "Back", to: "/" },
-    { label: "Edit Profile", to: "edit" },
+    { label: "Edit Profile", to: "" },
     { label: "Preferences", to: "preferences" },
     { label: "Security", to: "security" },
   ];
@@ -22,6 +29,10 @@ const CarouselNav: React.FC = () => {
       selectedRef.current.scrollIntoView({
         inline: "center",
         behavior: "smooth",
+      });
+      setHighlightStyle({
+        width: selectedRef.current.offsetWidth,
+        left: selectedRef.current.offsetLeft,
       });
     }
   }, [selectedIndex]);
@@ -53,8 +64,8 @@ const CarouselNav: React.FC = () => {
         <div
           className="bg-black h-1 absolute bottom-0 transition-all duration-300"
           style={{
-            width: selectedRef.current?.offsetWidth,
-            transform: `translateX(${selectedRef.current?.offsetLeft}px)`,
+            width: highlightStyle.width,
+            transform: `translateX(${highlightStyle.left}px)`,
           }}
         />
       </div>
