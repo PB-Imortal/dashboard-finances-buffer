@@ -33,9 +33,9 @@ const CarouselNav: React.FC = () => {
   return (
     <nav className="relative bg-white">
       <div className="overflow-x-auto whitespace-nowrap flex items-center space-x-4 p-4 scrollbar-hide">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <Link
-            key={index}
+            key={item.label}
             to={item.to}
             className={`carousel-item cursor-pointer p-2 rounded ${
               selectedIndex === index
