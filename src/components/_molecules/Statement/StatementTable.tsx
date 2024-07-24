@@ -6,33 +6,11 @@ import { TableData } from "../../_atoms/TableData"
 import { TableRow } from "../../_atoms/TableRow"
 import ButtonComponent from "../../_atoms/Button/Button"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { UserContext } from "./apiEntities"
 
 export function StatementTable() {
-
-    const simulateApiData = {
-        transactions: [
-            {
-                description: 'Spotify',
-                id: '#1371827',
-                type: 'Shopping',
-                card: '142343423',
-                date: '26 Jan, 12.30 AM',
-                amount: -2500
-            },
-            {
-                description: 'Freepik Sales',
-                id: '#1371828',
-                type: 'Transfer',
-                card: '142343423',
-                date: '24 Jan, 10.40 AM',
-                amount: 752
-            }
-        ],
-        balance: 10,
-        expenses: 30,
-        earnings: 32
-    }
+    const userData = useContext(UserContext)
 
     const [isTablet, setTablet] = useState(window.innerWidth > 640)
     const [isLaptop, setLaptop] = useState(window.innerWidth > 840)
@@ -48,7 +26,7 @@ export function StatementTable() {
     });
 
     return (
-        <table className='bg-bgwhite gap-3 overflow-scroll p-6 rounded-2xl text-center sm:w-11/12'>
+        <table className='bg-bgwhite border-separate gap-3 overflow-scroll px-6 py-3 rounded-2xl text-center sm:w-11/12'>
 
             <thead>
                 <TableRow>
@@ -70,7 +48,7 @@ export function StatementTable() {
             </thead>
 
             <tbody>
-                {simulateApiData.transactions.map(transaction => {
+                {userData?.accounting.transactions.map(transaction => {
                     const isDebit = (transaction.amount < 0)
 
                     return (

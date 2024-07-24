@@ -15,6 +15,9 @@ export default {
                 txblack: "#19191C",
                 borderln: "#DFDFE0",
                 txinput: "#68686E",
+                txtpurple: "#4E01B4",
+                txtred: "#E02244",
+                txtgreen: "#0CB97B"
             },
             fontFamily: {
                 inter: ["Inter"],

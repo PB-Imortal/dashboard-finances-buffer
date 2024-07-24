@@ -2,47 +2,28 @@ import MoneyIcon from '../../../assets/money-icon.svg'
 import ExpensesIcon from '../../../assets/expanses-icon.svg'
 import EarningsIcon from '../../../assets/earnings-icon.svg'
 
+import { UserContext } from './apiEntities'
+import { useContext } from 'react'
 
 export function StatementHead() {
-    const simulateApiData = {
-        transactions: [
-            {
-                description: 'Spotify',
-                id: '#1371827',
-                type: 'Shopping',
-                card: '1423 3423',
-                date: '26 Jan, 12.30 AM',
-                amount: 2500
-            },
-            {
-                description: 'Freepik Sales',
-                id: '#1371828',
-                type: 'Transfer',
-                card: '1423 3423',
-                date: '24 Jan, 10.40 AM',
-                amount: 750
-            }
-        ],
-        balance: 10,
-        expenses: 30,
-        earnings: 32
-    }
+
+    const userData = useContext(UserContext)
 
     const accounting = [
         {
             label: 'Money',
             icon: MoneyIcon,
-            amount: simulateApiData.balance
+            amount: userData?.accounting.money
         },
         {
             label: 'Expenses',
             icon: ExpensesIcon,
-            amount: simulateApiData.expenses
+            amount: userData?.accounting.expenses
         },
         {
             label: 'Earnings',
             icon: EarningsIcon,
-            amount: simulateApiData.earnings
+            amount: userData?.accounting.earnings
         }
     ]
 
