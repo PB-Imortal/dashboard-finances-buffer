@@ -1,19 +1,5 @@
-<svg width="28" height="30" viewBox="0 0 28 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_d_241_92)">
-<path d="M7.99756 15.0012V18.0025C7.99756 19.66 9.34126 21.0037 10.9988 21.0037H20.0026C21.6601 21.0037 23.0038 19.66 23.0038 18.0025V5.9975C23.0038 4.33995 21.6601 2.99625 20.0026 2.99625H10.9988C9.34126 2.99625 7.99756 4.33995 7.99756 5.9975V8.99875" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M14 15.0012L17.0013 12L14 8.99875" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.99658 12H17.0016" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_d_241_92" x="-2" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_241_92"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_241_92" result="shape"/>
-</filter>
-</defs>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.99756 15.0012V18.0025C5.99756 19.66 7.34126 21.0037 8.99881 21.0037H18.0026C19.6601 21.0037 21.0038 19.66 21.0038 18.0025V5.9975C21.0038 4.33995 19.6601 2.99625 18.0026 2.99625H8.99881C7.34126 2.99625 5.99756 4.33995 5.99756 5.9975V8.99875" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 15.0012L15.0013 12L12 8.99875" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M2.99658 12H15.0016" stroke="#AE7EED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
