@@ -10,7 +10,7 @@ import { useHooks } from "../../hook/useHooks";
 import { useEffect } from "react";
 
 export default function NavBar() {
-  const { useScreenSize, userAvatar,  setUserAvatar } = useHooks();
+  const { useScreenSize, userAvatar, setUserAvatar } = useHooks();
   const screenSize = useScreenSize();
 
   useEffect(() => {
