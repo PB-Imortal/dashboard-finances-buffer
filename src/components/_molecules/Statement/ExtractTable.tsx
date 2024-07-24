@@ -6,6 +6,8 @@ import { TableData } from "../../_atoms/TableData"
 import { TableRow } from "../../_atoms/TableRow"
 import ButtonComponent from "../../_atoms/Button"
 
+import { useState, useEffect } from "react"
+
 export function ExtractTable() {
 
     const simulateApiData = {
@@ -18,7 +20,7 @@ export function ExtractTable() {
                 date: '26 Jan, 12.30 AM',
                 amount: -2500
             },
-            {   
+            {
                 description: 'Freepik Sales',
                 id: '#1371828',
                 type: 'Transfer',
@@ -32,29 +34,67 @@ export function ExtractTable() {
         earnings: 32
     }
 
+    const [isMobile, setMobile] = useState(window.innerWidth < 640)
+
+    const updateMedia = () => {
+        setMobile(window.innerWidth < 640);
+    };
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
 
     return (
-        <table className='bg-bgwhite gap-3 p-6 rounded-2xl text-center sm:w-11/12'>
+        <table className='bg-bgwhite gap-3 overflow-scroll p-6 rounded-2xl text-center sm:w-11/12'>
 
-                <thead>
-                    <TableRow>
-                        <TableHeader content='Description' />
-                        <TableHeader content='Transaction ID' />
-                        <TableHeader content='Type' />
-                        <TableHeader content='Card' />
-                        <TableHeader content='Date' />
-                        <TableHeader content='Amount' />
-                        <TableHeader content='Receipt' />
-                    </TableRow>
-                </thead>
+            <thead>
+                <TableRow>
+                    {
+                        (isMobile) ?
+                        <>
+                            <TableHeader content='Description' />
+                            <TableHeader content='Amount' />
+                        </>
+                        :
+                        <>
+                            <TableHeader content='Description' />
+                            <TableHeader content='Transaction ID' />
+                            <TableHeader content='Type' />
+                            <TableHeader content='Card' />
+                            <TableHeader content='Date' />
+                            <TableHeader content='Amount' />
+                            <TableHeader content='Receipt' />   
+                        </>
+                    }
+                </TableRow>
+            </thead>
 
-                <tbody>
-
-                    {simulateApiData.transactions.map(transaction => 
-                        <TableRow key={transaction.id}>
+            <tbody>
+                {simulateApiData.transactions.map(transaction =>
+                    <TableRow key={transaction.id}>
+                        {
+                            (isMobile) ?
+                            <>
                                 <TableData>
                                     <span>
-                                        <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon}/>
+                                        <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon} />
+                                        {transaction.description}
+                                    </span>
+                                </TableData>
+                                
+                                <TableData>
+                                    <span className={(transaction.amount < 0) ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
+                                        ${transaction.amount}
+                                    </span>
+                                </TableData>
+                            </>
+                            :
+                            <>
+                                <TableData>
+                                    <span>
+                                        <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon} />
                                         {transaction.description}
                                     </span>
                                 </TableData>
@@ -67,7 +107,7 @@ export function ExtractTable() {
                                 <TableData>
                                     <span className={(transaction.amount < 0) ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
                                         ${transaction.amount}
-                                    </span> 
+                                    </span>
                                 </TableData>
 
                                 <TableData>
@@ -77,13 +117,13 @@ export function ExtractTable() {
                                         arialabeltext="Download">
                                         Download
                                     </ButtonComponent>
-                                </TableData>
-                        </TableRow>)
-                    }
+                                </TableData>   
+                            </>
+                        }
+                    </TableRow>)
+                }
+            </tbody>
 
-                </tbody>
-
-                
-            </table>
+        </table>
     )
 }
