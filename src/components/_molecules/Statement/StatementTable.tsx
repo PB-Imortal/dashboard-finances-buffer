@@ -4,7 +4,7 @@ import arrowUpIcon from "../../../assets/arrow_up.svg"
 import { TableHeader } from "../../_atoms/TableHeader"
 import { TableData } from "../../_atoms/TableData"
 import { TableRow } from "../../_atoms/TableRow"
-import ButtonComponent from "../../_atoms/Button"
+import ButtonComponent from "../../_atoms/Button/Button"
 
 import { useState, useEffect } from "react"
 
