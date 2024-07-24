@@ -1,5 +1,4 @@
 import NavBar from "../components/_molecules/NavBar";
-import Statement from "../components/_organisms/Statement";
 
 export default function HomePage() {
     return <>
