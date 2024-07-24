@@ -8,8 +8,8 @@ import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
 import StatementIconActive from "../../assets/statement-active-icon.svg";
 import StatementIconInactive from "../../assets/statement-icon.svg";
 import SettingSideBar from "../../assets/setting-sidebar-icon.svg";
-import NotificationSideBar from "../../assets/notification-sidebar-icon.svg";
-import NotificationSideBarActive from "../../assets/notification-sidebar-icon-active.svg";
+import UserProfileActive from "../../assets/user-profile-active-icon.svg";
+import UserProfile from "../../assets/user-profile-icon.svg";
 import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
 import LogoutSideBarInactive from "../../assets/logout-sidebar-icon.svg";
 import LogoutSideBarActive from "../../assets/LogoutSideBar-active.svg";
@@ -82,10 +82,10 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
           {/* Additional Links */}
           <NavLink
             to="#"
-            activeImgSrc={NotificationSideBarActive}
-            inactiveImgSrc={NotificationSideBar}
+            activeImgSrc={UserProfileActive}
+            inactiveImgSrc={UserProfile}
           >
-            Notification
+            Profile
           </NavLink>
 
           <NavLink
