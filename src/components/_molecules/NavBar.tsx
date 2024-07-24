@@ -7,10 +7,16 @@ import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 import { useHooks } from "../../hook/useHooks";
+import { useEffect } from "react";
 
 export default function NavBar() {
-  const { useScreenSize, userAvatar } = useHooks();
+  const { useScreenSize, userAvatar, setUserAvatar } = useHooks();
   const screenSize = useScreenSize();
+
+  useEffect(() => {
+    const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
+    setUserAvatar(newAvatarUrl);
+  }, []);
 
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
