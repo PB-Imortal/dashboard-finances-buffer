@@ -76,9 +76,9 @@ export function ExtractTable() {
                     <TableRow key={transaction.id}>
                         {
                             (isMobile) ?
-                            <>
+                            <>  
                                 <TableData>
-                                    <span>
+                                    <span className="flex gap-2 items-center">
                                         <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon} />
                                         {transaction.description}
                                     </span>
@@ -93,7 +93,7 @@ export function ExtractTable() {
                             :
                             <>
                                 <TableData>
-                                    <span>
+                                    <span className="flex gap-2 items-center">
                                         <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon} />
                                         {transaction.description}
                                     </span>

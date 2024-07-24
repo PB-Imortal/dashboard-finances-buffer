@@ -47,7 +47,7 @@ export function ExtractHead() {
     ]
     
   return (
-    <section className='flex gap-6 overflow-scroll sm:w-11/12'>
+    <section className='flex gap-6 overflow-scroll rounded-2xl sm:w-11/12'>
 
         {accounting.map(data => 
             <div className='bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52'>
