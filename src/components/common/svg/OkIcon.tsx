@@ -4,7 +4,7 @@ export default function OkIcon() {
       version="1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 48 48"
-      enable-background="new 0 0 48 48"
+      enableBackground="new 0 0 48 48"
       width="30px"
       height="30px"
     >
