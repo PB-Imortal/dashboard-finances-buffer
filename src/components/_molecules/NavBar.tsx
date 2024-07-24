@@ -6,34 +6,12 @@ import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
-import UserProfileIcon from "../common/svg/UserProfileIcon";
-
-import { useState, useEffect } from "react";
-
-const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState<{ width: number }>({
-    width: window.innerWidth,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenSize({
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return screenSize;
-};
+import { useHooks } from "../../hook/useHooks";
 
 export default function NavBar() {
+  const { useScreenSize } = useHooks();
   const screenSize = useScreenSize();
+
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
       {screenSize.width < 1023 ? (
@@ -78,8 +56,11 @@ export default function NavBar() {
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >
-              <UserProfileIcon />
-              {/*   será necessário pegar a imagem de usuario do banco de dados */}
+              <img
+                className="rounded-full ring-1 ring-gray-300 z-0"
+                // src={userAvatar}
+                alt="user avatar"
+              />
             </ButtonComponent>
           </Link>
         </div>
