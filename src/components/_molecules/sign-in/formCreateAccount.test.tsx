@@ -1,7 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import FormCreateAccount from "./FormCreateAccount";
+import { vi } from "vitest";
 
 describe("FormCreateAccount", () => {
+  vi.mock("react-router-dom", () => ({
+    useNavigate: vi.fn(),
+  }));
+
   it("should render correctly", () => {
     render(<FormCreateAccount />);
 
