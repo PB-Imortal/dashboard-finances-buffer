@@ -1,26 +1,24 @@
-import ButtonComponent from "../_atoms/Button";
+import ButtonComponent from "../_atoms/Button/Button";
 import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
 import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
 import { Link } from "react-router-dom";
 import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
-import FormInput from "../_atoms/FormInput";
+import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 import { useState, useEffect } from "react";
 
 const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState<{width:number}>({
+  const [screenSize, setScreenSize] = useState<{ width: number }>({
     width: window.innerWidth,
-    
   });
 
   useEffect(() => {
     const handleResize = () => {
       setScreenSize({
         width: window.innerWidth,
-      
       });
     };
 
