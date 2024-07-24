@@ -1,3 +1,6 @@
+import arrowDownIcon from "../../../assets/arrow_down.svg"
+import arrowUpIcon from "../../../assets/arrow_up.svg"
+
 import { TableHeader } from "../../_atoms/TableHeader"
 import { TableData } from "../../_atoms/TableData"
 import { TableRow } from "../../_atoms/TableRow"
@@ -52,7 +55,13 @@ export function ExtractTable() {
                     {simulateApiData.transactions.map(transaction => 
                         <TableRow key={transaction.id} innerHtml={
                             <>
-                                <TableData content={transaction.description}/>
+                                <TableData tags={
+                                    <span>
+                                        <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon}/>
+                                        {transaction.description}
+                                    </span>}
+                                />
+
                                 <TableData content={transaction.id} />
                                 <TableData content={transaction.type} />
                                 <TableData content={transaction.card} />
@@ -60,13 +69,11 @@ export function ExtractTable() {
 
                                 <TableData tags={
                                     <span className={(transaction.amount < 0) ? 'text-txtred' : 'text-txtgreen'}>
-                                        {transaction.amount}
+                                        ${transaction.amount}
                                     </span>} 
                                 />
 
-                                <TableData tags={
-                                    <button>Download</button>}
-                                />
+                                <TableData tags={<button>Download</button>}/>
                                 
                             </>}
                         />)
