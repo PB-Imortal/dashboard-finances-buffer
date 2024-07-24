@@ -1,6 +1,6 @@
 import statementImg from "../assets/name-and-logo.svg";
-import ButtonComponent from "../components/_atoms/Button";
-import FormInput from "../components/_atoms/FormInput";
+import ButtonComponent from "../components/_atoms/Button/Button";
+import FormInput from "../components/_atoms/Input/FormInput";
 import Title from "../components/_atoms/Title";
 import { Link } from "react-router-dom";
 import LoginBg from "../assets/login-bg.svg";

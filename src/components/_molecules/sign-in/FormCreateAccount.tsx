@@ -3,8 +3,8 @@ import { Snackbar } from "@mui/base";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from "../../_atoms/Button";
-import FormInput from "../../_atoms/FormInput";
+import ButtonComponent from "../../_atoms/Button/Button";
+import FormInput from "../../_atoms/Input/FormInput";
 import {
   CreateAccountFields,
   formCreateAccount,
