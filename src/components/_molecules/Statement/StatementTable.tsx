@@ -64,9 +64,8 @@ export function StatementTable() {
                     }
                     <TableHeader content='Amount' />
 
-                    {
-                        isLaptop && <TableHeader content='Receipt' />
-                    }
+                    {isLaptop && <TableHeader content='Receipt' />}
+
                 </TableRow>
             </thead>
 
@@ -86,17 +85,17 @@ export function StatementTable() {
 
                             {
                                 isTablet &&
-                                    <>
-                                        <TableData>{transaction.id}</TableData>
-                                        <TableData>{transaction.type}</TableData>
-                                        <TableData>{transaction.card.substring(0, 4).concat(' ****')}</TableData>
-                                        <TableData>{transaction.date}</TableData>
-                                    </>
+                                <>
+                                    <TableData>{transaction.id}</TableData>
+                                    <TableData>{transaction.type}</TableData>
+                                    <TableData>{transaction.card.substring(0, 4).concat(' ****')}</TableData>
+                                    <TableData>{transaction.date}</TableData>
+                                </>
                             }
 
                             <TableData>
                                 <span className={isDebit ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
-                                    {transaction.amount.toString().replace('-', '-$')}
+                                    {transaction.amount.toString().replace('-', '')}
                                 </span>
                             </TableData>
 
