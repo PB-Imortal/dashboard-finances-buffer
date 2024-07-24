@@ -57,14 +57,14 @@ describe("Router", () => {
     expect(screen.getByRole("heading", { name: "Create account", level: 1 }));
   });
 
-  it("should navigate to path /profile", async () => {
+  it("should navigate to path /profile", () => {
     const fakeRoute = createMemoryRouter(router.routes, {
       initialEntries: ["/profile"],
       initialIndex: 0,
     });
 
     render(<RouterProvider router={fakeRoute} />);
-    const text = await screen.findByText(/Edit Profile/);
+    const text = screen.getByText(/Edit Profile/);
     expect(text).toBeInTheDocument();
   });
 });
