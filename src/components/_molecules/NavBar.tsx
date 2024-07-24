@@ -8,13 +8,41 @@ import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 import UserProfileIcon from "../common/svg/UserProfileIcon";
 
+import { useState, useEffect } from "react";
+
+const useScreenSize = () => {
+  const [screenSize, setScreenSize] = useState<{ width: number }>({
+    width: window.innerWidth,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return screenSize;
+};
+
 export default function NavBar() {
+  const screenSize = useScreenSize();
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
-      <DeskTopSideBar styles="sm:hidden md:hidden lg:flex xl:flex" />
-      <SideBar styles="sm:flex md:hidden " />
+      {screenSize.width < 1023 ? (
+        <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
+      ) : (
+        <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
+      )}
 
-      <div className=" flex mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  md:ml-4 sm:px-2 sm:h-[88px] h-[120px]  md:mt-4">
+      <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4">
         <FormInput
           id="search"
           aria-label="Search box"
