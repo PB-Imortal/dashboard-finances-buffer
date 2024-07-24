@@ -1,5 +1,4 @@
-import { fireEvent } from "@storybook/test";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 import FormCreateAccount from "./FormCreateAccount";
 
