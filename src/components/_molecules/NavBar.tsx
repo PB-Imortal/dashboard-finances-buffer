@@ -10,24 +10,24 @@ import UserProfileIcon from "../common/svg/UserProfileIcon";
 
 export default function NavBar() {
   return (
-    <div className="flex flex-row grow ">
+    <div className="flex flex-row grow sm:bg-white md:bg-inherit">
       <DeskTopSideBar styles="sm:hidden md:hidden lg:flex xl:flex"/>
       <SideBar styles="sm:flex md:hidden " />
 
-      <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
+      <div className=" flex mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  md:ml-4 sm:px-2 sm:h-[88px] h-[120px]  md:mt-4">
         <FormInput
           id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="space-y-0 justify-start  grow lg:ml-12 "
+          styles="space-y-0 justify-start  grow lg:ml-12 mt-2"
      
       
         >
           {" "}
         </FormInput>
-        <div className="  sm:hidden md:flex  justify-around   mx-7">
+        <div className="  sm:hidden md:flex  justify-around mt-2 mx-7">
           <Link to="">
             <ButtonComponent
               styles="my-auto"
