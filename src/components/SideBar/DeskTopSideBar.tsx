@@ -44,12 +44,15 @@ const NavLink: React.FC<NavLinkProps> = ({
 
 const DeskTopSideBar = () => {
   return (
-    <div className="top-0 left-0 z-40 w-64  bg-white shadow-md h-[98vh] p-5 sm:hidden md:flex md:flex-col">
+    <div className="fixed m-3 top-0 left-0 z-40 w-64 h-[97vh]  bg-white shadow-md p-8 rounded-[18px]">
       <ul>
         <li>
           <div className="flex justify-center p-2">
-            <img src={LogoIcon} alt="Logo" />
+            <img src={LogoIcon} alt="Logo" className=" h-auto" />
           </div>
+        </li>
+        <li className="p-4">
+          <div className="border-t border-#DFDFE0"></div>
         </li>
       </ul>
 
