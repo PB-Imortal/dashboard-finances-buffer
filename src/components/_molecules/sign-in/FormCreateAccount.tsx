@@ -91,9 +91,10 @@ export default function FormCreateAccount() {
         styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
         arialabeltext="Create account"
       >
-        {!isSubmitting ? <InfiniteSpinner /> : "Create account"}
+        {isSubmitting ? <InfiniteSpinner /> : "Create account"}
       </ButtonComponent>
       <Snackbar
+        data-testid="snackbar"
         className="fixed bottom-1 w-11/12 gap-x-2 flex items-center left-1 rounded-2xl bg-bgblack text-white py-4 px-8"
         autoHideDuration={2000}
         onClose={() => setOpen(false)}
