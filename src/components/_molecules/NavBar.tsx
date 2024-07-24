@@ -9,7 +9,7 @@ import DeskTopSideBar from "../SideBar/DeskTopSideBar";
 import { useHooks } from "../../hook/useHooks";
 
 export default function NavBar() {
-  const { useScreenSize } = useHooks();
+  const { useScreenSize, userAvatar } = useHooks();
   const screenSize = useScreenSize();
 
   return (
@@ -31,7 +31,7 @@ export default function NavBar() {
         >
           {" "}
         </FormInput>
-        <div className="  sm:hidden md:flex  justify-around mt-2 mx-7">
+        <div className="  sm:hidden md:flex  justify-around mt-4 mx-7 align-middle">
           <Link to="">
             <ButtonComponent
               styles="my-auto"
@@ -50,15 +50,15 @@ export default function NavBar() {
               <NotificationUpperbarIcon />{" "}
             </ButtonComponent>{" "}
           </Link>
-          <Link to="Profile" className="w-12 h-12">
+          <Link to="Profile" className="">
             <ButtonComponent
-              styles="flex w-12 h-12 my-auto"
+              styles=""
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >
               <img
-                className="rounded-full ring-1 ring-gray-300 z-0"
-                // src={userAvatar}
+                className="-mt-2 w-[48px] h-[48px] rounded-full ring-1 ring-gray-300 z-0 align-top"
+                src={userAvatar}
                 alt="user avatar"
               />
             </ButtonComponent>
