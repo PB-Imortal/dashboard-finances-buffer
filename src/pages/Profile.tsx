@@ -5,8 +5,14 @@ import ButtonComponent from "../components/_atoms/Button/Button"
 import CarouselNav from "../components/_atoms/CarouselNav"
 
 import editIcon from "../assets/edit-icon.svg"
+import { useHooks } from "../hook/useHooks"
+import SideBar from "../components/SideBar/SideBar"
+import DeskTopSideBar from "../components/SideBar/DeskTopSideBar"
 
 export default function Profile() {
+    const { useScreenSize } = useHooks()
+    const screenSize = useScreenSize()
+
     const [userAvatar, setUserAvatar] = useState(
         "https://xsgames.co/randomusers/assets/avatars/pixel/49.jpg"
     )
@@ -20,13 +26,14 @@ export default function Profile() {
         <>
             <CarouselNav />
             <div className="block smx:flex smx:justify-center smx:items-center">
-    <div className="flex justify-center p-10 smx:justify-center smx:items-center">
+                {screenSize.width < 1023 ? (
+                    <SideBar styles="sm:flex md:flex lg:hidden xl:hidden smx:mb-96"/>
+                ) : (
+                    <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
+                )}
+                <div className="flex justify-center p-10 smx:justify-center smx:items-center">
                     <div className="relative">
-                        <img
-                            className="smx:mb-60"
-                            src={userAvatar}
-                            alt="user avatar"
-                        />
+                        <img className="smx:mb-60" src={userAvatar} alt="user avatar" />
                         <button
                             type="button"
                             className="bg-bgblack rounded-md z-1 max-w-md absolute right-3 bottom-0 p-2 group smx:mb-60"
