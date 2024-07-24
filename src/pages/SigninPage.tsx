@@ -7,7 +7,7 @@ export default function SignInPage() {
         <img
           className="lg:w-[364px] lg:h-[54px] w-[250px] h-[37px]"
           src="/src/assets/name-and-logo.svg"
-          alt="Website logo, a black sphere and on the right side the writing My Statement"
+          alt="Website logo, a white sphere and on the right side the writing My Statement"
         />
         <img
           className="hidden lg:block"
