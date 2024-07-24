@@ -1,7 +1,5 @@
-export function TableData({content, tags}: {content?: string | number, tags?: JSX.Element}) {
-    return (
-        <td className="p-5">
-            {(tags) ? tags : content}
-        </td>
-    )
+import { ReactNode } from "react";
+
+export function TableData({children}: {children: ReactNode}) {
+    return <td className="p-5">{children}</td>
 } 

@@ -1,3 +1,5 @@
-export function TableRow({innerHtml}: {innerHtml: JSX.Element}) {
-    return <tr className='border-b'>{innerHtml}</tr>
+import { ReactNode } from "react";
+
+export function TableRow({children}: {children?: ReactNode}) {
+    return <tr className='border-b'>{children}</tr>
 }

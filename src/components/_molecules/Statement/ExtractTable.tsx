@@ -4,6 +4,7 @@ import arrowUpIcon from "../../../assets/arrow_up.svg"
 import { TableHeader } from "../../_atoms/TableHeader"
 import { TableData } from "../../_atoms/TableData"
 import { TableRow } from "../../_atoms/TableRow"
+import ButtonComponent from "../../_atoms/Button"
 
 export function ExtractTable() {
 
@@ -36,47 +37,48 @@ export function ExtractTable() {
         <table className='bg-bgwhite gap-3 p-6 rounded-2xl text-center sm:w-11/12'>
 
                 <thead>
-                    <TableRow innerHtml={
-                        <>
-                            <TableHeader content='Description' />
-                            <TableHeader content='Transaction ID' />
-                            <TableHeader content='Type' />
-                            <TableHeader content='Card' />
-                            <TableHeader content='Date' />
-                            <TableHeader content='Amount' />
-                            <TableHeader content='Receipt' />
-                        </>}
-                    />
-
+                    <TableRow>
+                        <TableHeader content='Description' />
+                        <TableHeader content='Transaction ID' />
+                        <TableHeader content='Type' />
+                        <TableHeader content='Card' />
+                        <TableHeader content='Date' />
+                        <TableHeader content='Amount' />
+                        <TableHeader content='Receipt' />
+                    </TableRow>
                 </thead>
 
                 <tbody>
 
                     {simulateApiData.transactions.map(transaction => 
-                        <TableRow key={transaction.id} innerHtml={
-                            <>
-                                <TableData tags={
+                        <TableRow key={transaction.id}>
+                                <TableData>
                                     <span>
                                         <img src={(transaction.amount < 0) ? arrowDownIcon : arrowUpIcon}/>
                                         {transaction.description}
-                                    </span>}
-                                />
+                                    </span>
+                                </TableData>
 
-                                <TableData content={transaction.id} />
-                                <TableData content={transaction.type} />
-                                <TableData content={transaction.card} />
-                                <TableData content={transaction.date} />
+                                <TableData>{transaction.id}</TableData>
+                                <TableData>{transaction.type}</TableData>
+                                <TableData>{transaction.card}</TableData>
+                                <TableData>{transaction.date}</TableData>
 
-                                <TableData tags={
-                                    <span className={(transaction.amount < 0) ? 'text-txtred' : 'text-txtgreen'}>
+                                <TableData>
+                                    <span className={(transaction.amount < 0) ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
                                         ${transaction.amount}
-                                    </span>} 
-                                />
+                                    </span> 
+                                </TableData>
 
-                                <TableData tags={<button>Download</button>}/>
-                                
-                            </>}
-                        />)
+                                <TableData>
+                                    <ButtonComponent
+                                        bgcolor="bg-bgwhite"
+                                        styles="border"
+                                        arialabeltext="Download">
+                                        Download
+                                    </ButtonComponent>
+                                </TableData>
+                        </TableRow>)
                     }
 
                 </tbody>
