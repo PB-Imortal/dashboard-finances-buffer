@@ -6,34 +6,18 @@ import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
-import UserProfileIcon from "../common/svg/UserProfileIcon";
-
-import { useState, useEffect } from "react";
-
-const useScreenSize = () => {
-  const [screenSize, setScreenSize] = useState<{ width: number }>({
-    width: window.innerWidth,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenSize({
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return screenSize;
-};
+import { useHooks } from "../../hook/useHooks";
+import { useEffect } from "react";
 
 export default function NavBar() {
+  const { useScreenSize, userAvatar, setUserAvatar } = useHooks();
   const screenSize = useScreenSize();
+
+  useEffect(() => {
+    const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
+    setUserAvatar(newAvatarUrl);
+  }, []);
+
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
       {screenSize.width < 1023 ? (
@@ -53,7 +37,7 @@ export default function NavBar() {
         >
           {" "}
         </FormInput>
-        <div className="  sm:hidden md:flex  justify-around mt-2 mx-7">
+        <div className="  sm:hidden md:flex  justify-around mt-4 mx-7 align-middle">
           <Link to="">
             <ButtonComponent
               styles="my-auto"
@@ -72,14 +56,17 @@ export default function NavBar() {
               <NotificationUpperbarIcon />{" "}
             </ButtonComponent>{" "}
           </Link>
-          <Link to="Profile" className="w-12 h-12">
+          <Link to="Profile" className="">
             <ButtonComponent
-              styles="flex w-12 h-12 my-auto"
+              styles=""
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >
-              <UserProfileIcon />
-              {/*   será necessário pegar a imagem de usuario do banco de dados */}
+              <img
+                className="-mt-2 w-[48px] h-[48px] rounded-full ring-1 ring-gray-300 z-0 align-top"
+                src={userAvatar}
+                alt="user avatar"
+              />
             </ButtonComponent>
           </Link>
         </div>
