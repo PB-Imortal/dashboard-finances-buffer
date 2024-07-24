@@ -95,7 +95,7 @@ export function StatementTable() {
 
                             <TableData>
                                 <span className={isDebit ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
-                                    {transaction.amount.toString().replace('-', '')}
+                                    {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
                                 </span>
                             </TableData>
 
