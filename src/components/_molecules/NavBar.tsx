@@ -11,7 +11,7 @@ import UserProfileIcon from "../common/svg/UserProfileIcon";
 export default function NavBar() {
   return (
     <div className="flex flex-row grow ">
-      <DeskTopSideBar />
+      <DeskTopSideBar styles="sm:hidden md:hidden lg:flex xl:flex"/>
       <SideBar styles="sm:flex md:hidden " />
 
       <div className=" mr-4 grow bg-white flex sm:justify-start justify-around  gap-5 md:ml-4  md:mt-4">
