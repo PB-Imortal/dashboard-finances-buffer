@@ -1,10 +1,8 @@
 import { ReactNode } from "react";
 
-export function TableData({children, styleVariant}: {children: ReactNode, styleVariant?: string | undefined}) {
+export function TableData({children, variantStyle}: {children: ReactNode, variantStyle?: string}) {
+    const style = variantStyle ? `font-medium ${variantStyle}` : ''
     return (
-        styleVariant ? 
-            <td className="font-medium text-left border-t py-3 md:p-2"><span className={styleVariant}>{children}</span></td>
-            :
-            <td className="text-left border-t py-3 md:p-2">{children}</td>
+        <td className={`text-left border-t py-3 md:p-2 ${style}`}>{children}</td>
     )
-} 
+}
