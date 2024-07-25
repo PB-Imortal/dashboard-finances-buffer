@@ -28,7 +28,7 @@ export function StatementHead() {
     ]
 
     return (
-        <section className='flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll sm:overflow-scroll sm:w-11/12 md:overflow-hidden'>
+        <section className='flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll sm:overflow-scroll w-full md:overflow-hidden'>
 
             {accounting.map(data =>
                 <div key={data.label} className='bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52'>
