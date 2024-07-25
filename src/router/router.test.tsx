@@ -8,11 +8,14 @@ describe("Router", () => {
     const actual: [] = await importOriginal();
     return {
       ...actual,
-      scrollIntoView() {
-        return vi.fn();
-      },
-      forwardRef() {
-        return vi.fn().mockImplementation((props) => props.children);
+      useRef() {
+        return {
+          current: {
+            offsetWidth: 100,
+            offsetLeft: 0,
+            scrollIntoView: vi.fn(),
+          },
+        };
       },
     };
   });
