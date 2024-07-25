@@ -4,10 +4,9 @@ import {
   default as DeskTopSideBar,
   default as SideBar,
 } from "../components/SideBar/SideBar";
-import { useHooks } from "../hook/useHooks";
+import { useScreenSize } from "../hook/useHooks";
 
 export default function RootLayout() {
-  const { useScreenSize } = useHooks();
   const screenSize = useScreenSize();
   return (
     <main className="flex">
