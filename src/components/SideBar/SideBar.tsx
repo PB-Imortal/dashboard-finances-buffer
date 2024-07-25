@@ -78,7 +78,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
         <ul>
           <li>
             <div className="flex justify-center p-2">
-              <img src={LogoIcon} alt="Logo" className=" h-auto" />
+              <img src={LogoIcon} alt="logo" className=" h-auto" />
             </div>
           </li>
           <li className="p-4">
