@@ -71,10 +71,8 @@ export function StatementTable() {
                                 </>
                             }
 
-                            <TableData>
-                                <span className={isDebit ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
+                            <TableData styleVariant={isDebit ? 'text-txtred' : 'text-txtgreen'}>
                                     {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
-                                </span>
                             </TableData>
 
                             {

@@ -23,13 +23,15 @@ export const Default: Story = {
 
 export const forDebit: Story = {
   args: {
-    children: <span className='font-medium text-txtred'>-$3131</span>
+    styleVariant: "text-txtred",
+    children: '-$3422'
   }
 };
 
 export const forCredit: Story = {
   args: {
-    children: <span className='font-medium text-txtgreen'>+$3131</span>
+    styleVariant: "text-txtgreen",
+    children: '$3131'
   }
 };
 
