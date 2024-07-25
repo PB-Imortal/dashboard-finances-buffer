@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonComponent from "../../_atoms/Button/Button";
 import FormInput from "../../_atoms/Input/FormInput";
 import LockIcon from "../../common/svg/LockIcon";
@@ -6,11 +6,18 @@ import { useForm } from "react-hook-form";
 import {FormLoginField, formLogin} from "../../common/functions/validations"
 import { zodResolver } from "@hookform/resolvers/zod";
 import InfiniteSpinner from "../../common/svg/InfiniteSpinner";
+import { Snackbar } from "@mui/base";
+import { useState } from "react";
+import OkIcon from "../../common/svg/OkIcon";
 
 export default function FormLogin() {
+  const [openSnack, setOpenSnack] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: {errors, isSubmitting}
   } = useForm<FormLoginField> ({
     resolver: zodResolver(formLogin)
@@ -18,7 +25,13 @@ export default function FormLogin() {
 
 
   function handleLogin({email, password}: FormLoginField){
+    //consulta os dados no servidor e manda o usuário para a home 
     console.log({email, password})
+    reset();
+    setOpenSnack(prevState => !prevState)
+    setInterval(() => {
+      navigate('/')
+    }, 4000);
   }
 
   return (
@@ -33,6 +46,7 @@ export default function FormLogin() {
           id="email" 
           label="E-mail" 
           placeholder="E-mail"
+          type="email"
           error={errors.email?.message}
         />
         <FormInput
@@ -64,6 +78,16 @@ export default function FormLogin() {
           Create account
         </Link>
       </div>
+      <Snackbar
+        onClose={() => setOpenSnack(prevState => !prevState)}
+        open={openSnack}
+        autoHideDuration={3000}
+        exited={true}
+        className=" fixed bottom-1 left-2 w-[99%] rounded-2xl flex items-center bg-bgblack text-txwhite gap-3 py-4 px-8"
+      >
+        <OkIcon />
+        <p>Successfully Logged In</p>
+      </Snackbar>
     </form>
   );
 }
