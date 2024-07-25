@@ -17,10 +17,13 @@ export const router = createBrowserRouter([
         index: true,
         element: <HomePage />,
       },
+      {
+        path: "/statement",
+        element: <div>Statement</div>,
+      },
     ],
   },
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
   { path: "/profile", element: <Profile /> },
-  // { path: "/statement", elment: <Statement /> },
 ]);

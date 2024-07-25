@@ -1,4 +1,10 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  act,
+} from "@testing-library/react";
 import { vi } from "vitest";
 import FormCreateAccount from "./FormCreateAccount";
 
@@ -45,16 +51,19 @@ describe("FormCreateAccount", () => {
 
     const button = screen.getByRole("button");
 
-    fireEvent.change(fields.lastName, { target: { value: "Teste" } });
-    fireEvent.change(fields.firstName, { target: { value: "Teste" } });
-    fireEvent.change(fields.email, {
-      target: { value: "teste@teste.com" },
+    act(() => {
+      fireEvent.change(fields.lastName, { target: { value: "Teste" } });
+      fireEvent.change(fields.firstName, { target: { value: "Teste" } });
+      fireEvent.change(fields.email, {
+        target: { value: "teste@teste.com" },
+      });
+      fireEvent.change(fields.password, { target: { value: "1234Abc@" } });
+      fireEvent.change(fields.confPassword, {
+        target: { value: "1234Abc@" },
+      });
+
+      fireEvent.click(button);
     });
-    fireEvent.change(fields.password, { target: { value: "1234Abc@" } });
-    fireEvent.change(fields.confPassword, {
-      target: { value: "1234Abc@" },
-    });
-    fireEvent.click(button);
 
     const snackbar = await screen.findByText("Registration completed");
 
@@ -76,13 +85,15 @@ describe("FormCreateAccount", () => {
 
     const button = screen.getByRole("button");
 
-    fireEvent.change(fields.lastName, { target: { value: "" } });
-    fireEvent.change(fields.firstName, { target: { value: "" } });
-    fireEvent.change(fields.email, { target: { value: "" } });
-    fireEvent.change(fields.password, { target: { value: "1234A" } });
-    fireEvent.change(fields.confPassword, { target: { value: "12" } });
+    act(() => {
+      fireEvent.change(fields.lastName, { target: { value: "" } });
+      fireEvent.change(fields.firstName, { target: { value: "" } });
+      fireEvent.change(fields.email, { target: { value: "" } });
+      fireEvent.change(fields.password, { target: { value: "1234A" } });
+      fireEvent.change(fields.confPassword, { target: { value: "12" } });
 
-    fireEvent.click(button);
+      fireEvent.click(button);
+    });
 
     const required = await screen.findAllByText("Required*");
     const lastNameError = required[0];

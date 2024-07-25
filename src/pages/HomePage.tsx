@@ -1,9 +1,9 @@
-import NavBar from "../components/_molecules/NavBar";
+import Home from "../components/_organisms/Home";
 
 export default function HomePage() {
   return (
-    <div className="bg-bggrey min-h-screen">
-      <NavBar />
-    </div>
+    <section className="h-full m-3 flex rounded-[18px]">
+      <Home />
+    </section>
   );
 }
