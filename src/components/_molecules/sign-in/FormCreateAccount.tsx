@@ -39,7 +39,7 @@ export default function FormCreateAccount() {
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-2 gap-x-8 gap-y-4"
+      className="grid grid-cols-2 gap-x-8 gap-y-4 max-w-[492px] min-w-[320px] m-auto"
     >
       <FormInput
         {...register("lastName")}

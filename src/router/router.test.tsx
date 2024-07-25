@@ -64,7 +64,6 @@ describe("Router", () => {
     });
 
     render(<RouterProvider router={fakeRoute} />);
-    const text = screen.getByText(/Edit Profile/);
-    expect(text).toBeInTheDocument();
+    expect(screen.getByText(/Edit Profile/));
   });
 });
