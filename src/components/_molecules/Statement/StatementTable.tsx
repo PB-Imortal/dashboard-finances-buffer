@@ -17,7 +17,7 @@ export function StatementTable() {
 
     const updateMedia = () => {
         setTablet(window.innerWidth > 640);
-        setLaptop(window.innerWidth > 840)
+        setLaptop(window.innerWidth > 890)
     };
 
     useEffect(() => {
@@ -56,7 +56,7 @@ export function StatementTable() {
 
                             <TableData>
                                 <span className="flex gap-2 items-center">
-                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} />
+                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} alt="arrow"/>
                                     {transaction.description}
                                 </span>
                             </TableData>
