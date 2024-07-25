@@ -6,7 +6,7 @@ const NotFound = () => {
     <div className="bg-bggrey flex items-center justify-center min-h-screen">
       <ul className="flex flex-col md:flex-row items-center">
         <figure>
-          <img src={NotFoundSVG} alt=""/>
+          <img src={NotFoundSVG} alt="woman with a magnifying glass"/>
         </figure>
         <li className="flex flex-col gap-16 items-center">
           <div className="flex flex-col font-inter text-center gap-5">
