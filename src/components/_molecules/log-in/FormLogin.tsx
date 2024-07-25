@@ -41,6 +41,7 @@ export default function FormLogin() {
           label="Password"
           placeholder="Password"
           startSvg={<LockIcon />}
+          type="password"
           error={errors.password?.message}
         />
       </div>
