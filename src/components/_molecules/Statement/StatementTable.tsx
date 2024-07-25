@@ -1,9 +1,9 @@
 import arrowDownIcon from "../../../assets/arrow_down.svg"
 import arrowUpIcon from "../../../assets/arrow_up.svg"
 
-import { TableHeader } from "../../_atoms/TableHeader"
-import { TableData } from "../../_atoms/TableData"
-import { TableRow } from "../../_atoms/TableRow"
+import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
+import { TableData } from "../../_atoms/TableData/TableData"
+import { TableRow } from "../../_atoms/TableRow/TableRow"
 import ButtonComponent from "../../_atoms/Button/Button"
 
 import { useState, useEffect, useContext } from "react"
