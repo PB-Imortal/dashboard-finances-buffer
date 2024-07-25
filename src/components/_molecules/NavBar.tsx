@@ -1,17 +1,14 @@
-import ButtonComponent from "../_atoms/Button/Button";
-import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
-import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
-import { Link } from "react-router-dom";
-import SearchIcon from "../common/svg/SearchIcon";
-import SideBar from "../SideBar/SideBar";
-import FormInput from "../_atoms/Input/FormInput";
-import DeskTopSideBar from "../SideBar/DeskTopSideBar";
-import { useAvatar, useScreenSize } from "../../hook/useHooks";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useAvatar } from "../../hook/useHooks";
+import ButtonComponent from "../_atoms/Button/Button";
+import FormInput from "../_atoms/Input/FormInput";
+import NotificationUpperbarIcon from "../common/svg/NotificationUpperBarIcon";
+import SearchIcon from "../common/svg/SearchIcon";
+import SettingUpperbarIcon from "../common/svg/setting-upperbar-icon";
 
 export default function NavBar() {
   const { userAvatar, setUserAvatar } = useAvatar();
-  const screenSize = useScreenSize();
 
   useEffect(() => {
     const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
@@ -20,12 +17,6 @@ export default function NavBar() {
 
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
-      {screenSize.width < 1023 ? (
-        <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
-      ) : (
-        <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
-      )}
-
       <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4">
         <FormInput
           id="search"

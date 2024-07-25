@@ -43,7 +43,11 @@ const NavLink: React.FC<NavLinkProps> = ({
   const location = useLocation();
   const isActive = location.pathname === to;
 
-  const textColorClass = isActive ? "text-[#8E48EC]" : isHovered ? "text-[#AE7EED]" : "";
+  const textColorClass = isActive
+    ? "text-[#8E48EC]"
+    : isHovered
+      ? "text-[#AE7EED]"
+      : "";
 
   return (
     <Link
@@ -53,12 +57,21 @@ const NavLink: React.FC<NavLinkProps> = ({
       onMouseLeave={onMouseLeave}
     >
       <img
-        src={isActive ? activeImgSrc : isHovered && hoverImgSrc ? hoverImgSrc : inactiveImgSrc}
+        src={
+          isActive
+            ? activeImgSrc
+            : isHovered && hoverImgSrc
+              ? hoverImgSrc
+              : inactiveImgSrc
+        }
         alt=""
         className="transition-transform duration-300"
         style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
       />
-      <span className="transition-transform duration-300" style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}>
+      <span
+        className="transition-transform duration-300"
+        style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
+      >
         {children}
       </span>
     </Link>
@@ -74,7 +87,9 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
   return (
     <div className={`${styles}`}>
-      <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px]`}>
+      <div
+        className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px]`}
+      >
         <ul>
           <li>
             <div className="flex justify-center p-2">
