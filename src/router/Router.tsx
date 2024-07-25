@@ -6,6 +6,7 @@ import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import SignInPage from "../pages/SigninPage";
+import Statement from "../components/_organisms/Statement";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/statement",
-        element: <div>Statement</div>,
+        element: <Statement />,
       },
     ],
   },
