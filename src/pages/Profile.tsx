@@ -1,26 +1,17 @@
-import FormInput from "../components/_atoms/Input/FormInput";
 import ButtonComponent from "../components/_atoms/Button/Button";
 import CarouselNav from "../components/_atoms/CarouselNav";
+import FormInput from "../components/_atoms/Input/FormInput";
 
 import editIcon from "../assets/edit-icon.svg";
-import { useScreenSize, useAvatar } from "../hook/useHooks";
-import SideBar from "../components/SideBar/SideBar";
-import DeskTopSideBar from "../components/SideBar/DeskTopSideBar";
+import { useAvatar } from "../hook/useHooks";
 
 export default function Profile() {
-  const screenSize = useScreenSize();
-
   const { userAvatar, changeAvatar } = useAvatar();
 
   return (
     <>
       <CarouselNav />
       <div className="block smx:flex smx:justify-center smx:items-center">
-        {screenSize.width < 1023 ? (
-          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden smx:mb-96" />
-        ) : (
-          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
-        )}
         <div className="flex justify-center p-10 smx:justify-center smx:items-center">
           <div className="relative">
             <img className="smx:mb-60" src={userAvatar} alt="user avatar" />
