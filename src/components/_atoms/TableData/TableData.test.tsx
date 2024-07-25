@@ -22,7 +22,7 @@ describe('TableData molecule', () => {
         expect(tableData).toHaveClass('text-left border-t py-3 md:p-2') 
     })
 
-    it('should include tailwind style to the class attribute', () => {
+    it('should include a new class to the class attribute', () => {
         render(<TableData variantStyle="class">Data</TableData>)
         const tableData = screen.getByText('Data')
         expect(tableData).toHaveClass('class')
