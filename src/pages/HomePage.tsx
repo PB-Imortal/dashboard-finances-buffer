@@ -1,3 +1,9 @@
+import Home from "../components/_organisms/Home";
+
 export default function HomePage() {
-  return <div>Home</div>;
+  return (
+    <section className="h-full m-3 flex rounded-[18px]">
+      <Home />
+    </section>
+  );
 }

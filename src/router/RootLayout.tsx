@@ -9,7 +9,7 @@ import { useScreenSize } from "../hook/useHooks";
 export default function RootLayout() {
   const screenSize = useScreenSize();
   return (
-    <main className="flex">
+    <main className="flex bg-bggrey">
       <div>
         {screenSize.width < 1023 ? (
           <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
@@ -19,9 +19,7 @@ export default function RootLayout() {
       </div>
       <div className="flex flex-col flex-1 ">
         <NavBar />
-        <div className="h-full m-3 rounded-[18px] border border-gray-600">
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </main>
   );
