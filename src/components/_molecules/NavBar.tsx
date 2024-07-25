@@ -6,11 +6,11 @@ import SearchIcon from "../common/svg/SearchIcon";
 import SideBar from "../SideBar/SideBar";
 import FormInput from "../_atoms/Input/FormInput";
 import DeskTopSideBar from "../SideBar/DeskTopSideBar";
-import { useHooks } from "../../hook/useHooks";
+import { useAvatar, useScreenSize } from "../../hook/useHooks";
 import { useEffect } from "react";
 
 export default function NavBar() {
-  const { useScreenSize, userAvatar, setUserAvatar } = useHooks();
+  const { userAvatar, setUserAvatar } = useAvatar();
   const screenSize = useScreenSize();
 
   useEffect(() => {
