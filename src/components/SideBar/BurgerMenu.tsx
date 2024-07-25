@@ -7,7 +7,7 @@ interface BurgerMenuProps {
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
   return (
-    <button
+    <button data-testid="burger-menu"
       className={`my-auto ml-2 bg-bgwhite px-4 py-9 rounded flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
       onClick={() => setIsOpen(!isOpen)}
     >
