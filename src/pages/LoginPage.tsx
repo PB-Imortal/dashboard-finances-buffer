@@ -9,12 +9,12 @@ export default function LoginPage() {
         <img
           src={statementImg}
           alt="Website logo, a white sphere and on the right side the writing My Statement"
-          className="w-64 h-9"
+          className="w-64 h-9 lg:w-[364px] lg:h-[54px] mb-2"
         />
         <img
           src={LoginBg}
           alt="woman looking at floating graphics"
-          className="hidden lg:block"
+          className="hidden lg:block "
         />
       </div>
       <Login />

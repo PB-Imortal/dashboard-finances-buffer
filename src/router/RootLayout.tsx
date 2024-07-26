@@ -1,9 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/_molecules/NavBar";
-import {
-  default as DeskTopSideBar,
-  default as SideBar,
-} from "../components/SideBar/SideBar";
+import SideBar from "../components/SideBar/SideBar";
+import DeskTopSideBar from "../components/SideBar/DeskTopSideBar";
 import { useScreenSize } from "../hook/useHooks";
 
 export default function RootLayout() {
@@ -11,7 +9,7 @@ export default function RootLayout() {
   return (
     <main className="flex bg-bggrey">
       <div>
-        {screenSize.width < 1023 ? (
+        {screenSize.width <= 1023 ? (
           <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
         ) : (
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />

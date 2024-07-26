@@ -6,7 +6,7 @@ export default {
       colors: {
         bgblack: "#19191C",
         bgwhite: "#FFFFFF",
-        bgpurple: "#8E48EC",
+        bgpurple: "#86816D6",
         bggrey: "#EFEFF0",
         bgred: "#E4482B",
         bggreen: "#0CB97B",
@@ -18,6 +18,10 @@ export default {
         txtpurple: "#4E01B4",
         txtred: "#E02244",
         txtgreen: "#0CB97B",
+        dkrbgitenseblue: "#1B232F",
+        dkrbgblue: "#212B39",
+        dkrbgpurple: "#8E48EC",
+        dkrbgintensegrey: "#A4A3A7",
       },
       fontFamily: {
         inter: ["Inter"],
@@ -30,4 +34,5 @@ export default {
     },
   },
   plugins: [],
+  darkMode: "class",
 };
