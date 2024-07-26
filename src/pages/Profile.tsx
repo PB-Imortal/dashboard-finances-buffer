@@ -1,12 +1,12 @@
 import ButtonComponent from "../components/_atoms/Button/Button"
 import CarouselNav from "../components/_atoms/CarouselNav"
 import FormInput from "../components/_atoms/Input/FormInput"
-
 import editIcon from "../assets/edit-icon.svg"
-import { useAvatar } from "../hook/useHooks"
+import { useAvatar, useFetchData } from "../hook/useHooks"
 
 export default function Profile() {
     const { userAvatar, changeAvatar } = useAvatar()
+    const { formData, handleInputChange, handleSave } = useFetchData()
 
     return (
         <>
@@ -18,9 +18,13 @@ export default function Profile() {
                         <button
                             type="button"
                             className="bg-bgblack rounded-md z-1 max-w-md absolute right-3 bottom-0 p-2 group smx:mb-60"
-                            onClick={changeAvatar}
                         >
-                            <img className="w-full h-full" src={editIcon} alt="edit button" />
+                            <img
+                                className="w-full h-full"
+                                src={editIcon}
+                                alt="edit button"
+                                onClick={changeAvatar}
+                            />
                             <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2">
                                 Change Avatar
                             </div>
@@ -29,42 +33,52 @@ export default function Profile() {
                 </div>
 
                 <form
-                    action="submit"
-                    method="post"
+                    onSubmit={handleSave}
                     className="grid grid-cols-2 gap-x-4 gap-y-5 px-1 md:w-full"
                 >
                     <FormInput
                         placeholder={"Insert here your last name..."}
                         label={"Last Name"}
-                        id={"last-name"}
+                        id={"lastName"}
+                        value={formData.lastName}
+                        onChange={handleInputChange}
                     />
                     <FormInput
                         placeholder={"Insert here your first name..."}
                         label={"First Name"}
-                        id={"first-name"}
+                        id={"firstName"}
+                        value={formData.firstName}
+                        onChange={handleInputChange}
                     />
                     <FormInput
                         placeholder={"Insert here your date of birth..."}
                         label={"Date of Birth"}
-                        id={"date-of-birth"}
+                        id={"dateOfBirth"}
+                        value={formData.dateOfBirth}
+                        onChange={handleInputChange}
                         styles="col-span-2"
                     />
                     <FormInput
                         placeholder={"Insert here your email address..."}
                         label={"Email"}
                         id={"email"}
+                        value={formData.email}
+                        onChange={handleInputChange}
                         styles="col-span-2"
                     />
-
                     <FormInput
                         placeholder={"Insert here your home address..."}
                         label={"Address"}
                         id={"address"}
+                        value={formData.address}
+                        onChange={handleInputChange}
                     />
                     <FormInput
                         placeholder={"Insert here your residing country..."}
                         label={"Country"}
                         id={"country"}
+                        value={formData.country}
+                        onChange={handleInputChange}
                     />
 
                     <ButtonComponent
