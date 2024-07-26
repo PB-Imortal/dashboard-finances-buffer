@@ -12,7 +12,6 @@ import UserProfileActive from "../../assets/user-profile-active-icon.svg";
 import UserProfile from "../../assets/user-profile-icon.svg";
 import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
 import LogoutSideBarInactive from "../../assets/logout-sidebar-icon.svg";
-import LogoutSideBarActive from "../../assets/LogoutSideBar-active.svg";
 import HomeHoverFunction from "../../assets/HomeHoverFunction.svg";
 import PorifleHoverFunciton from "../../assets/PorifleHoverFunciton.svg";
 import SettingHoverFunction from "../../assets/SettingHoverFunction.svg";
@@ -43,7 +42,11 @@ const NavLink: React.FC<NavLinkProps> = ({
   const location = useLocation();
   const isActive = location.pathname === to;
 
-  const textColorClass = isActive ? "text-[#8E48EC]" : isHovered ? "text-[#AE7EED]" : "";
+  const textColorClass = isActive
+    ? "text-dkrbgpurple"
+    : isHovered
+    ? "text-[#AE7EED] dark:text-[#CBB2FF]"
+    : "text-gray-700 dark:text-gray-300";
 
   return (
     <Link
@@ -74,7 +77,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
   return (
     <div className={`${styles}`}>
-      <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px]`}>
+      <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px] dark:bg-dkrbgitenseblue`}>
         <ul>
           <li>
             <div className="flex justify-center p-2">
@@ -88,7 +91,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
         {/* Sidebar Content */}
         <div className="p-4">
-          <nav className="flex flex-col gap-12 font-[600]">
+          <nav className="flex flex-col gap-12 font-[600] dark:text-bgwhite">
             <NavLink
               to="/"
               activeImgSrc={HomeIconActive}
@@ -127,7 +130,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
             </NavLink>
 
             <NavLink
-              to="#"
+              to="/setting"
               activeImgSrc={SettingSideBarActive}
               inactiveImgSrc={SettingSideBar}
               hoverImgSrc={SettingHoverFunction}
@@ -140,7 +143,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
             <NavLink
               to="/login"
-              activeImgSrc={LogoutSideBarActive}
+              activeImgSrc={LogoutSideBarInactive}
               inactiveImgSrc={LogoutSideBarInactive}
               hoverImgSrc={LogoutHoverFunction}
               onMouseEnter={() => setHovered("Logout")}
