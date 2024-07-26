@@ -13,7 +13,7 @@ export default function NavBar() {
   useEffect(() => {
     const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
     setUserAvatar(newAvatarUrl);
-  }, []);
+  }, [setUserAvatar]);
 
   return (
     <div className="flex flex-row sm:bg-white md:bg-inherit h-fit">
