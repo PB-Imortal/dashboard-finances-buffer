@@ -1,4 +1,4 @@
-import LoginBg from "../assets/login-bg.svg";
+import LoginBg from "../assets/login-bg.webp";
 import statementImg from "../assets/name-and-logo.svg";
 import Login from "../components/_organisms/Login";
 
@@ -14,7 +14,7 @@ export default function LoginPage() {
         <img
           src={LoginBg}
           alt="woman looking at floating graphics"
-          className="hidden lg:block "
+          className="hidden lg:block max-w-[618.75px]"
         />
       </div>
       <Login />
