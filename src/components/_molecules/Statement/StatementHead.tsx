@@ -4,6 +4,7 @@ import EarningsIcon from "../../../assets/earnings-icon.svg";
 
 import { UserContext } from "./apiEntities";
 import { useContext } from "react";
+import { HeadBlock} from "../../_atoms/HeadBlock/HeadBlock";
 
 export function StatementHead() {
   const userData = useContext(UserContext);
@@ -27,24 +28,10 @@ export function StatementHead() {
   ];
 
   return (
-    <section className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden">
-      {accounting.map((data) => (
-        <div
-          key={data.label}
-          className="bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52"
-        >
-          <div className="flex items-center gap-4">
-            <img src={data.icon} alt={`${data.label} icon`} />
-
-            <div className="flex flex-col">
-              <span>{data.label}</span>
-              <span className="font-semibold text-txtpurple text-xl">
-                ${data.amount}
-              </span>
-            </div>
-          </div>
-        </div>
-      ))}
-    </section>
+    <div 
+      className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden"
+    >
+      {accounting.map((item) => <HeadBlock key={item.label} data={item}/>)}
+    </div>
   );
 }

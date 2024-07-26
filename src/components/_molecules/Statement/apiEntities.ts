@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface accountdetails {
+interface AccountDetails {
     description: string;
     id: string;
     type: string;
@@ -9,8 +9,8 @@ interface accountdetails {
     amount: number;
 }
 
-interface count {
-    transactions: accountdetails[];
+interface Account {
+    transactions: AccountDetails[];
     money: number;
     expenses: number;
     earnings: number;
@@ -21,7 +21,7 @@ export interface UserData {
     password: string;
     fullname: string;
     birthdate: string;
-    accounting: count;
+    accounting: Account;
 }
 
 export const UserContext = createContext<UserData | undefined>(undefined)
