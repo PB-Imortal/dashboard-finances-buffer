@@ -6,7 +6,7 @@ export default {
       colors: {
         bgblack: "#19191C",
         bgwhite: "#FFFFFF",
-        bgpurple: "#6816D6",
+        bgpurple: "#8E48EC",
         bggrey: "#EFEFF0",
         bgred: "#E4482B",
         bggreen: "#0CB97B",
