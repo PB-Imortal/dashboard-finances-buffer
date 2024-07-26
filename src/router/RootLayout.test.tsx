@@ -1,22 +1,22 @@
 import { render } from "@testing-library/react";
 import { describe, expect, vi } from "vitest";
 import RootLayout from "./RootLayout";
-import { useScreenSize } from "../hook/useHooks";
 import { BrowserRouter } from "react-router-dom";
 
+const viUseScreenSizeMock = vi.fn().mockReturnValue({ width: 1023 });
+
 vi.mock("../hook/useHooks", async (importOriginal) => {
-  const actual = await importOriginal();
+  const actual: [] = await importOriginal();
   return {
     ...actual,
-    useScreenSize: vi.fn(),
+    useScreenSize() {
+      return viUseScreenSizeMock;
+    },
   };
 });
 
 describe("RootLayout Component", () => {
   test("should render SideBar when screen width is less than or equal to 1023", () => {
-    // Mockando o retorno do hook useScreenSize
-    (useScreenSize as vi.Mock).mockReturnValue({ width: 1023 });
-
     const { getByText } = render(
       <BrowserRouter>
         <RootLayout />
@@ -27,9 +27,7 @@ describe("RootLayout Component", () => {
   });
 
   test("should render DeskTopSideBar when screen width is greater than 1023", () => {
-    // Mockando o retorno do hook useScreenSize
-    (useScreenSize as vi.Mock).mockReturnValue({ width: 1024 });
-
+    viUseScreenSizeMock.mockReturnValue({ width: 1024 });
     const { getByText } = render(
       <BrowserRouter>
         <RootLayout />
