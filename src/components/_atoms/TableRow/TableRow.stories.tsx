@@ -13,13 +13,13 @@ export default meta;
 
 type Story = StoryObj<typeof TableRow>;
 
-export const TableDataWrapper: Story = {
+export const TableDataWrapping: Story = {
   args: {
     children: <TableData>Content</TableData>
   }
 };
 
-export const TableHeaderWrapper: Story = {
+export const TableHeaderWrapping: Story = {
   args: {
     children: <TableHeader content="Header" />
   }
