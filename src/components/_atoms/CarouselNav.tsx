@@ -11,9 +11,9 @@ type CarouselNavProps = {
   styles?: string;
 };
 
-const CarouselNav: React.FC<CarouselNavProps> = () => {
+const CarouselNav: React.FC<CarouselNavProps> = ({ items }) => {
   const [selectedIndex, setSelectedIndex] = useState<number>(1);
-  const selectedRef = useRef<HTMLAnchorElement>(null);
+  const selectedRef = useRef<HTMLDivElement>(null);
   const [highlightStyle, setHighlightStyle] = useState<{
     width: number;
     left: number;
@@ -22,15 +22,17 @@ const CarouselNav: React.FC<CarouselNavProps> = () => {
     left: 0,
   });
 
-  const items: Item[] = [
+  const defaultItems: Item[] = [
     { label: "Back", to: "/" },
     { label: "Edit Profile", to: "" },
     { label: "Preferences", to: "preferences" },
     { label: "Security", to: "security" },
   ];
 
+  const actualItems = items || defaultItems;
+
   useEffect(() => {
-    if (selectedRef.current) {
+    if (selectedRef.current && typeof selectedRef.current.scrollIntoView === 'function') {
       selectedRef.current.scrollIntoView({
         inline: "center",
         behavior: "smooth",
@@ -49,20 +51,24 @@ const CarouselNav: React.FC<CarouselNavProps> = () => {
   return (
     <nav className="relative bg-white">
       <div className="overflow-x-auto whitespace-nowrap flex items-center space-x-4 p-4 scrollbar-hide">
-        {items.map((item, index) => (
-          <Link
+        {actualItems.map((item, index) => (
+          <div
             key={index}
-            to={item.to}
-            className={`carousel-item cursor-pointer p-2 rounded ${
-              selectedIndex === index
-                ? "text-bgblack font-bold bg-white"
-                : "text-bggrey bg-white"
-            }`}
-            onClick={() => highlightItem(index)}
             ref={selectedIndex === index ? selectedRef : null}
+            className={`carousel-item-wrapper ${selectedIndex === index ? "selected" : ""}`}
           >
-            {item.label}
-          </Link>
+            <Link
+              to={item.to}
+              className={`carousel-item cursor-pointer p-2 rounded ${
+                selectedIndex === index
+                  ? "text-bgblack font-bold bg-white"
+                  : "text-bggrey bg-white"
+              }`}
+              onClick={() => highlightItem(index)}
+            >
+              {item.label}
+            </Link>
+          </div>
         ))}
       </div>
       <div className="relative">
