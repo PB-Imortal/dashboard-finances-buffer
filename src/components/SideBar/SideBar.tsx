@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
 import StatementIconActive from "../../assets/statement-active-icon.svg";
@@ -37,15 +37,16 @@ interface NavLinkProps {
   activeImgSrc: string;
   inactiveImgSrc: string;
   children: React.ReactNode;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ to, activeImgSrc, inactiveImgSrc, children }) => {
+const NavLink: React.FC<NavLinkProps> = ({ to, activeImgSrc, inactiveImgSrc, children, setIsOpen }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
   const textColorClass = isActive ? "text-[#8E48EC]" : "";
 
   return (
-    <Link to={to} className={`flex items-center gap-4 ${textColorClass}`}>
+    <Link to={to} className={`flex items-center gap-4 ${textColorClass}`} onClick={() => setIsOpen(false)}>
       <img src={isActive ? activeImgSrc : inactiveImgSrc} alt="" />
       <span>{children}</span>
     </Link>
@@ -58,6 +59,7 @@ interface SideBarProps {
 
 const SideBar: React.FC<SideBarProps> = ({ styles }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === 'Escape') {
@@ -65,11 +67,32 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
     }
   };
 
+  useEffect(() => {
+    const handleDocumentKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(prev => !prev);
+      }
+    };
+
+    document.addEventListener("keydown", handleDocumentKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleDocumentKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isOpen && overlayRef.current) {
+      overlayRef.current.focus();
+    }
+  }, [isOpen]);
+
   return (
     <div className={`${styles}`}>
       <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       {isOpen && (
         <div 
+          ref={overlayRef}
           className="fixed inset-0 bg-black bg-opacity-50 z-30 py-4" 
           onClick={() => setIsOpen(false)}
           onKeyDown={handleKeyDown}
@@ -90,12 +113,12 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
         </ul>
         <div className="p-4">
           <nav className="flex flex-col gap-12 font-[600]">
-            <NavLink to="/" activeImgSrc={HomeIconActive} inactiveImgSrc={HomeIconInactive}>Home</NavLink>
-            <NavLink to="/statement" activeImgSrc={StatementIconActive} inactiveImgSrc={StatementIconInactive}>Statement</NavLink>
-            <NavLink to="/profile" activeImgSrc={ProfileIconActive} inactiveImgSrc={ProfileIconInactive}>Profile</NavLink>
-            <NavLink to="#" activeImgSrc={NotificationSideBarActive} inactiveImgSrc={NotificationSideBar}>Notification</NavLink>
-            <NavLink to="#" activeImgSrc={SettingSideBarActive} inactiveImgSrc={SettingSideBar}>Setting</NavLink>
-            <NavLink to="/login" activeImgSrc={LogoutSideBarIcon} inactiveImgSrc={LogoutSideBarIcon}>Logout</NavLink>
+            <NavLink to="/" activeImgSrc={HomeIconActive} inactiveImgSrc={HomeIconInactive} setIsOpen={setIsOpen}>Home</NavLink>
+            <NavLink to="/statement" activeImgSrc={StatementIconActive} inactiveImgSrc={StatementIconInactive} setIsOpen={setIsOpen}>Statement</NavLink>
+            <NavLink to="/profile" activeImgSrc={ProfileIconActive} inactiveImgSrc={ProfileIconInactive} setIsOpen={setIsOpen}>Profile</NavLink>
+            <NavLink to="#" activeImgSrc={NotificationSideBarActive} inactiveImgSrc={NotificationSideBar} setIsOpen={setIsOpen}>Notification</NavLink>
+            <NavLink to="#" activeImgSrc={SettingSideBarActive} inactiveImgSrc={SettingSideBar} setIsOpen={setIsOpen}>Setting</NavLink>
+            <NavLink to="/login" activeImgSrc={LogoutSideBarIcon} inactiveImgSrc={LogoutSideBarIcon} setIsOpen={setIsOpen}>Logout</NavLink>
           </nav>
         </div>
       </div>
