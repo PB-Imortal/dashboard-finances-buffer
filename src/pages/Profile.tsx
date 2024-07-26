@@ -82,6 +82,7 @@ export default function Profile() {
                     />
 
                     <ButtonComponent
+                        type="submit"
                         arialabeltext={"send button"}
                         bgcolor="bg-bgblack"
                         textColor="text-txwhite"
