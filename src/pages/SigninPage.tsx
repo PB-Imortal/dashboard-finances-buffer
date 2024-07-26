@@ -1,4 +1,5 @@
 import SignIn from "../components/_organisms/SignIn";
+import loginBg from "../assets/login-bg.webp";
 
 export default function SignInPage() {
   return (
@@ -10,9 +11,9 @@ export default function SignInPage() {
           alt="Website logo, a white sphere and on the right side the writing My Statement"
         />
         <img
-          className="hidden lg:block"
-          src="/src/assets/login-bg.svg"
-          alt=""
+          className="hidden lg:block max-w-[618.75px]"
+          src={loginBg}
+          alt="woman looking at floating graphics"
         />
       </div>
       <SignIn />
