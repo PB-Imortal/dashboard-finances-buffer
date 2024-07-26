@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout";
 
 import HomePage from "../pages/HomePage";
+import Statement from "../components/_organisms/Statement";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/statement",
-        element: <div>Statement</div>,
+        element: <Statement />,
       },
     ],
   },

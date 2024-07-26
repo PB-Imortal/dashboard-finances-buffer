@@ -16,11 +16,11 @@ export default function Statement () {
     }, [])
 
     return (
-        <UserContext.Provider value={userData}>
-            <div className='bg-bggrey flex flex-col gap-5 items-center p-2'>
-                <StatementHead />
-                <StatementTable />
+            <div className='bg-bggrey flex flex-col gap-5 h-full p-4 w-full'>
+                <UserContext.Provider value={userData}>
+                    <StatementHead />
+                    <StatementTable />
+                </UserContext.Provider>
             </div>
-        </UserContext.Provider>
     )
 }

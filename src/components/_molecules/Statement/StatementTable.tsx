@@ -1,38 +1,35 @@
 import arrowDownIcon from "../../../assets/arrow_down.svg"
 import arrowUpIcon from "../../../assets/arrow_up.svg"
 
-import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
-import { TableData } from "../../_atoms/TableData/TableData"
-import { TableRow } from "../../_atoms/TableRow/TableRow"
 import ButtonComponent from "../../_atoms/Button/Button"
 
-import { useState, useEffect, useContext } from "react"
+import { TableRow } from "../../_atoms/TableRow/TableRow"
+import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
+import { TableData } from "../../_atoms/TableData/TableData"
+
+import { useScreenSize } from "../../../hook/useHooks"
+import { useContext } from "react"
 import { UserContext } from "./apiEntities"
 
 export function StatementTable() {
+
     const userData = useContext(UserContext)
+    const screenSize = useScreenSize()
 
-    const [isTablet, setTablet] = useState(window.innerWidth > 640)
-    const [isLaptop, setLaptop] = useState(window.innerWidth > 840)
-
-    const updateMedia = () => {
-        setTablet(window.innerWidth > 640);
-        setLaptop(window.innerWidth > 890)
-    };
-
-    useEffect(() => {
-        window.addEventListener("resize", updateMedia);
-        return () => window.removeEventListener("resize", updateMedia);
-    });
+    const port = {
+        isMobile: (screenSize.width < 640),
+        isTablet: (screenSize.width > 760),
+        isLaptop: (screenSize.width > 890),
+    }
 
     return (
-        <table className='bg-bgwhite border-separate gap-3 overflow-scroll px-6 py-3 rounded-2xl text-center sm:w-11/12'>
+        <table className='bg-bgwhite border-separate gap-3 overflow-scroll px-6 py-3 rounded-2xl text-center w-full'>
 
             <thead>
                 <TableRow>
                     <TableHeader content='Description' />
                     {
-                        isTablet &&
+                        port.isTablet &&
                         <>
                             <TableHeader content='Transaction ID' />
                             <TableHeader content='Type' />
@@ -42,7 +39,7 @@ export function StatementTable() {
                     }
                     <TableHeader content='Amount' />
 
-                    {isLaptop && <TableHeader content='Receipt' />}
+                    {port.isLaptop && <TableHeader content='Receipt' />}
 
                 </TableRow>
             </thead>
@@ -62,7 +59,7 @@ export function StatementTable() {
                             </TableData>
 
                             {
-                                isTablet &&
+                                port.isTablet &&
                                 <>
                                     <TableData>{transaction.id}</TableData>
                                     <TableData>{transaction.type}</TableData>
@@ -76,7 +73,7 @@ export function StatementTable() {
                             </TableData>
 
                             {
-                                isLaptop &&
+                                port.isLaptop &&
                                 <TableData>
                                     <ButtonComponent
                                         arialabeltext="Download"
