@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./NavBar";
-// import { useHooks } from "../../hook/useHooks";
-// import { vi } from "vitest";
 
 describe("NavBar", () => {
   test("renders the search input", () => {
