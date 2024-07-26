@@ -10,14 +10,16 @@ export default function RootLayout() {
     <main className="flex bg-bggrey">
       <div>
         {screenSize.width <= 1023 ? (
-          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden " />
+          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
         ) : (
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
         )}
       </div>
       <div className="flex flex-col flex-1 ">
         <NavBar />
+      <div className="sm: -ml-14 md:ml-0">
         <Outlet />
+      </div>
       </div>
     </main>
   );

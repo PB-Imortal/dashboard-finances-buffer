@@ -16,7 +16,7 @@ export default function Statement () {
     }, [])
 
     return (
-            <div className='bg-bggrey flex flex-col gap-5 h-full p-4 w-full'>
+            <div className='bg-bggrey flex flex-col gap-5 p-4 w-full'>
                 <UserContext.Provider value={userData}>
                     <StatementHead />
                     <StatementTable />
