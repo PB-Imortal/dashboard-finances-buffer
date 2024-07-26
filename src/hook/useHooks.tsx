@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const useAvatar = () => {
     const [userAvatar, setUserAvatar] = useState(
@@ -50,6 +51,7 @@ export const useFetchData = () => {
     })
 
     const [isDataLoaded, setIsDataLoaded] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!isDataLoaded) {
@@ -73,7 +75,7 @@ export const useFetchData = () => {
                 })
                 .catch((error) => {
                     console.error("Error fetching user data:", error)
-                    setIsDataLoaded(true) 
+                    setIsDataLoaded(true)
                 })
         }
     }, [isDataLoaded])
@@ -83,37 +85,63 @@ export const useFetchData = () => {
         setFormData({ ...formData, [id]: value })
     }
 
-    const handleSave = (e: React.FormEvent) => {
-        e.preventDefault()
-        fetch("http://localhost:3000/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                userid: formData.email,
-                password: "",
-                fullname: `${formData.firstName} ${formData.lastName}`,
-                birthdate: formData.dateOfBirth,
-                accounting: {
-                    transactions: [],
-                    money: null,
-                    expenses: null,
-                    earnings: null,
-                },
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data) {
-                    console.log("Data saved successfully:", data)
-                    alert("Data saved successfully")
-                } else {
-                    console.error("Error saving data")
-                }
-            })
-            .catch((error) => console.error("Error:", error))
-    }
+    const handleSave = async (e: React.FormEvent) => {
+      e.preventDefault();
+      const baseUrl = "http://localhost:3000/users";
+      const userEmail = formData.email;
+  
+      try {
+          // Check if the user exists to get the user ID
+          const userExistsResponse = await fetch(`${baseUrl}?email=${userEmail}`, {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+          });
+  
+          let method = "POST"; // Default to POST
+          let url = baseUrl; // Default URL for POST
+          if (userExistsResponse.ok) {
+              const userExistsData = await userExistsResponse.json();
+              if (userExistsData.length > 0) {
+                  method = "PUT"; // Change to PUT if user exists
+                  url = `${baseUrl}/${userExistsData[0].id}`; // Use the user ID in the URL
+              }
+          }
+  
+          // Proceed with the save operation
+          const saveResponse = await fetch(url, {
+              method,
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  userid: formData.email,
+                  password: "",
+                  fullname: `${formData.firstName} ${formData.lastName}`,
+                  birthdate: formData.dateOfBirth,
+                  accounting: {
+                      transactions: [],
+                      money: null,
+                      expenses: null,
+                      earnings: null,
+                  },
+              }),
+          });
+  
+          const data = await saveResponse.json();
+          if (saveResponse.ok) {
+              console.log("Data updated successfully:", data);
+              alert("Data updated successfully");
+              navigate("/")
+          } else {
+              console.error("Error saving data:", data);
+          }
+      } catch (error) {
+          console.error("Error:", error);
+      }
+  };
+  
+  return { formData, handleInputChange, handleSave };
 
-    return { formData, handleInputChange, handleSave }
 }
