@@ -16,6 +16,7 @@ import HomeIconActive from "../../assets/home-active-icon.svg";
 interface BurgerMenuProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  className?: string;
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
@@ -63,7 +64,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
     <div className={`${styles}`}>
       <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-30" onClick={() => setIsOpen(false)}></div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-30 py-4" onClick={() => setIsOpen(false)}></div>
       )}
       <div className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <ul>
