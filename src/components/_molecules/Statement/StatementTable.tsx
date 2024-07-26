@@ -16,7 +16,7 @@ export function StatementTable() {
     const userData = useContext(UserContext)
     const screenSize = useScreenSize()
 
-    const port = {
+    const viewPort = {
         isMobile: (screenSize.width < 640),
         isTablet: (screenSize.width > 760),
         isLaptop: (screenSize.width > 890),
@@ -29,7 +29,7 @@ export function StatementTable() {
                 <TableRow>
                     <TableHeader content='Description' />
                     {
-                        port.isTablet &&
+                        viewPort.isTablet &&
                         <>
                             <TableHeader content='Transaction ID' />
                             <TableHeader content='Type' />
@@ -39,7 +39,7 @@ export function StatementTable() {
                     }
                     <TableHeader content='Amount' />
 
-                    {port.isLaptop && <TableHeader content='Receipt' />}
+                    {viewPort.isLaptop && <TableHeader content='Receipt' />}
 
                 </TableRow>
             </thead>
@@ -59,7 +59,7 @@ export function StatementTable() {
                             </TableData>
 
                             {
-                                port.isTablet &&
+                                viewPort.isTablet &&
                                 <>
                                     <TableData>{transaction.id}</TableData>
                                     <TableData>{transaction.type}</TableData>
@@ -73,7 +73,7 @@ export function StatementTable() {
                             </TableData>
 
                             {
-                                port.isLaptop &&
+                                viewPort.isLaptop &&
                                 <TableData>
                                     <ButtonComponent
                                         arialabeltext="Download"
