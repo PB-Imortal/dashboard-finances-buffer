@@ -4,7 +4,7 @@ export type BalanceInfo = {
     amount?: number;
 }
 
-export function HeadBlock({ data }: {data: BalanceInfo}) {
+export function HeadBlock({ data }: {readonly data: BalanceInfo}) {
     return (
         <div className="bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52">
             <div className="flex items-center gap-4">
