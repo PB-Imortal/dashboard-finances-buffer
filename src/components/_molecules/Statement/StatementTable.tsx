@@ -1,9 +1,9 @@
 import arrowDownIcon from "../../../assets/arrow_down.svg"
 import arrowUpIcon from "../../../assets/arrow_up.svg"
 
-import { TableHeader } from "../../_atoms/TableHeader"
-import { TableData } from "../../_atoms/TableData"
-import { TableRow } from "../../_atoms/TableRow"
+import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
+import { TableData } from "../../_atoms/TableData/TableData"
+import { TableRow } from "../../_atoms/TableRow/TableRow"
 import ButtonComponent from "../../_atoms/Button/Button"
 
 import { useState, useEffect, useContext } from "react"
@@ -17,7 +17,7 @@ export function StatementTable() {
 
     const updateMedia = () => {
         setTablet(window.innerWidth > 640);
-        setLaptop(window.innerWidth > 840)
+        setLaptop(window.innerWidth > 890)
     };
 
     useEffect(() => {
@@ -56,7 +56,7 @@ export function StatementTable() {
 
                             <TableData>
                                 <span className="flex gap-2 items-center">
-                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} />
+                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} alt="arrow"/>
                                     {transaction.description}
                                 </span>
                             </TableData>
@@ -71,10 +71,8 @@ export function StatementTable() {
                                 </>
                             }
 
-                            <TableData>
-                                <span className={isDebit ? 'font-medium text-txtred' : 'font-medium text-txtgreen'}>
+                            <TableData variantStyle={isDebit ? 'text-txtred' : 'text-txtgreen'}>
                                     {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
-                                </span>
                             </TableData>
 
                             {

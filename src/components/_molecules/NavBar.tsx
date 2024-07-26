@@ -17,7 +17,7 @@ export default function NavBar() {
 
   return (
     <div className="flex flex-row grow sm:bg-white md:bg-inherit">
-      <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4">
+      <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4 dark:bg-dkrbgitenseblue">
         <FormInput
           id="search"
           aria-label="Search box"

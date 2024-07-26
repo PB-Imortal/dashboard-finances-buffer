@@ -6,6 +6,7 @@ import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import SignInPage from "../pages/SigninPage";
+import SettingPage from "../pages/SettingPage";
 
 export const router = createBrowserRouter([
   {
@@ -26,5 +27,5 @@ export const router = createBrowserRouter([
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
   { path: "/profile", element: <Profile /> },
-  // { path: "/statement", elment: <Statement /> },
+  { path: "/setting", element: <SettingPage /> },
 ]);

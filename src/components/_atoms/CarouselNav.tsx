@@ -6,7 +6,12 @@ type Item = {
   to: string;
 };
 
-const CarouselNav: React.FC = () => {
+type CarouselNavProps = {
+  items?: Item[];
+  styles?: string;
+};
+
+const CarouselNav: React.FC<CarouselNavProps> = () => {
   const [selectedIndex, setSelectedIndex] = useState<number>(1);
   const selectedRef = useRef<HTMLAnchorElement>(null);
   const [highlightStyle, setHighlightStyle] = useState<{
