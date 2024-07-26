@@ -9,10 +9,15 @@ const meta = {
   title: 'atoms/HeadBlock',
   component: HeadBlock,
   tags: ['autodocs'],
+  args: {
+    data: {
+      label: "Test",
+      icon: ExpensesIcon,
+      amount: 313}
+  }
 } satisfies Meta<typeof HeadBlock>;
 
 export default meta;
-
 type Story = StoryObj<typeof meta>;
 
 

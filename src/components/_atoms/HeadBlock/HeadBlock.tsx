@@ -1,10 +1,10 @@
-export type balanceInfo = {
+export type BalanceInfo = {
     label: string;
     icon: string;
     amount?: number;
 }
 
-export function HeadBlock({ data }: {data: balanceInfo}) {
+export function HeadBlock({ data }: {data: BalanceInfo}) {
     return (
         <div className="bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52">
             <div className="flex items-center gap-4">
