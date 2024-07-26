@@ -13,12 +13,12 @@ const navigateMock = vi.fn();
  
 const getAllComponents = () => {
   return {
-    emailInput: screen.getByPlaceholderText("E-mail") as HTMLInputElement,
-    passwordInput: screen.getByPlaceholderText("Password") as HTMLInputElement,
-    loginButton: screen.getByText(/Log in/i) as HTMLButtonElement,
+    emailInput: screen.getByPlaceholderText("E-mail"),
+    passwordInput: screen.getByPlaceholderText("Password"),
+    loginButton: screen.getByText(/Log in/i),
     createAccountButton: screen.getByText(
       /Create account/i
-    ) as HTMLAnchorElement,
+    ),
   };
 };
  
@@ -45,7 +45,7 @@ describe("FormLogin", () => {
     const passwordInput: HTMLInputElement =
       screen.getByPlaceholderText("Password");
  
-    const loginButton = screen.getByText(/Log in/i) as HTMLButtonElement;
+    const loginButton = screen.getByText(/Log in/i);
     const createAccountButton = screen.getByText(
       /Create account/i
     ) as HTMLAnchorElement;
