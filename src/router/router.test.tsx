@@ -28,17 +28,17 @@ describe("Router", () => {
     };
   });
 
-  //   it("should navigate to path /", () => {
-  //     const fakeRoute = createMemoryRouter(router.routes, {
-  //       initialEntries: ["/"],
-  //       initialIndex: 0,
-  //     });
+  it("should navigate to path /", () => {
+    const fakeRoute = createMemoryRouter(router.routes, {
+      initialEntries: ["/"],
+      initialIndex: 0,
+    });
 
-  //     render(<RouterProvider router={fakeRoute} />);
-  //     expect(
-  //       screen.getByRole("heading", { name: "Welcome to My statement", level: 1 })
-  //     );
-  //   });
+    render(<RouterProvider router={fakeRoute} />);
+    expect(
+      screen.getByRole("heading", { name: "Welcome to My statement", level: 1 })
+    );
+  });
 
   it("should navigate to path /login", () => {
     const fakeRoute = createMemoryRouter(router.routes, {

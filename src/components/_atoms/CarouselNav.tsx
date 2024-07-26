@@ -7,7 +7,7 @@ type Item = {
 };
 
 type CarouselNavProps = {
-  items: Item[];
+  items?: Item[];
   styles?: string;
 };
 
