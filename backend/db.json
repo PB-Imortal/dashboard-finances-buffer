@@ -1,81 +1,69 @@
 {
-    "users": [
-        {   
-            "userid": "user@example.com",
-            "password": "string",
-            "fullname": "Joseph Test",
-            "birthdate": "2023-09-22",
-            "accounting" : {
-                "transactions": [
-                {
-                    "description": "Spotify",
-                    "id": "#12548727",
-                    "type": "Shopping",
-                    "card": "142343430",
-                    "date": "26 Jan, 12.30 AM",
-                    "amount": -2500
-                },
-                {
-                    "description": "Spotify",
-                    "id": "#12548726",
-                    "type": "Shopping",
-                    "card": "142343429",
-                    "date": "26 Jan, 12.30 AM",
-                    "amount": -2500
-                },
-                {
-                    "description": "Mobile Service",
-                    "id": "#12548725",
-                    "type": "Service",
-                    "card": "142343428",
-                    "date": "20 Jan, 10.40 PM",
-                    "amount": -150
-                },
-                {
-                    "description": "Wilson",
-                    "id": "#12548724",
-                    "type": "Transfer",
-                    "card": "142343427",
-                    "date": "15 Jan, 03.29 PM",
-                    "amount": -1050
-                },
-                {
-                    "description": "Emilly",
-                    "id": "#12548723",
-                    "type": "Transfer",
-                    "card": "142343426",
-                    "date": "14 Jan, 10.40 PM",
-                    "amount": 840
-                },
-                {
-                    "description": "Emilly",
-                    "id": "#12548722",
-                    "type": "Transfer",
-                    "card": "142343425",
-                    "date": "14 Jan, 10.40 PM",
-                    "amount": 840
-                },
-                {
-                    "description": "Emilly",
-                    "id": "#12548721",
-                    "type": "Transfer",
-                    "card": "142343424",
-                    "date": "14 Jan, 10.40 PM",
-                    "amount": 840
-                },
-                {
-                    "description": "Emilly",
-                    "id": "#12548720",
-                    "type": "Transfer",
-                    "card": "142343423",
-                    "date": "14 Jan, 10.40 PM",
-                    "amount": 840
-                }
-                ],
-                "money": 10000,
-                "expenses": 30,
-                "earnings": 32
-            }
-        }
-    ]
+  "users": [
+    {
+      "userid": "user@example.commm",
+      "password": "",
+      "fullname": "eaemen Testeaa",
+      "birthdate": "2023-09-22",
+      "accounting": {
+        "transactions": [],
+        "money": null,
+        "expenses": null,
+        "earnings": null
+      },
+      "id": "d9d1"
+    },
+    {
+      "id": "33d1",
+      "userid": "rodrigonoliva@gmail.com",
+      "password": "",
+      "fullname": "Rodrigo Novais Oliveira Solteiro(a)",
+      "birthdate": "2023",
+      "accounting": {
+        "transactions": [],
+        "money": null,
+        "expenses": null,
+        "earnings": null
+      }
+    },
+    {
+      "id": "db1f",
+      "userid": "rodhis@eee.com",
+      "password": "",
+      "fullname": "Silva Rodhis",
+      "birthdate": "1986-10-06",
+      "accounting": {
+        "transactions": [],
+        "money": null,
+        "expenses": null,
+        "earnings": null
+      }
+    },
+    {
+      "id": "c710",
+      "userid": "user@example.com",
+      "password": "",
+      "fullname": "Joseph Tesddas",
+      "birthdate": "2023-09-22",
+      "accounting": {
+        "transactions": [],
+        "money": null,
+        "expenses": null,
+        "earnings": null
+      }
+    },
+    {
+      "id": "9af1",
+      "userid": "user@example.com",
+      "password": "",
+      "fullname": "Joseph Tesddas",
+      "birthdate": "2023-09",
+      "accounting": {
+        "transactions": [],
+        "money": null,
+        "expenses": null,
+        "earnings": null
+      }
+    }
+  ]
 }
