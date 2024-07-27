@@ -1,6 +1,7 @@
 {
     "users": [
         {
+            "id": "d9d1",
             "userid": "user@example.commm",
             "password": "",
             "fullname": "eaemen Testeaa",
@@ -64,12 +65,10 @@
                         "amount": 130.33
                     }
                 ],
-                ],
-                "money": null,
-                "expenses": null,
-                "earnings": null
-            },
-            "id": "d9d1"
+                "money": 1000,
+                "expenses": 150.24,
+                "earnings": 520.74
+            }
         },
         {
             "id": "db1f",
