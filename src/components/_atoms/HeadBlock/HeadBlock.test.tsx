@@ -5,7 +5,7 @@ const testData = {label: 'Value', icon: 'invalid_url', amount: 313}
 
 describe("HeadBlock atom", () => {
 
-    it('should render', () => {
+    it('should render the specified data', () => {
         render(<HeadBlock data={testData} />)
 
         const label = screen.getByText(testData.label)
