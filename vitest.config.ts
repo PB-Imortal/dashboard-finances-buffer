@@ -20,7 +20,6 @@ export default defineConfig({
         "**/*.config.{ts,js}",
         "**/*.stories.tsx",
         "src/components/common/svg/**.tsx",
-        "src/router/RootLayout.tsx",
         "src/providers/**",
       ],
     },
