@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAvatar } from "../../hook/useHooks";
-import ButtonComponent from "../_atoms/Button/Button";
-import FormInput from "../_atoms/Input/FormInput";
-import NotificationUpperbarIcon from "../../common/svg/NotificationUpperBarIcon";
-import SearchIcon from "../../common/svg/SearchIcon";
-import SettingUpperbarIcon from "../../common/svg/setting-upperbar-icon";
+import { useAvatar } from "../../../hook/useHooks";
+import ButtonComponent from "../../_atoms/Button/Button";
+import FormInput from "../../_atoms/Input/FormInput";
+import NotificationUpperbarIcon from "../../../common/svg/NotificationUpperBarIcon";
+import SearchIcon from "../../../common/svg/SearchIcon";
+import SettingUpperbarIcon from "../../../common/svg/setting-upperbar-icon";
 
 export default function NavBar() {
   const { userAvatar, setUserAvatar } = useAvatar();
