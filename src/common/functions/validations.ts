@@ -51,4 +51,4 @@ export const profileEditForm = z.object({
   password: z.string().min(1, "Required").trim(), // use refine method later to validate if user really exists based on dummy backend return data
 });
 
-export type FormLoginField = z.infer<typeof formLogin>;
+export type ProfileEditField = z.infer<typeof profileEditForm>
