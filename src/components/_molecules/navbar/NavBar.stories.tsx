@@ -6,14 +6,17 @@ const meta: Meta<typeof NavBar> = {
   title: "molecules/NavBar",
   component: NavBar,
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    ),
+  ],
 };
 
 type Story = StoryObj<typeof NavBar>;
 
 export default meta;
 
-export const MyNavBar: Story = () => {
-  <BrowserRouter>
-    <NavBar />
-  </BrowserRouter>;
-};
+export const MyNavBar: Story = {};
