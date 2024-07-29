@@ -123,7 +123,7 @@ export const useFetchData = () => {
                 }
             }
             setErrors(newErrors);
-            alert("Validation errors:" + validation.error.errors);
+            alert("Validation errors. Please check the form.");
             return;
         }
 
