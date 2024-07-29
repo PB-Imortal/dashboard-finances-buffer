@@ -20,7 +20,7 @@ const renderWithUserContext = (ui: ReactElement, providerProps:any) => {
 
 describe('StatementHead molecule', () => {
 
-    test('StatementHead renders with correct data', () => {
+    it('should render with correct data', () => {
         const providerProps = mockUserData;
         renderWithUserContext(<StatementHead />, providerProps);
 
