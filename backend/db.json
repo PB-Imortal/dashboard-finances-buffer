@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "userid": "user@example.commm",
+      "userid": "test@test.com",
       "password": "",
-      "fullname": "eaemen Testeaa",
+      "fullname": "Joseph Tesddas",
       "birthdate": "2023-09-22",
       "accounting": {
         "transactions": [],
@@ -12,19 +12,6 @@
         "earnings": null
       },
       "id": "d9d1"
-    },
-    {
-      "id": "33d1",
-      "userid": "rodrigonoliva@gmail.com",
-      "password": "",
-      "fullname": "Rodrigo Novais Oliveira Solteiro(a)",
-      "birthdate": "2023",
-      "accounting": {
-        "transactions": [],
-        "money": null,
-        "expenses": null,
-        "earnings": null
-      }
     },
     {
       "id": "db1f",

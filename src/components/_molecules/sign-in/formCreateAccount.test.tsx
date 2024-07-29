@@ -1,14 +1,15 @@
 import {
+  act,
+  fireEvent,
   render,
   screen,
   waitFor,
-  fireEvent,
-  act,
 } from "@testing-library/react";
 import { vi } from "vitest";
 import FormCreateAccount from "./FormCreateAccount";
 
 const navigateMock = vi.fn();
+
 const fieldValues = () => {
   return {
     lastName: screen.getByPlaceholderText("Last name"),
@@ -21,15 +22,21 @@ const fieldValues = () => {
 };
 
 describe("FormCreateAccount", () => {
-  vi.mock("react-router-dom", () => ({
-    useNavigate() {
-      return navigateMock;
-    },
-  }));
+  vi.mock("react-router-dom", async (importOriginal) => {
+    const actual: [] = await importOriginal();
+    return {
+      ...actual,
+      useNavigate() {
+        return navigateMock;
+      },
+    };
+  });
+
+  beforeEach(() => {
+    render(<FormCreateAccount />);
+  });
 
   it("should render correctly", () => {
-    render(<FormCreateAccount />);
-
     const emailPlaceholder: HTMLInputElement =
       screen.getByPlaceholderText("E-mail");
 
@@ -45,10 +52,7 @@ describe("FormCreateAccount", () => {
   });
 
   it("should open and close the snackbar and trigger useNavigate", async () => {
-    render(<FormCreateAccount />);
-
     const fields = fieldValues();
-
     const button = screen.getByRole("button");
 
     act(() => {
@@ -69,20 +73,17 @@ describe("FormCreateAccount", () => {
 
     expect(snackbar).toBeVisible();
 
-    await waitFor(() => expect(navigateMock).toHaveBeenCalledTimes(1), {
+    await waitFor(() => expect(navigateMock).toHaveBeenCalledWith("/"), {
       timeout: 3100,
     });
 
-    navigateMock.mockRestore();
+    navigateMock.mockClear();
 
     expect(snackbar).not.toBeVisible();
   });
 
   it("should open and close the snackbar and trigger useNavigate", async () => {
-    render(<FormCreateAccount />);
-
     const fields = fieldValues();
-
     const button = screen.getByRole("button");
 
     act(() => {

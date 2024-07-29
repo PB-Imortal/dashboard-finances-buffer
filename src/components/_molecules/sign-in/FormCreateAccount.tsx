@@ -8,10 +8,10 @@ import FormInput from "../../_atoms/Input/FormInput";
 import {
   CreateAccountFields,
   formCreateAccount,
-} from "../../common/functions/validations";
-import InfiniteSpinner from "../../common/svg/InfiniteSpinner";
-import LockIcon from "../../common/svg/LockIcon";
-import OkIcon from "../../common/svg/OkIcon";
+} from "../../../common/functions/validations";
+import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
+import LockIcon from "../../../common/svg/LockIcon";
+import OkIcon from "../../../common/svg/OkIcon";
 
 export default function FormCreateAccount() {
   const {
