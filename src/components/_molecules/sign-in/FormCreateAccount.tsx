@@ -3,8 +3,7 @@ import { Snackbar } from "@mui/base";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from "../../_atoms/Button/Button";
-import FormInput from "../../_atoms/Input/FormInput";
+import { postCreateAccount } from "../../../common/functions/api";
 import {
   CreateAccountFields,
   formCreateAccount,
@@ -12,6 +11,8 @@ import {
 import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
 import LockIcon from "../../../common/svg/LockIcon";
 import OkIcon from "../../../common/svg/OkIcon";
+import ButtonComponent from "../../_atoms/Button/Button";
+import FormInput from "../../_atoms/Input/FormInput";
 
 export default function FormCreateAccount() {
   const {
@@ -24,15 +25,21 @@ export default function FormCreateAccount() {
   });
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
 
-  function onSubmit(data: CreateAccountFields) {
-    // envia os dados para o servidor
-    console.log(data);
-    setOpen(true);
-    reset();
-    setInterval(() => {
-      navigate("/");
-    }, 3000);
+  async function onSubmit(data: CreateAccountFields) {
+    const resp = await postCreateAccount(data);
+
+    if (resp) {
+      if (resp.errors) {
+        setError(resp.errors);
+      } else {
+        reset();
+        setInterval(() => {
+          navigate("/");
+        }, 3000);
+      }
+    }
   }
 
   return (
@@ -93,6 +100,11 @@ export default function FormCreateAccount() {
       >
         {isSubmitting ? <InfiniteSpinner /> : "Create account"}
       </ButtonComponent>
+
+      {error && (
+        <p className="text-red-500 text-sm col-span-2 text-center">{error}</p>
+      )}
+
       <Snackbar
         id="snackbar"
         className="fixed bottom-1 w-11/12 gap-x-2 flex items-center left-1 rounded-2xl bg-bgblack text-white py-4 px-8"
