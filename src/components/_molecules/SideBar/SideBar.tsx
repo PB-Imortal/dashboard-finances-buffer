@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
-import StatementIconActive from "../../assets/statement-active-icon.svg";
-import StatementIconInactive from "../../assets/statement-icon.svg";
-import ProfileIconActive from "../../assets/user-profile-active-icon.svg";
-import ProfileIconInactive from "../../assets/user-profile-icon.svg";
-import SettingSideBar from "../../assets/setting-sidebar-icon.svg";
-import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
-import NotificationSideBar from "../../assets/notification-sidebar-icon.svg";
-import NotificationSideBarActive from "../../assets/notification-sidebar-icon-active.svg";
-import LogoutSideBarIcon from "../../assets/logout-sidebar-icon.svg";
-import LogoIcon from "../../assets/BlackLogo.svg";
-import HomeIconActive from "../../assets/home-active-icon.svg";
+
+import HomeIconInactive from "../../../assets/home-sidebar-icon.svg";
+import StatementIconActive from "../../../assets/statement-active-icon.svg";
+import StatementIconInactive from "../../../assets/statement-icon.svg";
+import ProfileIconActive from "../../../assets/user-profile-active-icon.svg";
+import ProfileIconInactive from "../../../assets/user-profile-icon.svg";
+import SettingSideBar from "../../../assets/setting-sidebar-icon.svg";
+import SettingSideBarActive from "../../../assets/SettingSideBar-active.svg";
+import NotificationSideBar from "../../../assets/notification-sidebar-icon.svg";
+import NotificationSideBarActive from "../../../assets/notification-sidebar-icon-active.svg";
+import LogoutSideBarIcon from "../../../assets/logout-sidebar-icon.svg";
+import LogoIcon from "../../../assets/BlackLogo.svg";
+import HomeIconActive from "../../../assets/home-active-icon.svg";
 
 interface BurgerMenuProps {
   isOpen: boolean;
