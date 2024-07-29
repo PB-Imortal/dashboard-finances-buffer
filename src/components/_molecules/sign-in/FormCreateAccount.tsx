@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Snackbar } from "@mui/base";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { postCreateAccount } from "../../../common/functions/api";
@@ -11,6 +11,7 @@ import {
 import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
 import LockIcon from "../../../common/svg/LockIcon";
 import OkIcon from "../../../common/svg/OkIcon";
+import { AuthContext } from "../../../providers/context/AuthContext";
 import ButtonComponent from "../../_atoms/Button/Button";
 import FormInput from "../../_atoms/Input/FormInput";
 
@@ -26,6 +27,7 @@ export default function FormCreateAccount() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
+  const { setIsLoggedIn, setUserId } = useContext(AuthContext);
 
   async function onSubmit(data: CreateAccountFields) {
     const resp = await postCreateAccount(data);
@@ -34,6 +36,9 @@ export default function FormCreateAccount() {
       if (resp.errors) {
         setError(resp.errors);
       } else {
+        setUserId(resp.data);
+        setIsLoggedIn(true);
+        setOpen(true);
         reset();
         setInterval(() => {
           navigate("/");
