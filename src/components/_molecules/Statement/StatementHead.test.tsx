@@ -1,0 +1,38 @@
+import { ReactElement } from 'react';
+import { UserContext } from './apiEntities';
+import { render, screen } from "@testing-library/react";
+import { StatementHead } from "./StatementHead";
+
+const mockUserData = {
+    accounting: {
+        money: 100,
+        expenses: 50,
+        earnings: 150
+    }
+};
+
+const renderWithUserContext = (ui: ReactElement, providerProps:any) => {
+    return render(
+        <UserContext.Provider value={providerProps}>{ui}</UserContext.Provider>
+    );
+};
+
+
+describe('StatementHead molecule', () => {
+
+    test('StatementHead renders with correct data', () => {
+        const providerProps = mockUserData;
+        renderWithUserContext(<StatementHead />, providerProps);
+
+        expect(screen.getByText('Money')).toBeInTheDocument()
+        expect(screen.getByText('Expenses')).toBeInTheDocument()
+        expect(screen.getByText('Earnings')).toBeInTheDocument()
+
+        expect(screen.getByText('$100')).toBeInTheDocument()
+        expect(screen.getByText('$50')).toBeInTheDocument()
+        expect(screen.getByText('$150')).toBeInTheDocument()
+
+        expect(screen.queryAllByRole('img')).toHaveLength(3)
+    });
+
+})

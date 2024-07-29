@@ -1,31 +1,31 @@
 import { render, screen } from '@testing-library/react';
 import { HeadBlock } from './HeadBlock';
 
-const testData = {label: 'Value', icon: 'invalid_url', amount: 313}
+const mockData = {label: 'Value', icon: 'invalid_url', amount: 313}
 
 describe("HeadBlock atom", () => {
 
-    it('should render the specified data', () => {
-        render(<HeadBlock data={testData} />)
+    it('should render the mock data', () => {
+        render(<HeadBlock data={mockData} />)
 
-        const label = screen.getByText(testData.label)
-        const amount = screen.getByText(`$${testData.amount}`)
+        const label = screen.getByText(mockData.label)
+        const amount = screen.getByText(`$${mockData.amount}`)
 
         expect(label).toBeInTheDocument()
         expect(amount).toBeInTheDocument()
     })
 
     it('should apply value to img attibutes', () => {
-        render(<HeadBlock data={testData} />)
+        render(<HeadBlock data={mockData} />)
 
         const img = screen.getByRole('img')
 
-        expect(img).toHaveAttribute('src', testData.icon)
-        expect(img).toHaveAttribute('alt', `${testData.label} icon`)
+        expect(img).toHaveAttribute('src', mockData.icon)
+        expect(img).toHaveAttribute('alt', `${mockData.label} icon`)
     })
 
     it('should display the img alt text if the url is not valid', () => {
-        render(<HeadBlock data={testData} />)
-        expect(screen.getByAltText(`${testData.label} icon`)).toBeVisible()
+        render(<HeadBlock data={mockData} />)
+        expect(screen.getByAltText(`${mockData.label} icon`)).toBeVisible()
     })
 })
