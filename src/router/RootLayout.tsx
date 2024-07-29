@@ -15,7 +15,7 @@ export default function RootLayout() {
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
         )}
       </div>
-      <div className="flex flex-col flex-1 ">
+      <div className="flex flex-col flex-1 max-w-full">
         <NavBar />
       <div className="sm: -ml-14 md:ml-0">
         <Outlet />
