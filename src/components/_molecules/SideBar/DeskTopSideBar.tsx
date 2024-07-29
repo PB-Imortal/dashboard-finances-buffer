@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // Importing the assets
-import LogoIcon from "../../assets/BlackLogo.svg";
-import HomeIconActive from "../../assets/home-active-icon.svg";
-import HomeIconInactive from "../../assets/home-sidebar-icon.svg";
-import StatementIconActive from "../../assets/statement-active-icon.svg";
-import StatementIconInactive from "../../assets/statement-icon.svg";
-import SettingSideBar from "../../assets/setting-sidebar-icon.svg";
-import UserProfileActive from "../../assets/user-profile-active-icon.svg";
-import UserProfile from "../../assets/user-profile-icon.svg";
-import SettingSideBarActive from "../../assets/SettingSideBar-active.svg";
-import LogoutSideBarInactive from "../../assets/logout-sidebar-icon.svg";
-import HomeHoverFunction from "../../assets/HomeHoverFunction.svg";
-import PorifleHoverFunciton from "../../assets/PorifleHoverFunciton.svg";
-import SettingHoverFunction from "../../assets/SettingHoverFunction.svg";
-import LogoutHoverFunction from "../../assets/LogoutHoverFunction.svg";
-import StatementHoverFunction from "../../assets/StatementHoverFunction.svg";
+import LogoIcon from "../../../assets/BlackLogo.svg";
+import HomeIconActive from "../../../assets/home-active-icon.svg";
+import HomeIconInactive from "../../../assets/home-sidebar-icon.svg";
+import StatementIconActive from "../../../assets/statement-active-icon.svg";
+import StatementIconInactive from "../../../assets/statement-icon.svg";
+import SettingSideBar from "../../../assets/setting-sidebar-icon.svg";
+import UserProfileActive from "../../../assets/user-profile-active-icon.svg";
+import UserProfile from "../../../assets/user-profile-icon.svg";
+import SettingSideBarActive from "../../../assets/SettingSideBar-active.svg";
+import LogoutSideBarInactive from "../../../assets/logout-sidebar-icon.svg";
+import HomeHoverFunction from "../../../assets/HomeHoverFunction.svg";
+import PorifleHoverFunciton from "../../../assets/PorifleHoverFunciton.svg";
+import SettingHoverFunction from "../../../assets/SettingHoverFunction.svg";
+import LogoutHoverFunction from "../../../assets/LogoutHoverFunction.svg";
+import StatementHoverFunction from "../../../assets/StatementHoverFunction.svg";
 
 interface NavLinkProps {
   to: string;
