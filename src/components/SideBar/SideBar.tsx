@@ -40,13 +40,23 @@ interface NavLinkProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ to, activeImgSrc, inactiveImgSrc, children, setIsOpen }) => {
+const NavLink: React.FC<NavLinkProps> = ({
+  to,
+  activeImgSrc,
+  inactiveImgSrc,
+  children,
+  setIsOpen,
+}) => {
   const location = useLocation();
   const isActive = location.pathname === to;
   const textColorClass = isActive ? "text-[#8E48EC]" : "";
 
   return (
-    <Link to={to} className={`flex items-center gap-4 ${textColorClass}`} onClick={() => setIsOpen(false)}>
+    <Link
+      to={to}
+      className={`flex items-center gap-4 ${textColorClass}`}
+      onClick={() => setIsOpen(false)}
+    >
       <img src={isActive ? activeImgSrc : inactiveImgSrc} alt="" />
       <span>{children}</span>
     </Link>
@@ -62,15 +72,15 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'Escape') {
-      setIsOpen(false);
+    if (event.key === "Escape") {
+      setIsOpen((prev) => !prev);
     }
   };
 
   useEffect(() => {
     const handleDocumentKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(prev => !prev);
+        setIsOpen((prev) => !prev);
       }
     };
 
@@ -91,15 +101,17 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
     <div className={`${styles}`}>
       <BurgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       {isOpen && (
-        <div 
+        <div
           ref={overlayRef}
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 py-4" 
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 py-4"
           onClick={() => setIsOpen(false)}
           onKeyDown={handleKeyDown}
           tabIndex={0}
         ></div>
       )}
-      <div className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+      <div
+        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      >
         <ul>
           <li className="flex justify-center p-2">
             <img src={LogoIcon} alt="logo" className="h-auto" />
@@ -108,17 +120,64 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
             <div className="border-t border-#DFDFE0"></div>
           </li>
           <li className="p-4">
-            <button className="absolute top-0 right-0 mt-1 mr-3 text-black text-[26px]" onClick={() => setIsOpen(false)}>&#120;</button>
+            <button
+              className="absolute top-0 right-0 mt-1 mr-3 text-black text-[26px]"
+              onClick={() => setIsOpen(false)}
+            >
+              &#120;
+            </button>
           </li>
         </ul>
         <div className="p-4">
           <nav className="flex flex-col gap-12 font-[600]">
-            <NavLink to="/" activeImgSrc={HomeIconActive} inactiveImgSrc={HomeIconInactive} setIsOpen={setIsOpen}>Home</NavLink>
-            <NavLink to="/statement" activeImgSrc={StatementIconActive} inactiveImgSrc={StatementIconInactive} setIsOpen={setIsOpen}>Statement</NavLink>
-            <NavLink to="/profile" activeImgSrc={ProfileIconActive} inactiveImgSrc={ProfileIconInactive} setIsOpen={setIsOpen}>Profile</NavLink>
-            <NavLink to="#" activeImgSrc={NotificationSideBarActive} inactiveImgSrc={NotificationSideBar} setIsOpen={setIsOpen}>Notification</NavLink>
-            <NavLink to="#" activeImgSrc={SettingSideBarActive} inactiveImgSrc={SettingSideBar} setIsOpen={setIsOpen}>Setting</NavLink>
-            <NavLink to="/login" activeImgSrc={LogoutSideBarIcon} inactiveImgSrc={LogoutSideBarIcon} setIsOpen={setIsOpen}>Logout</NavLink>
+            <NavLink
+              to="/"
+              activeImgSrc={HomeIconActive}
+              inactiveImgSrc={HomeIconInactive}
+              setIsOpen={setIsOpen}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/statement"
+              activeImgSrc={StatementIconActive}
+              inactiveImgSrc={StatementIconInactive}
+              setIsOpen={setIsOpen}
+            >
+              Statement
+            </NavLink>
+            <NavLink
+              to="/profile"
+              activeImgSrc={ProfileIconActive}
+              inactiveImgSrc={ProfileIconInactive}
+              setIsOpen={setIsOpen}
+            >
+              Profile
+            </NavLink>
+            <NavLink
+              to="#"
+              activeImgSrc={NotificationSideBarActive}
+              inactiveImgSrc={NotificationSideBar}
+              setIsOpen={setIsOpen}
+            >
+              Notification
+            </NavLink>
+            <NavLink
+              to="#"
+              activeImgSrc={SettingSideBarActive}
+              inactiveImgSrc={SettingSideBar}
+              setIsOpen={setIsOpen}
+            >
+              Setting
+            </NavLink>
+            <NavLink
+              to="/login"
+              activeImgSrc={LogoutSideBarIcon}
+              inactiveImgSrc={LogoutSideBarIcon}
+              setIsOpen={setIsOpen}
+            >
+              Logout
+            </NavLink>
           </nav>
         </div>
       </div>

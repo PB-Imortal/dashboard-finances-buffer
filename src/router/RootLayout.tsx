@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "../components/_molecules/NavBar";
+import NavBar from "../components/_molecules/navbar/NavBar";
 import SideBar from "../components/SideBar/SideBar";
 import DeskTopSideBar from "../components/SideBar/DeskTopSideBar";
 import { useScreenSize } from "../hook/useHooks";
