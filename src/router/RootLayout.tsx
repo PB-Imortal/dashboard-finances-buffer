@@ -3,6 +3,8 @@ import NavBar from "../components/_molecules/navbar/NavBar";
 import SideBar from "../components/_molecules/SideBar/SideBar";
 import DeskTopSideBar from "../components/_molecules/SideBar/DeskTopSideBar";
 import { useScreenSize } from "../hook/useHooks";
+import { UserContext } from "../components/_molecules/Statement/apiEntities";
+import { useUserData } from "../hook/useHooks";
 
 export default function RootLayout() {
   const screenSize = useScreenSize();
@@ -15,12 +17,14 @@ export default function RootLayout() {
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
         )}
       </div>
-      <div className="flex flex-col flex-1 max-w-full">
-        <NavBar />
-      <div className="sm: -ml-14 md:ml-0">
-        <Outlet />
-      </div>
-      </div>
+      <UserContext.Provider value={useUserData()}>
+        <div className="flex flex-col flex-1 max-w-full">
+          <NavBar />
+          <div className="sm: -ml-14 md:ml-0">
+            <Outlet />
+          </div>
+        </div>
+      </UserContext.Provider>
     </main>
   );
 }
