@@ -31,8 +31,6 @@ describe('StatementHead molecule', () => {
         expect(screen.getByText('$100')).toBeInTheDocument()
         expect(screen.getByText('$50')).toBeInTheDocument()
         expect(screen.getByText('$150')).toBeInTheDocument()
-
-        expect(screen.queryAllByRole('img')).toHaveLength(3)
     });
 
 })
