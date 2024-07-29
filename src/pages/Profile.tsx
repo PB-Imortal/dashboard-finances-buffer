@@ -6,7 +6,7 @@ import { useAvatar, useFetchData } from "../hook/useHooks";
 
 export default function Profile() {
   const { userAvatar, changeAvatar } = useAvatar();
-  const { formData, handleInputChange, handleSave } = useFetchData();
+  const { formData, errors, handleInputChange, handleSave } = useFetchData();
 
   return (
     <>
@@ -36,54 +36,70 @@ export default function Profile() {
           onSubmit={handleSave}
           className="grid grid-cols-2 gap-x-4 gap-y-5 px-1 md:w-full"
         >
-          <FormInput
-            placeholder={"Insert here your last name..."}
-            label={"Last Name"}
-            id={"lastName"}
-            value={formData.lastName}
-            onChange={handleInputChange}
-          />
-          <FormInput
-            placeholder={"Insert here your first name..."}
-            label={"First Name"}
-            id={"firstName"}
-            value={formData.firstName}
-            onChange={handleInputChange}
-          />
-          <FormInput
-            placeholder={"Insert here your date of birth..."}
-            label={"Date of Birth"}
-            id={"dateOfBirth"}
-            value={formData.dateOfBirth}
-            onChange={handleInputChange}
-            styles="col-span-2"
-          />
-          <FormInput
-            placeholder={"Insert here your email address..."}
-            label={"Email"}
-            id={"email"}
-            value={formData.email}
-            onChange={handleInputChange}
-            styles="col-span-2"
-          />
-          <FormInput
-            placeholder={"Insert here your home address..."}
-            label={"Address"}
-            id={"address"}
-            value={formData.address}
-            onChange={handleInputChange}
-          />
-          <FormInput
-            placeholder={"Insert here your residing country..."}
-            label={"Country"}
-            id={"country"}
-            value={formData.country}
-            onChange={handleInputChange}
-          />
+          <div>
+            <FormInput
+              placeholder={"Insert here your last name..."}
+              label={"Last Name"}
+              id={"lastName"}
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
+            {errors.lastName && <p className="text-red-500">{errors.lastName[0]}</p>}
+          </div>
+          <div>
+            <FormInput
+              placeholder={"Insert here your first name..."}
+              label={"First Name"}
+              id={"firstName"}
+              value={formData.firstName}
+              onChange={handleInputChange}
+            />
+            {errors.firstName && <p className="text-red-500">{errors.firstName[0]}</p>}
+          </div>
+          <div className="col-span-2">
+            <FormInput
+              placeholder={"Insert here your date of birth..."}
+              label={"Date of Birth"}
+              id={"dateOfBirth"}
+              value={formData.dateOfBirth}
+              onChange={handleInputChange}
+            />
+            {errors.dateOfBirth && <p className="text-red-500">{errors.dateOfBirth[0]}</p>}
+          </div>
+          <div className="col-span-2">
+            <FormInput
+              placeholder={"Insert here your email address..."}
+              label={"Email"}
+              id={"email"}
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            {errors.email && <p className="text-red-500">{errors.email[0]}</p>}
+          </div>
+          <div>
+            <FormInput
+              placeholder={"Insert here your home address..."}
+              label={"Address"}
+              id={"address"}
+              value={formData.address}
+              onChange={handleInputChange}
+            />
+            {errors.address && <p className="text-red-500">{errors.address[0]}</p>}
+          </div>
+          <div>
+            <FormInput
+              placeholder={"Insert here your residing country..."}
+              label={"Country"}
+              id={"country"}
+              value={formData.country}
+              onChange={handleInputChange}
+            />
+            {errors.country && <p className="text-red-500">{errors.country[0]}</p>}
+          </div>
 
           <ButtonComponent
             type="submit"
-            arialabeltext={"send button"}
+            arialabeltext={"save edits button"}
             bgcolor="bg-bgblack"
             textColor="text-txwhite"
             styles="h-12 p-3 text-txwhite rounded-md font-semibold col-span-2 w-full min-[440px]:justify-self-center min-[440px]:justify-center lg:w-1/2"
