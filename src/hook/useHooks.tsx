@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { profileEditForm, ProfileForm } from "../common/functions/validations";
+import { AuthContext } from "../providers/context/AuthContext";
 
 export const useAvatar = () => {
   const [userAvatar, setUserAvatar] = useState(
