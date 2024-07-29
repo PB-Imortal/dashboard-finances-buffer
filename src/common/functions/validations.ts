@@ -21,7 +21,7 @@ export type CreateAccountFields = z.infer<typeof formCreateAccount>
 
 export const formLogin = z.object({
     email: z.string().email("Please use a valid e-mail address").min(1, "Required").trim(),
-    password: z.string().min(1, "Required").trim(), // use refine method later to validate if user really exists based on dummy backend return data
+    password: z.string().min(1, "Required").trim(),
 })
 
 export type FormLoginField = z.infer<typeof formLogin>
