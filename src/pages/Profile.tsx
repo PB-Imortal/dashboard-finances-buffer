@@ -44,7 +44,9 @@ export default function Profile() {
               value={formData.lastName}
               onChange={handleInputChange}
             />
-            {errors.lastName && <p className="text-red-500">{errors.lastName[0]}</p>}
+            {errors.lastName && (
+              <p className="text-red-500">{errors.lastName[0]}</p>
+            )}
           </div>
           <div>
             <FormInput
@@ -54,7 +56,9 @@ export default function Profile() {
               value={formData.firstName}
               onChange={handleInputChange}
             />
-            {errors.firstName && <p className="text-red-500">{errors.firstName[0]}</p>}
+            {errors.firstName && (
+              <p className="text-red-500">{errors.firstName[0]}</p>
+            )}
           </div>
           <div className="col-span-2">
             <FormInput
@@ -64,7 +68,9 @@ export default function Profile() {
               value={formData.dateOfBirth}
               onChange={handleInputChange}
             />
-            {errors.dateOfBirth && <p className="text-red-500">{errors.dateOfBirth[0]}</p>}
+            {errors.dateOfBirth && (
+              <p className="text-red-500">{errors.dateOfBirth[0]}</p>
+            )}
           </div>
           <div className="col-span-2">
             <FormInput
@@ -84,7 +90,9 @@ export default function Profile() {
               value={formData.address}
               onChange={handleInputChange}
             />
-            {errors.address && <p className="text-red-500">{errors.address[0]}</p>}
+            {errors.address && (
+              <p className="text-red-500">{errors.address[0]}</p>
+            )}
           </div>
           <div>
             <FormInput
@@ -94,7 +102,9 @@ export default function Profile() {
               value={formData.country}
               onChange={handleInputChange}
             />
-            {errors.country && <p className="text-red-500">{errors.country[0]}</p>}
+            {errors.country && (
+              <p className="text-red-500">{errors.country[0]}</p>
+            )}
           </div>
 
           <ButtonComponent
