@@ -1,4 +1,4 @@
-import { CreateAccountFields } from "./validations";
+import { CreateAccountFields, FormLoginField } from "./validations";
 
 export async function postCreateAccount(accountData: CreateAccountFields) {
   try {
@@ -25,3 +25,35 @@ export async function postCreateAccount(accountData: CreateAccountFields) {
     }
   }
 }
+
+export async function loginUser(userData: FormLoginField) {
+  try {
+    const response = await fetch("http://localhost:3000/accountData");
+
+    if (response.ok) {
+      const users = (await response.json()) as (CreateAccountFields & {id: string})[];
+      const userExists = users.find(
+        (user) =>
+          userData.email === user.email && userData.password === user.password
+      );
+      
+      if (userExists) {
+        console.log(userExists);
+        return { data: userExists.id, error: "" };
+      } else {
+        return {
+          data: "",
+          errors:
+            "User not found, please use an existent user or create a account!",
+        };
+      }
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      return { errors: error.message };
+    }
+  }
+}
+
+// loginUser({email: 'asdsa@dasdsa.com', password: 'asdasdasd'})
+// loginUser({email: 'sidney.e.s.s.jr@gmail.com', password: '1234Abc@'})
