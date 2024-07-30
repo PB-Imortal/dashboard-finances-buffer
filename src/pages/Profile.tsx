@@ -1,5 +1,5 @@
 import ButtonComponent from "../components/_atoms/Button/Button";
-import CarouselNav from "../components/_atoms/CarouselNav";
+import CarouselNav from "../components/_atoms/CarouselNav/CarouselNav";
 import FormInput from "../components/_atoms/Input/FormInput";
 import editIcon from "../assets/edit-icon.svg";
 import { useAvatar, useFetchData } from "../hook/useHooks";

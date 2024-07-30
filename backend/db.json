@@ -85,6 +85,22 @@
       "email": "sidney.e.s.s.jr@gmail.com",
       "password": "1234Abc@",
       "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "c1b6",
+      "lastName": "Teste",
+      "firstName": "Teste",
+      "email": "teste@teste.com",
+      "password": "1234Abc@",
+      "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "b9dd",
+      "lastName": "Teste",
+      "firstName": "Teste",
+      "email": "teste@teste.com",
+      "password": "1234Abc@",
+      "confirmPassword": "1234Abc@"
     }
   ]
 }
