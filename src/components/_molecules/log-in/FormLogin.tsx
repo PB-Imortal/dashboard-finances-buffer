@@ -19,7 +19,7 @@ export default function FormLogin() {
   const [openSnack, setOpenSnack] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { setIsLoggedIn} = useContext(AuthContext);
+  const { setIsLoggedIn, setUserId} = useContext(AuthContext);
 
   const {
     register,
@@ -33,15 +33,17 @@ export default function FormLogin() {
   async function handleLogin({ email, password }: FormLoginField) {
     //consulta os dados no servidor e manda o usuário para a home
     const response = await loginUser({ email, password });
+    console.log(response)
+    
     if (response) {
       if (response.errors) {
         setError(response.errors);
       }
       if (
-        response?.data?.email === email &&
-        response.data.password === password
+        response.data
       ) {
         setIsLoggedIn(true);
+        setUserId(response.data);
         reset();
         setOpenSnack((prevState) => !prevState);
         setInterval(() => {

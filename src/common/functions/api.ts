@@ -31,18 +31,19 @@ export async function loginUser(userData: FormLoginField) {
     const response = await fetch("http://localhost:3000/accountData");
 
     if (response.ok) {
-      const users = (await response.json()) as CreateAccountFields[];
+      const users = (await response.json()) as (CreateAccountFields & {id: string})[];
       const userExists = users.find(
         (user) =>
           userData.email === user.email && userData.password === user.password
       );
+      
       if (userExists) {
         console.log(userExists);
-        return { data: userExists };
+        return { data: userExists.id, error: "" };
       } else {
-        console.log(response.statusText);
         return {
-          errors: 
+          data: "",
+          errors:
             "User not found, please use an existent user or create a account!",
         };
       }
@@ -53,3 +54,6 @@ export async function loginUser(userData: FormLoginField) {
     }
   }
 }
+
+// loginUser({email: 'asdsa@dasdsa.com', password: 'asdasdasd'})
+// loginUser({email: 'sidney.e.s.s.jr@gmail.com', password: '1234Abc@'})
