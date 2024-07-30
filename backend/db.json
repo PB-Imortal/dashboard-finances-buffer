@@ -77,6 +77,14 @@
       "email": "sidney.e.s.s.jr@gmail.com",
       "password": "1234Abc@",
       "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "e58c",
+      "lastName": "Sidney",
+      "firstName": "Forms",
+      "email": "sidney.e.s.s.jr@gmail.com",
+      "password": "1234Abc@",
+      "confirmPassword": "1234Abc@"
     }
   ]
 }
