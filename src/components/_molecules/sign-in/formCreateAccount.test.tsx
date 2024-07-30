@@ -6,9 +6,15 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { vi } from "vitest";
+import * as api from "../../../common/functions/api";
 import FormCreateAccount from "./FormCreateAccount";
 
 const navigateMock = vi.fn();
+
+vi.spyOn(api, "postCreateAccount").mockResolvedValue({
+  data: "1",
+  errors: "",
+});
 
 const fieldValues = () => {
   return {
