@@ -64,9 +64,9 @@
               "amount": 130.33
           }
       ],
-        "money": null,
-        "expenses": null,
-        "earnings": null
+        "money": 1000,
+        "expenses": 524.41,
+        "earnings": 413.31
       },
       "id": "d9d1"
     },
