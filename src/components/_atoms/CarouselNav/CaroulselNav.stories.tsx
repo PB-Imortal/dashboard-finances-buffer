@@ -31,14 +31,4 @@ export const Default: Story = {
   ...Template,
 };
 
-export const CustomItems: Story = {
-  ...Template,
-  args: {
-    items: [
-      { label: "Home", to: "/" },
-      { label: "About", to: "/about" },
-      { label: "Services", to: "/services" },
-      { label: "Contact", to: "/contact" },
-    ],
-  },
-};
+
