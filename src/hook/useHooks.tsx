@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { profileEditForm, ProfileForm } from "../common/functions/validations";
+import { UserData } from "../components/_molecules/Statement/apiEntities";
 
 export const useAvatar = () => {
   const [userAvatar, setUserAvatar] = useState(
@@ -182,4 +183,15 @@ export const useFetchData = () => {
   };
 
   return { formData, errors, handleInputChange, handleSave };
+};
+export const useUserData = () => {
+  const [userData, setUserData] = useState<UserData>();
+
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((response) => response.json())
+      .then((data) => setUserData(data[0]));
+  }, []);
+
+  return userData;
 };
