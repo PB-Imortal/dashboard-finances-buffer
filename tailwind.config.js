@@ -20,7 +20,8 @@ export default {
         txtgreen: "#0CB97B",
         dkrbgitenseblue: "#1B232F",
         dkrbgblue: "#212B39",
-        dkrbgpurple: "#8E48EC",
+        dkrpurple:"#8E48FF",
+        dkrbgpurplehover: "#AE7EED",
         dkrbgintensegrey: "#A4A3A7",
       },
       fontFamily: {
