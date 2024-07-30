@@ -147,6 +147,7 @@ export const useFetchData = () => {
           method = "PUT";
           url = `${baseUrl}/${userExistsData[0].id}`;
         }
+
       }
 
       const saveResponse = await fetch(url, {
@@ -183,3 +184,89 @@ export const useFetchData = () => {
 
   return { formData, errors, handleInputChange, handleSave };
 };
+
+    const handleSave = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        const validation = profileEditForm.safeParse(formData);
+        if (!validation.success) {
+            console.error("Validation errors:", validation.error.errors);
+            const fieldErrors = validation.error.format();
+            const newErrors: FormErrors = {};
+            for (const key in fieldErrors) {
+                if (fieldErrors[key as keyof ProfileForm]?._errors) {
+                    newErrors[key as keyof ProfileForm] = fieldErrors[key as keyof ProfileForm]?._errors || [];
+                }
+            }
+            setErrors(newErrors);
+            alert("Validation errors. Please check the form.");
+            return;
+        }
+
+        const baseUrl = "http://localhost:3000/users";
+        const userEmail = formData.email;
+
+        try {
+            const userExistsResponse = await fetch(`${baseUrl}?email=${userEmail}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            let method = "POST"; 
+            let url = baseUrl; 
+            if (userExistsResponse.ok) {
+                const userExistsData = await userExistsResponse.json();
+                if (userExistsData.length > 0) {
+                    method = "PUT";
+                    url = `${baseUrl}/${userExistsData[0].id}`; 
+                }
+            }
+
+            const saveResponse = await fetch(url, {
+                method,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    userid: formData.email,
+                    password: "",
+                    fullname: `${formData.firstName} ${formData.lastName}`,
+                    birthdate: formData.dateOfBirth,
+                    accounting: {
+                        transactions: [],
+                        money: null,
+                        expenses: null,
+                        earnings: null,
+                    },
+                }),
+            });
+
+            const data = await saveResponse.json();
+            if (saveResponse.ok) {
+                console.log("Data updated successfully:", data);
+                alert("Data updated successfully");
+                navigate("/");
+            } else {
+                console.error("Error saving data:", data);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    return { formData, errors, handleInputChange, handleSave };
+};
+
+export const useUserData = () => {
+    const [userData, setUserData] = useState<UserData>()
+
+    useEffect(() => {
+        fetch('http://localhost:3000/users')
+            .then(response => response.json())
+            .then(data => setUserData(data[0]))
+    }, [])
+
+    return(userData)
+}

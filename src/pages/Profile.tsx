@@ -3,14 +3,28 @@ import CarouselNav from "../components/_atoms/CarouselNav";
 import FormInput from "../components/_atoms/Input/FormInput";
 import editIcon from "../assets/edit-icon.svg";
 import { useAvatar, useFetchData } from "../hook/useHooks";
+import { useScreenSize } from "../hook/useHooks"
+import SideBar from "../components/_molecules/SideBar/SideBar";
+import DeskTopSideBar from "../components/_molecules/SideBar/DeskTopSideBar";
+
 
 export default function Profile() {
   const { userAvatar, changeAvatar } = useAvatar();
   const { formData, errors, handleInputChange, handleSave } = useFetchData();
 
+  const screenSize = useScreenSize();
+
+  
   return (
     <>
       <CarouselNav />
+      <div className="flex">
+        {screenSize.width <= 1023 ? (
+          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden absolute top-8" />
+        ) : (
+          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
+        )}
+    
       <div className="block smx:flex smx:justify-center smx:items-center">
         <div className="flex justify-center p-10 smx:justify-center smx:items-center">
           <div className="relative">
@@ -117,6 +131,7 @@ export default function Profile() {
             Save
           </ButtonComponent>
         </form>
+      </div>
       </div>
     </>
   );
