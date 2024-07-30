@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { UserContext } from './apiEntities';
+import { StatementContext } from './apiEntities';
 import { render, screen } from "@testing-library/react";
 import { StatementHead } from "./StatementHead";
 
@@ -13,7 +13,7 @@ const mockUserData = {
 
 const renderWithUserContext = (ui: ReactElement, providerProps:any) => {
     return render(
-        <UserContext.Provider value={providerProps}>{ui}</UserContext.Provider>
+        <StatementContext.Provider value={providerProps}>{ui}</StatementContext.Provider>
     );
 };
 

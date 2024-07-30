@@ -2,28 +2,28 @@ import MoneyIcon from "../../../assets/money-icon.svg";
 import ExpensesIcon from "../../../assets/expanses-icon.svg";
 import EarningsIcon from "../../../assets/earnings-icon.svg";
 
-import { UserContext } from "./apiEntities";
-import { useContext } from "react";
 import { HeadBlock} from "../../_atoms/HeadBlock/HeadBlock";
+import { useContext } from "react";
+import { StatementContext } from "./apiEntities";
 
 export function StatementHead() {
-  const userData = useContext(UserContext);
+  const statementContext = useContext(StatementContext)
 
   const accounting = [
     {
       label: "Money",
       icon: MoneyIcon,
-      amount: userData?.accounting.money,
+      amount: statementContext.userData?.accounting.money,
     },
     {
       label: "Expenses",
       icon: ExpensesIcon,
-      amount: userData?.accounting.expenses,
+      amount: statementContext.userData?.accounting.expenses,
     },
     {
       label: "Earnings",
       icon: EarningsIcon,
-      amount: userData?.accounting.earnings,
+      amount: statementContext.userData?.accounting.earnings,
     },
   ];
 
