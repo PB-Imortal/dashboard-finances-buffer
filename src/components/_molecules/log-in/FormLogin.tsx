@@ -10,12 +10,16 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
 import { Snackbar } from "@mui/base";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import OkIcon from "../../../common/svg/OkIcon";
+import { loginUser } from "../../../common/functions/api";
+import { AuthContext } from "../../../providers/context/AuthContext";
 
 export default function FormLogin() {
   const [openSnack, setOpenSnack] = useState(false);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const { setIsLoggedIn} = useContext(AuthContext);
 
   const {
     register,
@@ -26,14 +30,25 @@ export default function FormLogin() {
     resolver: zodResolver(formLogin),
   });
 
-  function handleLogin({ email, password }: FormLoginField) {
+  async function handleLogin({ email, password }: FormLoginField) {
     //consulta os dados no servidor e manda o usuário para a home
-    console.log({ email, password });
-    reset();
-    setOpenSnack((prevState) => !prevState);
-    setInterval(() => {
-      navigate("/");
-    }, 4000);
+    const response = await loginUser({ email, password });
+    if (response) {
+      if (response.errors) {
+        setError(response.errors);
+      }
+      if (
+        response?.data?.email === email &&
+        response.data.password === password
+      ) {
+        setIsLoggedIn(true);
+        reset();
+        setOpenSnack((prevState) => !prevState);
+        setInterval(() => {
+          navigate("/");
+        }, 4000);
+      }
+    }
   }
 
   return (
@@ -80,6 +95,7 @@ export default function FormLogin() {
           Create account
         </Link>
       </div>
+      {error && <p className="text-red-500 text-sm col-span-2 text-center">{error}</p>}
       <Snackbar
         onClose={() => setOpenSnack((prevState) => !prevState)}
         open={openSnack}
