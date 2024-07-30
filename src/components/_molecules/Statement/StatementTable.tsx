@@ -8,18 +8,26 @@ import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
 import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
-import { useContext } from "react"
-import { UserContext } from "./apiEntities"
+import { useContext} from "react"
+import { StatementContext } from "./apiEntities"
+
 
 export function StatementTable() {
 
-    const userData = useContext(UserContext)
     const screenSize = useScreenSize()
+    const statementContext = useContext(StatementContext)
 
     const viewPort = {
         isMobile: (screenSize.width < 640),
         isTablet: (screenSize.width > 760),
         isLaptop: (screenSize.width > 890),
+    }
+
+    function filterStatement(filter: string) {
+        if(filter === '') {return statementContext.userData?.accounting.transactions}
+        return statementContext.userData?.accounting.transactions.filter(transaction => {
+            return (transaction.description.toLowerCase().includes(filter))
+        })
     }
 
     return (
@@ -45,7 +53,7 @@ export function StatementTable() {
             </thead>
 
             <tbody>
-                {userData?.accounting.transactions.map(transaction => {
+                {filterStatement(statementContext.filter)?.map(transaction => {
                     const isDebit = (transaction.amount < 0)
 
                     return (

@@ -1,4 +1,7 @@
-import { createContext } from "react";
+import { createContext, ReactNode } from "react";
+import { useState } from "react";
+import { useUserData } from "../../../hook/useHooks";
+
 
 interface AccountDetails {
     description: string;
@@ -24,4 +27,14 @@ export interface UserData {
     accounting: Account;
 }
 
-export const UserContext = createContext<UserData | undefined>(undefined)
+export const StatementContext = createContext<any>(undefined)
+
+export const StatementContextProvider = ({children}: {children: ReactNode}) => {
+    const [filter, setFilter] = useState('');
+    const userData = useUserData()
+
+    return (
+    <StatementContext.Provider value={{filter, setFilter, userData}}>
+        {children}
+    </StatementContext.Provider>)
+}
