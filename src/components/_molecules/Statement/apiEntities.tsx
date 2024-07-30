@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useUserData } from "../../../hook/useHooks";
 
 
-interface AccountDetails {
+export type AccountDetails = {
     description: string;
     id: string;
     type: string;
