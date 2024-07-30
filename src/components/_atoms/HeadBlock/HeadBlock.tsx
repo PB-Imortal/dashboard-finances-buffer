@@ -7,7 +7,7 @@ export type BalanceInfo = {
 export function HeadBlock({ data }: { readonly data: BalanceInfo }) {
     return (
         <div 
-            className="bg-bgwhite gap-3 p-4 rounded-2xl w-full min-w-52 flex items-center gap-4"
+            className="bg-bgwhite p-4 rounded-2xl w-full min-w-52 flex items-center gap-4"
         >
             <img src={data.icon} alt={`${data.label} icon`} />
 

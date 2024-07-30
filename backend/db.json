@@ -6,7 +6,64 @@
       "fullname": "Joseph Tesddas",
       "birthdate": "2023-09-22",
       "accounting": {
-        "transactions": [],
+        "transactions": [
+          {
+              "description": "Spotify",
+              "id": "#31426590",
+              "type": "Shopping",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": -2500
+          },
+          {
+              "description": "Freepik Sales",
+              "id": "#31426589",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": 750
+          },
+          {
+              "description": "Mobile Service",
+              "id": "#31426588",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": -150
+          },
+          {
+              "description": "Wilson",
+              "id": "#31426587",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": -1050
+          },
+          {
+              "description": "Emily",
+              "id": "#31426586",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": 390
+          },
+          {
+              "description": "Emily",
+              "id": "#31426585",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": 938.44
+          },
+          {
+              "description": "Emily",
+              "id": "#31426584",
+              "type": "Transfer",
+              "card": "1241432",
+              "date": "28 Jan, 12.30 AM",
+              "amount": 130.33
+          }
+      ],
         "money": null,
         "expenses": null,
         "earnings": null
