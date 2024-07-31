@@ -70,6 +70,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 
 interface DeskTopSideBarProps {
   styles: string;
+  isDarkMode?: boolean;
 }
 
 const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {

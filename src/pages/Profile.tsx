@@ -16,7 +16,7 @@ export default function Profile() {
 
   
   return (
-    <>
+    <section className="dark:bg-dkrbgblue">
       <CarouselNav />
       <div className="flex">
         {screenSize.width <= 1023 ? (
@@ -133,6 +133,6 @@ export default function Profile() {
         </form>
       </div>
       </div>
-    </>
+    </section>
   );
 }
