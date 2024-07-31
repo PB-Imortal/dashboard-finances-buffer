@@ -18,8 +18,8 @@ export function StatementTable() {
     const screenSize = useScreenSize()
 
     const viewPort = {
-        isMobile: (screenSize.width < 640),
-        isTablet: (screenSize.width > 760),
+        isMobile: (screenSize.width < 710),
+        isTablet: (screenSize.width > 709),
         isLaptop: (screenSize.width > 890),
     }
 
@@ -52,7 +52,7 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody>
+            <tbody role='table-body'>
                 {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
                     const isDebit = (transaction.amount < 0)
 
