@@ -1,5 +1,3 @@
-import userEvent from '@testing-library/user-event';
-
 import { render, screen } from '@testing-library/react';
 import { StatementTable } from './StatementTable';
 import { StatementContext } from './apiEntities';
@@ -43,14 +41,9 @@ function renderWithStatementContext(ui: ReactNode, filter = '') {
         <StatementContext.Provider value={{filter, userData}}>
             {ui}
         </StatementContext.Provider>)
-
 }
 
 describe('StatementTable molecule', () => {
-    
-    afterEach (() => {
-        window.innerWidth = 1024
-    })
     
     it('should render two columns if the screen width is lower than 710px', () => {
         window.innerWidth = 709
@@ -79,9 +72,10 @@ describe('StatementTable molecule', () => {
         rows.map(row => {expect(row.childElementCount).toBe(7)})
     })
 
-    it('should render the table body based on filter', () => {
+    it('should render table body inner elements based on filter', () => {
         renderWithStatementContext(<StatementTable />, 'o')
         
         expect(screen.getByRole('table-body').childElementCount).toBe(2)
     })
+
 })
