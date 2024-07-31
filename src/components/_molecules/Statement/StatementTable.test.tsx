@@ -47,7 +47,11 @@ function renderWithStatementContext(ui: ReactNode, filter = '') {
 }
 
 describe('StatementTable molecule', () => {
-
+    
+    afterEach (() => {
+        window.innerWidth = 1024
+    })
+    
     it('should render two columns if the screen width is lower than 710px', () => {
         window.innerWidth = 709
         renderWithStatementContext(<StatementTable />)
