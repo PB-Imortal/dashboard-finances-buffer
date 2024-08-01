@@ -11,9 +11,10 @@ const mockUserData = {
     }
 };
 
-const renderWithUserContext = (ui: ReactElement, providerProps:any) => {
+const renderWithStatementContext = (ui: ReactElement, providerProps:any) => {
+    const userData = providerProps
     return render(
-        <StatementContext.Provider value={providerProps}>{ui}</StatementContext.Provider>
+        <StatementContext.Provider value={{ userData }}>{ui}</StatementContext.Provider>
     );
 };
 
@@ -22,7 +23,7 @@ describe('StatementHead molecule', () => {
 
     it('should render with correct data', () => {
         const providerProps = mockUserData;
-        renderWithUserContext(<StatementHead />, providerProps);
+        renderWithStatementContext(<StatementHead />, providerProps);
 
         expect(screen.getByText('Money')).toBeInTheDocument()
         expect(screen.getByText('Expenses')).toBeInTheDocument()
