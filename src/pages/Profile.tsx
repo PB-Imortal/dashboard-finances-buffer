@@ -25,26 +25,28 @@ export default function Profile() {
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
         )}
     
-      <div className="block smx:flex smx:justify-center smx:items-center">
-        <div className="flex justify-center p-10 smx:justify-center smx:items-center">
-          <div className="relative">
-            <img className="smx:mb-60" src={userAvatar} alt="user avatar" />
-            <button
-              type="button"
-              className="bg-bgblack rounded-md z-1 max-w-md absolute right-3 bottom-0 p-2 group smx:mb-60"
-            >
-              <img
-                className="w-full h-full"
-                src={editIcon}
-                alt="edit button"
-                onClick={changeAvatar}
-              />
-              <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2">
-                Change Avatar
-              </div>
-            </button>
-          </div>
+      <div className="block smx:flex smx:justify-center">
+      <div className="flex justify-center p-10 smx:justify-center">
+  <div className="relative">
+    <div className="relative flex flex-col items-end">
+      <img className="relative z-0" src={userAvatar} alt="user avatar" />
+      <button
+        type="button"
+        className="absolute bg-bgblack rounded-md p-1 z-10 bottom-0 right-10 smx:right-6"
+      >
+        <img
+          className="w-full h-full"
+          src={editIcon}
+          alt="edit button"
+          onClick={changeAvatar}
+        />
+        <div className="absolute bottom-full mb-2 hidden group-hover:block bg-gray-700 text-white text-xs rounded py-1 px-2">
+          Change Avatar
         </div>
+      </button>
+    </div>
+  </div>
+</div>
 
         <form
           onSubmit={handleSave}
