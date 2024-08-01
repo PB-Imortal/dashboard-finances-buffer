@@ -43,7 +43,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   const isActive = location.pathname === to;
 
   const textColorClass = isActive
-    ? "text-dkrbgpurple"
+    ? "text-purple-600"
     : isHovered
     ? "text-[#AE7EED] dark:text-[#CBB2FF]"
     : "text-gray-700 dark:text-gray-300";
