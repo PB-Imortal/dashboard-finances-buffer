@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import DeskTopSideBar from "../components/_molecules/SideBar/DeskTopSideBar";
 
 const SettingPage: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   const toggleDarkMode = () => {
     document.documentElement.classList.toggle("dark");
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
     <>
       <div className="flex dark:bg-dkrbgblue">
-        <DeskTopSideBar styles={""} isDarkMode={true} />
+        <DeskTopSideBar styles={""} isDarkMode={isDarkMode} />
         <div className="p-4 dark:text-bgwhite">
           <h1 className="text-2xl font-bold mb-4">Settings</h1>
           <button
