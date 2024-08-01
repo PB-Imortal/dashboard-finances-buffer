@@ -214,6 +214,14 @@
       "email": "teste@teste.com",
       "password": "1234Abc@",
       "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "1e00",
+      "lastName": "Test Last Name",
+      "firstName": "Test First Name",
+      "email": "test@test.com",
+      "password": "1234Test@",
+      "confirmPassword": "1234Test@"
     }
   ]
 }
