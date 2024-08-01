@@ -18,12 +18,14 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ProtectedRoute children={HomePage} redirectPath={"/login"} />,
+        element: (
+          <ProtectedRoute children={<HomePage />} redirectPath={"/login"} />
+        ),
       },
       {
         path: "/statement",
         element: (
-          <ProtectedRoute children={Statement} redirectPath={"/login"} />
+          <ProtectedRoute children={<Statement />} redirectPath={"/login"} />
         ),
       },
     ],
@@ -32,10 +34,12 @@ export const router = createBrowserRouter([
   { path: "/signin", element: <SignInPage /> },
   {
     path: "/profile",
-    element: <ProtectedRoute children={Profile} redirectPath={"/login"} />,
+    element: <ProtectedRoute children={<Profile />} redirectPath={"/login"} />,
   },
   {
     path: "/setting",
-    element: <ProtectedRoute children={SettingPage} redirectPath={"/login"} />,
+    element: (
+      <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
+    ),
   },
 ]);
