@@ -50,7 +50,7 @@ export default function Profile() {
 
         <form
           onSubmit={handleSave}
-          className="grid grid-cols-2 gap-x-4 gap-y-5 px-1 md:w-full"
+          className="grid grid-cols-2 gap-x-4 gap-y-5 px-1 md:w-full lg:flex lg:flex-col lgx:grid lgx:p-0 lgx:gap-y-0 lgx:mb-20"
         >
           <div>
             <FormInput
@@ -59,6 +59,7 @@ export default function Profile() {
               id={"lastName"}
               value={formData.lastName}
               onChange={handleInputChange}
+              styles="dark:bg-dkrbgblue"
             />
             {errors.lastName && (
               <p className="text-red-500">{errors.lastName[0]}</p>
