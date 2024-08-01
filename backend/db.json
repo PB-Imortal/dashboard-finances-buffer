@@ -61,7 +61,7 @@
             "type": "Transfer",
             "card": "1241432",
             "date": "10 Jan, 00.30 PM",
-            "amount": -40.50
+            "amount": -40.5
           },
           {
             "description": "Toyota",
@@ -119,7 +119,6 @@
             "date": "01 Jan, 06.40 AM",
             "amount": -55.47
           }
-          
         ],
         "money": 1000,
         "expenses": 524.41,
