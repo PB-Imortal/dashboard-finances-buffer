@@ -23,9 +23,11 @@ export function StatementTable() {
         isLaptop: (screenSize.width > 1100),
     }
 
+    const transactions = statementContext.userAccounting.transactions.slice(0, 14)
+
     function filterStatement(filter: string) {
-        if (filter === '') { return statementContext.userData?.accounting.transactions }
-        return statementContext.userData?.accounting.transactions.filter((transaction: AccountDetails) => {
+        if (filter === '') { return transactions}
+        return transactions.filter((transaction: AccountDetails) => {
             return (transaction.description.toLowerCase().includes(filter))
         })
     }
