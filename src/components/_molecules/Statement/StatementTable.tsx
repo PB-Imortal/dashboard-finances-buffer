@@ -20,7 +20,7 @@ export function StatementTable() {
     const viewPort = {
         isMobile: (screenSize.width < 710),
         isTablet: (screenSize.width > 709),
-        isLaptop: (screenSize.width > 890),
+        isLaptop: (screenSize.width > 1100),
     }
 
     function filterStatement(filter: string) {
@@ -51,7 +51,7 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 330)}px`}}>
+            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 380)}px`}}>
                 {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
 
                     const isDebit = (transaction.amount < 0)
