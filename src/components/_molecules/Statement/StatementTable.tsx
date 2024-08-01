@@ -8,7 +8,7 @@ import { TableHeader } from "../../_atoms/TableHeader/TableHeader"
 import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
-import { useContext} from "react"
+import { useContext } from "react"
 import { StatementContext, AccountDetails } from "./apiEntities"
 
 
@@ -24,15 +24,14 @@ export function StatementTable() {
     }
 
     function filterStatement(filter: string) {
-        if(filter === '') {return statementContext.userData?.accounting.transactions}
+        if (filter === '') { return statementContext.userData?.accounting.transactions }
         return statementContext.userData?.accounting.transactions.filter((transaction: AccountDetails) => {
             return (transaction.description.toLowerCase().includes(filter))
         })
     }
-
+    
     return (
-        <table className='bg-bgwhite border-separate gap-3 overflow-scroll px-6 py-3 rounded-2xl text-center w-full'>
-
+        <table className='bg-bgwhite border-separate gap-3 px-6 py-3 rounded-2xl text-center'>
             <thead>
                 <TableRow>
                     <TableHeader content='Description' />
@@ -52,16 +51,16 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody role='table-body'>
+            <tbody className="block overflow-y-scroll" style={{height:`${(window.innerHeight - 380)}px`}}>
                 {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
-                    const isDebit = (transaction.amount < 0)
 
+                    const isDebit = (transaction.amount < 0)
                     return (
                         <TableRow key={transaction.id}>
 
                             <TableData>
                                 <span className="flex gap-2 items-center">
-                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} alt="arrow"/>
+                                    <img src={isDebit ? arrowDownIcon : arrowUpIcon} alt="arrow" />
                                     {transaction.description}
                                 </span>
                             </TableData>
@@ -77,7 +76,7 @@ export function StatementTable() {
                             }
 
                             <TableData variantStyle={isDebit ? 'text-txtred' : 'text-txtgreen'}>
-                                    {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
+                                {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
                             </TableData>
 
                             {
