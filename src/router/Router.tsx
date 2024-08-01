@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./RootLayout";
+import ProtectedRoute from "./ProtectedRoute";
 
 import HomePage from "../pages/HomePage";
 import Statement from "../components/_organisms/Statement";
@@ -17,16 +18,24 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <ProtectedRoute children={HomePage} redirectPath={"/login"} />,
       },
       {
         path: "/statement",
-        element: <Statement />,
+        element: (
+          <ProtectedRoute children={Statement} redirectPath={"/login"} />
+        ),
       },
     ],
   },
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
-  { path: "/profile", element: <Profile /> },
-  { path: "/setting", element: <SettingPage /> },
+  {
+    path: "/profile",
+    element: <ProtectedRoute children={Profile} redirectPath={"/login"} />,
+  },
+  {
+    path: "/setting",
+    element: <ProtectedRoute children={SettingPage} redirectPath={"/login"} />,
+  },
 ]);
