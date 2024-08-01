@@ -102,7 +102,24 @@
             "card": "1241432",
             "date": "01 Jan, 12.30 AM",
             "amount": 130.33
+          },
+          {
+            "description": "Uber Eats",
+            "id": "#31426578",
+            "type": "Shopping",
+            "card": "1241432",
+            "date": "01 Jan, 01.00 PM",
+            "amount": -30
+          },
+          {
+            "description": "Salt & Straw",
+            "id": "#31426577",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "01 Jan, 06.40 AM",
+            "amount": -55.47
           }
+          
         ],
         "money": 1000,
         "expenses": 524.41,
