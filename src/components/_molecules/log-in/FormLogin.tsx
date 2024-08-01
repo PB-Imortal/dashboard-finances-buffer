@@ -44,7 +44,7 @@ export default function FormLogin() {
         setUserId(response.data);
         reset();
         setOpenSnack((prevState) => !prevState);
-        setInterval(() => {
+        setTimeout(() => {
           navigate("/");
         }, 4000);
       }
