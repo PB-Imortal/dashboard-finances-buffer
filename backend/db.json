@@ -8,62 +8,119 @@
       "accounting": {
         "transactions": [
           {
-              "description": "Spotify",
-              "id": "#31426590",
-              "type": "Shopping",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": -2500
+            "description": "Spotify",
+            "id": "#31426590",
+            "type": "Shopping",
+            "card": "1241432",
+            "date": "28 Jan, 12.30 AM",
+            "amount": -2500
           },
           {
-              "description": "Freepik Sales",
-              "id": "#31426589",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": 750
+            "description": "Freepik Sales",
+            "id": "#31426589",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "27 Jan, 10.24 AM",
+            "amount": 750
           },
           {
-              "description": "Mobile Service",
-              "id": "#31426588",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": -150
+            "description": "Mobile Service",
+            "id": "#31426588",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "25 Jan, 00.00 AM",
+            "amount": -150
           },
           {
-              "description": "Wilson",
-              "id": "#31426587",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": -1050
+            "description": "Wilson",
+            "id": "#31426587",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "25 Jan, 06.47 AM",
+            "amount": -1050
           },
           {
-              "description": "Emily",
-              "id": "#31426586",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": 390
+            "description": "Emily",
+            "id": "#31426586",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "20 Jan, 07.34 AM",
+            "amount": 390
           },
           {
-              "description": "Emily",
-              "id": "#31426585",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": 938.44
+            "description": "Sushi Bar",
+            "id": "#31426585",
+            "type": "Shopping",
+            "card": "1241432",
+            "date": "12 Jan, 11.30 PM",
+            "amount": -104.76
           },
           {
-              "description": "Emily",
-              "id": "#31426584",
-              "type": "Transfer",
-              "card": "1241432",
-              "date": "28 Jan, 12.30 AM",
-              "amount": 130.33
+            "description": "Life Insurance",
+            "id": "#31426584",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "10 Jan, 00.30 PM",
+            "amount": -40.50
+          },
+          {
+            "description": "Toyota",
+            "id": "#31426583",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "07 Jan, 07.30 AM",
+            "amount": -938.44
+          },
+          {
+            "description": "Joseph Krugger",
+            "id": "#31426582",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "28 Jan, 12.30 AM",
+            "amount": 550
+          },
+          {
+            "description": "B. Burger",
+            "id": "#31426581",
+            "type": "Shopping",
+            "card": "1241432",
+            "date": "06 Jan, 08.00 AM",
+            "amount": -35.99
+          },
+          {
+            "description": "Spotify",
+            "id": "#31426580",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "05 Jan, 04.30 PM",
+            "amount": -5
+          },
+          {
+            "description": "Emily",
+            "id": "#31426579",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "01 Jan, 12.30 AM",
+            "amount": 130.33
+          },
+          {
+            "description": "Uber Eats",
+            "id": "#31426578",
+            "type": "Shopping",
+            "card": "1241432",
+            "date": "01 Jan, 01.00 PM",
+            "amount": -30
+          },
+          {
+            "description": "Salt & Straw",
+            "id": "#31426577",
+            "type": "Transfer",
+            "card": "1241432",
+            "date": "01 Jan, 06.40 AM",
+            "amount": -55.47
           }
-      ],
+          
+        ],
         "money": 1000,
         "expenses": 524.41,
         "earnings": 413.31
