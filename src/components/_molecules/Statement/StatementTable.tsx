@@ -29,7 +29,7 @@ export function StatementTable() {
             return (transaction.description.toLowerCase().includes(filter))
         })
     }
-    
+
     return (
         <table className='bg-bgwhite border-separate gap-3 px-6 py-3 rounded-2xl text-center'>
             <thead>
@@ -51,7 +51,7 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody className="block overflow-y-scroll" style={{height:`${(window.innerHeight - 380)}px`}}>
+            <tbody className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 330)}px`}}>
                 {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
 
                     const isDebit = (transaction.amount < 0)
