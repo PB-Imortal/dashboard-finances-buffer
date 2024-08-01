@@ -23,15 +23,30 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
   return (
     <button
       data-testid="burger-menu"
-      className={`my-auto bg-bgwhite px-4 py-9 rounded flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
+      className={`my-auto bg-bgwhite dark:bg-dkrbgitenseblue px-4 py-9 flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
       onClick={() => setIsOpen(!isOpen)}
     >
-      <span className="block w-5 h-0.5 bg-black"></span>
-      <span className="block w-5 h-0.5 bg-black"></span>
-      <span className="block w-5 h-0.5 bg-black"></span>
+      <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
+      <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
+      <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
     </button>
   );
 };
+
+interface NavLinkImageProps {
+  src: string;
+  alt: string;
+  isActive: boolean;
+  className?: string;
+}
+
+const NavLinkImage: React.FC<NavLinkImageProps> = ({ src, alt, className }) => (
+  <img
+    src={src}
+    alt={alt}
+    className={`transition-transform duration-300 ${className}`}
+  />
+);
 
 interface NavLinkProps {
   to: string;
@@ -52,13 +67,34 @@ const NavLink: React.FC<NavLinkProps> = ({
   const isActive = location.pathname === to;
   const textColorClass = isActive ? "text-[#8E48EC]" : "";
 
+  const getImageClassName = () => {
+    if (!isActive) {
+      if (
+        to === "/" ||
+        to === "/statement" ||
+        to === "/profile" ||
+        to === "/setting" ||
+        to === "/login" ||
+        to === "#"
+      ) {
+        return "dark:invert";
+      }
+    }
+    return "";
+  };
+
   return (
     <Link
       to={to}
       className={`flex items-center gap-4 ${textColorClass}`}
       onClick={() => setIsOpen(false)}
     >
-      <img src={isActive ? activeImgSrc : inactiveImgSrc} alt="" />
+      <NavLinkImage
+        src={isActive ? activeImgSrc : inactiveImgSrc}
+        alt=""
+        isActive={isActive}
+        className={getImageClassName()}
+      />
       <span>{children}</span>
     </Link>
   );
@@ -111,11 +147,11 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
         ></div>
       )}
       <div
-        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <ul>
           <li className="flex justify-center p-2">
-            <img src={LogoIcon} alt="logo" className="h-auto" />
+            <img src={LogoIcon} alt="logo" className="h-auto dark:invert" />
           </li>
           <li className="p-4">
             <div className="border-t border-#DFDFE0"></div>
@@ -129,7 +165,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
             </button>
           </li>
         </ul>
-        <div className="p-4">
+        <div className="p-4 dark:text-bgwhite">
           <nav className="flex flex-col gap-12 font-[600]">
             <NavLink
               to="/"
@@ -164,7 +200,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               Notification
             </NavLink>
             <NavLink
-              to="#"
+              to="/setting"
               activeImgSrc={SettingSideBarActive}
               inactiveImgSrc={SettingSideBar}
               setIsOpen={setIsOpen}
