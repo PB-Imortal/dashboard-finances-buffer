@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 
 .base-Input-root {
-  @apply flex p-3 space-x-2 items-center border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full;
+    @apply flex p-3 space-x-2 items-center border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full dark:bg-dkrbgblue;
 }
 
 .base-Input-input {
-  @apply rounded-md outline-none text-base text-txinput placeholder-txinput w-full;
+    @apply rounded-md outline-none text-base text-txinput placeholder-txinput w-full dark:bg-dkrbgblue dark:text-txwhite dark:placeholder-txwhite;
 }
 
 /* carousel profile navbar */
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }

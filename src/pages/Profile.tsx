@@ -59,7 +59,6 @@ export default function Profile() {
               id={"lastName"}
               value={formData.lastName}
               onChange={handleInputChange}
-              styles="dark:bg-dkrbgblue"
             />
             {errors.lastName && (
               <p className="text-red-500">{errors.lastName[0]}</p>
