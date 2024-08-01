@@ -40,7 +40,7 @@ export default function FormCreateAccount() {
         setIsLoggedIn(true);
         setOpen(true);
         reset();
-        setInterval(() => {
+        setTimeout(() => {
           navigate("/");
         }, 3000);
       }
