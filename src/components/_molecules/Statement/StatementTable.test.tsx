@@ -4,41 +4,39 @@ import { StatementContext } from "./apiEntities";
 import { ReactNode } from "react";
 
 function renderWithStatementContext(ui: ReactNode, filter = "") {
-  const userData = {
-    accounting: {
-      transactions: [
-        {
-          description: "Spotify",
-          id: "#31426590",
-          type: "Shopping",
-          card: "1241432",
-          date: "28 Jan, 12.30 AM",
-          amount: -2500,
-        },
-        {
-          description: "Freepik Sales",
-          id: "#31426589",
-          type: "Transfer",
-          card: "1241432",
-          date: "28 Jan, 12.30 AM",
-          amount: 750,
-        },
-        {
-          description: "Mobile Service",
-          id: "#31426588",
-          type: "Transfer",
-          card: "1241432",
-          date: "28 Jan, 12.30 AM",
-          amount: -150,
-        },
-      ],
-      money: 1000,
-      expenses: 524.41,
-      earnings: 413.31,
-    },
+  const userAccounting = {
+    transactions: [
+      {
+        description: "Spotify",
+        id: "#31426590",
+        type: "Shopping",
+        card: "1241432",
+        date: "28 Jan, 12.30 AM",
+        amount: -2500,
+      },
+      {
+        description: "Freepik Sales",
+        id: "#31426589",
+        type: "Transfer",
+        card: "1241432",
+        date: "28 Jan, 12.30 AM",
+        amount: 750,
+      },
+      {
+        description: "Mobile Service",
+        id: "#31426588",
+        type: "Transfer",
+        card: "1241432",
+        date: "28 Jan, 12.30 AM",
+        amount: -150,
+      },
+    ],
+    money: 1000,
+    expenses: 524.41,
+    earnings: 413.31,
   };
   return render(
-    <StatementContext.Provider value={{ filter, userData }}>
+    <StatementContext.Provider value={{ filter, userAccounting }}>
       {ui}
     </StatementContext.Provider>
   );
@@ -80,9 +78,6 @@ describe("StatementTable molecule", () => {
 
   it("should render table body inner elements based on filter", async () => {
     renderWithStatementContext(<StatementTable />, "o");
-
-    const el = await screen.findAllByRole("rowgroup");
-
-    expect(el[1].childElementCount).toBe(2);
+    expect(screen.getByRole("table-body").childElementCount).toBe(2);
   });
 });

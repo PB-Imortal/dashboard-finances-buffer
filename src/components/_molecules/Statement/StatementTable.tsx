@@ -19,8 +19,8 @@ export function StatementTable() {
 
     const viewPort = {
         isMobile: (screenSize.width < 710),
-        isTablet: (screenSize.width > 709),
-        isLaptop: (screenSize.width > 1100),
+        isTablet: (screenSize.width >= 710),
+        isLaptop: (screenSize.width > 890),
     }
 
     const transactions = statementContext.userAccounting.transactions.slice(0, 14)
