@@ -18,6 +18,27 @@ import SettingHoverFunction from "../../../assets/SettingHoverFunction.svg";
 import LogoutHoverFunction from "../../../assets/LogoutHoverFunction.svg";
 import StatementHoverFunction from "../../../assets/StatementHoverFunction.svg";
 
+interface NavLinkImageProps {
+  src: string;
+  alt: string;
+  isHovered: boolean;
+  className?: string;
+}
+
+const NavLinkImage: React.FC<NavLinkImageProps> = ({
+  src,
+  alt,
+  isHovered,
+  className,
+}) => (
+  <img
+    src={src}
+    alt={alt}
+    className={`transition-transform duration-300 ${className}`}
+    style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
+  />
+);
+
 interface NavLinkProps {
   to: string;
   activeImgSrc: string;
@@ -37,7 +58,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   children,
   onMouseEnter,
   onMouseLeave,
-  isHovered,
+  isHovered = false,
 }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
@@ -45,8 +66,23 @@ const NavLink: React.FC<NavLinkProps> = ({
   const textColorClass = isActive
     ? "text-purple-600"
     : isHovered
-    ? "text-[#AE7EED] dark:text-[#CBB2FF]"
-    : "text-gray-700 dark:text-gray-300";
+      ? "text-[#AE7EED] dark:text-[#CBB2FF]"
+      : "text-gray-700 dark:text-gray-300";
+
+  const getImageClassName = () => {
+    if (!isActive && !isHovered) {
+      if (
+        to === "/" ||
+        to === "/statement" ||
+        to === "/profile" ||
+        to === "/setting" ||
+        to === "/login"
+      ) {
+        return "dark:invert";
+      }
+    }
+    return "";
+  };
 
   return (
     <Link
@@ -55,13 +91,22 @@ const NavLink: React.FC<NavLinkProps> = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <img
-        src={isActive ? activeImgSrc : isHovered && hoverImgSrc ? hoverImgSrc : inactiveImgSrc}
+      <NavLinkImage
+        src={
+          isActive
+            ? activeImgSrc
+            : isHovered && hoverImgSrc
+              ? hoverImgSrc
+              : inactiveImgSrc
+        }
         alt=""
+        isHovered={isHovered}
+        className={getImageClassName()}
+      />
+      <span
         className="transition-transform duration-300"
         style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
-      />
-      <span className="transition-transform duration-300" style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}>
+      >
         {children}
       </span>
     </Link>
@@ -78,11 +123,13 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
 
   return (
     <div className={`${styles}`}>
-      <div className={`m-3 top-0 left-0 z-40 w-64 h-[97vh] bg-white shadow-md p-8 rounded-[18px] dark:bg-dkrbgitenseblue`}>
+      <div
+        className={`m-3 top-0 left-0 z-40 w-64 h-[97.5vh] bg-white shadow-md p-8 rounded-[18px] dark:bg-dkrbgitenseblue`}
+      >
         <ul>
           <li>
             <div className="flex justify-center p-2">
-              <img src={LogoIcon} alt="Logo" className=" h-auto" />
+              <img src={LogoIcon} alt="Logo" className=" h-auto dark:invert" />
             </div>
           </li>
           <li className="p-4">

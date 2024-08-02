@@ -31,9 +31,10 @@ export default {
         md: "769px",
         smx: "520px",
         sm: "320px",
+        lgx: "1220px"
       },
     },
   },
   plugins: [],
-  darkMode: "class",
+  darkMode: 'selector',
 };
