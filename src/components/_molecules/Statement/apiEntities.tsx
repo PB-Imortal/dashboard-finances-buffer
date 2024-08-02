@@ -2,8 +2,12 @@ import { createContext, ReactNode } from "react";
 import { useState } from "react";
 import { useUserData } from "../../../hook/useHooks";
 
-
-export type AccountDetails = {
+export type TransactionsFilter = {
+    term: string;
+    month: string;
+    year: string;
+}
+export type Transaction = {
     description: string;
     id: string;
     type: string;
@@ -13,7 +17,7 @@ export type AccountDetails = {
 }
 
 interface Account {
-    transactions: AccountDetails[];
+    transactions: Transaction[];
     money: number;
     expenses: number;
     earnings: number;
@@ -30,7 +34,7 @@ export interface UserData {
 export const StatementContext = createContext<any>(undefined)
 
 export const StatementContextProvider = ({children}: {children: ReactNode}) => {
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState<TransactionsFilter>();
     const userAccounting = useUserData()?.accounting
 
     return (

@@ -9,7 +9,7 @@ import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
 import { useContext } from "react"
-import { StatementContext, AccountDetails } from "./apiEntities"
+import { StatementContext, Transaction } from "./apiEntities"
 
 
 export function StatementTable() {
@@ -21,15 +21,6 @@ export function StatementTable() {
         isMobile: (screenSize.width < 710),
         isTablet: (screenSize.width >= 710),
         isLaptop: (screenSize.width > 890),
-    }
-
-    const transactions = statementContext.userAccounting.transactions.slice(0, 14)
-
-    function filterStatement(filter: string) {
-        if (filter === '') { return transactions}
-        return transactions.filter((transaction: AccountDetails) => {
-            return (transaction.description.toLowerCase().includes(filter))
-        })
     }
 
     return (
@@ -52,7 +43,7 @@ export function StatementTable() {
             </thead>
 
             <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 390)}px`}}>
-                {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
+                {statementContext.userAccounting?.transactions.map((transaction: Transaction) => {
 
                     const isDebit = (transaction.amount < 0)
                     return (
