@@ -1,5 +1,5 @@
-import Title from "../_atoms/Title/Title";
-import FormCreateAccount from "../_molecules/sign-in/FormCreateAccount";
+import Title from "../../_atoms/Title/Title";
+import FormCreateAccount from "../../_molecules/sign-in/FormCreateAccount";
 
 export default function SignIn() {
   return (
