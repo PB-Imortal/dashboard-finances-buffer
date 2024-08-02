@@ -31,10 +31,10 @@ export const StatementContext = createContext<any>(undefined)
 
 export const StatementContextProvider = ({children}: {children: ReactNode}) => {
     const [filter, setFilter] = useState('');
-    const userData = useUserData()
+    const userAccounting = useUserData()?.accounting
 
     return (
-    <StatementContext.Provider value={{filter, setFilter, userData}}>
+    <StatementContext.Provider value={{filter, setFilter, userAccounting}}>
         {children}
     </StatementContext.Provider>)
 }

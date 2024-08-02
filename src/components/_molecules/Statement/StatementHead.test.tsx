@@ -3,18 +3,15 @@ import { StatementContext } from './apiEntities';
 import { render, screen } from "@testing-library/react";
 import { StatementHead } from "./StatementHead";
 
-const mockUserData = {
-    accounting: {
+const mockUserAccounting = {
         money: 100,
         expenses: 50,
         earnings: 150
-    }
 };
 
-const renderWithStatementContext = (ui: ReactElement, providerProps:any) => {
-    const userData = providerProps
+const renderWithStatementContext = (ui: ReactElement, userAccounting:any) => {
     return render(
-        <StatementContext.Provider value={{ userData }}>{ui}</StatementContext.Provider>
+        <StatementContext.Provider value={{ userAccounting }}>{ui}</StatementContext.Provider>
     );
 };
 
@@ -22,8 +19,7 @@ const renderWithStatementContext = (ui: ReactElement, providerProps:any) => {
 describe('StatementHead molecule', () => {
 
     it('should render with correct data', () => {
-        const providerProps = mockUserData;
-        renderWithStatementContext(<StatementHead />, providerProps);
+        renderWithStatementContext(<StatementHead />, {...mockUserAccounting});
 
         expect(screen.getByText('Money')).toBeInTheDocument()
         expect(screen.getByText('Expenses')).toBeInTheDocument()
