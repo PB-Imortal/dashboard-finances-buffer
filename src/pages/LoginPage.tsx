@@ -1,6 +1,6 @@
 import LoginBg from "../assets/login-bg.webp";
 import statementImg from "../assets/name-and-logo.svg";
-import Login from "../components/_organisms/Login";
+import Login from "../components/_organisms/Login/Login";
 
 export default function LoginPage() {
   return (
