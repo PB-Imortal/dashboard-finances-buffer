@@ -8,7 +8,6 @@ import NotificationUpperbarIcon from "../../../common/svg/NotificationUpperBarIc
 import SearchIcon from "../../../common/svg/SearchIcon";
 import SettingUpperbarIcon from "../../../common/svg/setting-upperbar-icon";
 
-
 export default function NavBar() {
   const { userAvatar, setUserAvatar } = useAvatar();
   const statementContext = useContext(StatementContext) 
@@ -19,8 +18,8 @@ export default function NavBar() {
   }, [setUserAvatar]);
 
   return (
-    <div className="flex flex-row sm:bg-white md:bg-inherit h-fit">
-      <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4 dark:bg-dkrbgitenseblue">
+    <div className="flex flex-row sm:bg-white md:bg-inherit h-fit dark:bg-dkrbgblue">
+      <div className=" flex lg:mr-4 grow bg-white md:rounded-[16px] sm:rounded-none sm:justify-start justify-around lg:ml-4 sm:px-2 sm:h-[88px] h-[120px] lg:mt-3 dark:bg-dkrbgitenseblue">
         <FormInput
           id="search"
           aria-label="Search box"
