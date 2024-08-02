@@ -3,7 +3,7 @@ import Login from "./Login";
 import { BrowserRouter } from "react-router-dom";
 
 const meta: Meta<typeof Login> = {
-  title: "organism/Login",
+  title: "organisms/Login",
   component: Login,
   tags: ["autodocs"],
   decorators: [

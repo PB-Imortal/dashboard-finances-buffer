@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Home from "./Home";
+import SignIn from "./SignIn";
 import { BrowserRouter } from "react-router-dom";
 
-const meta: Meta<typeof Home> = {
-  title: "organisms/Home",
-  component: Home,
+const meta: Meta<typeof SignIn> = {
+  title: "organisms/SignIn",
+  component: SignIn,
   tags: ["autodocs"],
   decorators: [
     (Story) => (
@@ -15,8 +15,8 @@ const meta: Meta<typeof Home> = {
   ],
 };
 
-type Story = StoryObj<typeof Home>;
-
 export default meta;
+
+type Story = StoryObj<typeof SignIn>;
 
 export const Default: Story = {};
