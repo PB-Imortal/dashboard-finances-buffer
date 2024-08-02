@@ -59,7 +59,7 @@ const CarouselNav: React.FC<CarouselNavProps> = ({ items }) => {
                     >
                         <Link
                             to={item.to}
-                            className={`carousel-item cursor-pointer p-2 rounded bg-dkrbgitenseblue ${
+                            className={`carousel-item cursor-pointer p-2 rounded dark:bg-dkrbgitenseblue ${
                                 selectedIndex === index
                                     ? "text-bgblack font-bold bg-white"
                                     : "text-txtgrey bg-white"
