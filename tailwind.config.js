@@ -18,6 +18,7 @@ export default {
         txtpurple: "#4E01B4",
         txtred: "#E02244",
         txtgreen: "#0CB97B",
+        txtgrey: "#EFEFF0",
         dkrbgitenseblue: "#1B232F",
         dkrbgblue: "#212B39",
         dkrpurple:"#8E48FF",
