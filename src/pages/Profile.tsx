@@ -20,12 +20,12 @@ export default function Profile() {
       <CarouselNav />
       <div className="flex">
         {screenSize.width <= 1023 ? (
-          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden absolute -top-4" />
+          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden absolute top-0" />
         ) : (
           <DeskTopSideBar styles="sm:hidden md:hidden lg:flex mr-100 relative"/>
         )}
     
-      <div className="block smx:flex smx:justify-center">
+      <div className="block smx:w-full lg:flex justify-center">
       <div className="flex justify-center p-10 smx:justify-center">
   <div className="relative">
     <div className="relative flex flex-col items-end">
