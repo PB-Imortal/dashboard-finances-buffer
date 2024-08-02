@@ -19,4 +19,4 @@ type Story = StoryObj<typeof FormLogin>;
 
 export default meta;
 
-export const DefaultFormLogin: Story = {};
+export const Default: Story = {};

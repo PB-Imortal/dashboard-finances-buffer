@@ -222,6 +222,14 @@
       "email": "test@test.com",
       "password": "1234Test@",
       "confirmPassword": "1234Test@"
+    },
+    {
+      "id": "f976",
+      "lastName": "Terra",
+      "firstName": "William",
+      "email": "teste@teste.com",
+      "password": "1234Abc@",
+      "confirmPassword": "1234Abc@"
     }
   ]
 }
