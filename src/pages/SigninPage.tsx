@@ -1,4 +1,4 @@
-import SignIn from "../components/_organisms/SignIn";
+import SignIn from "../components/_organisms/SignIn/SignIn";
 import loginBg from "../assets/login-bg.webp";
 
 export default function SignInPage() {
