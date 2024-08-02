@@ -1,4 +1,4 @@
-import Title from "../_atoms/Title";
+import Title from "../_atoms/Tittle/Title";
 import homeBg from "../../assets/home-bg.webp";
 export default function Home() {
   return (
