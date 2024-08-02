@@ -1,4 +1,4 @@
-import Home from "../components/_organisms/Home";
+import Home from "../components/_organisms/Home/Home";
 
 export default function HomePage() {
   return (
