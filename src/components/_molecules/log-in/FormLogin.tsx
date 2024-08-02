@@ -19,7 +19,7 @@ export default function FormLogin() {
   const [openSnack, setOpenSnack] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-  const { setIsLoggedIn, setUserId} = useContext(AuthContext);
+  const { setIsLoggedIn, setUserId } = useContext(AuthContext);
 
   const {
     register,
@@ -33,15 +33,13 @@ export default function FormLogin() {
   async function handleLogin({ email, password }: FormLoginField) {
     //consulta os dados no servidor e manda o usuário para a home
     const response = await loginUser({ email, password });
-    console.log(response)
-    
+    console.log(response);
+
     if (response) {
       if (response.errors) {
         setError(response.errors);
       }
-      if (
-        response.data
-      ) {
+      if (response.data) {
         setIsLoggedIn(true);
         setUserId(response.data);
         reset();
@@ -97,7 +95,9 @@ export default function FormLogin() {
           Create account
         </Link>
       </div>
-      {error && <p className="text-red-500 text-sm col-span-2 text-center">{error}</p>}
+      {error && (
+        <p className="text-red-500 text-sm col-span-2 text-center">{error}</p>
+      )}
       <Snackbar
         onClose={() => setOpenSnack((prevState) => !prevState)}
         open={openSnack}
