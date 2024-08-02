@@ -6,8 +6,9 @@ import {
   waitFor,
 } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { vi } from "vitest";
+import { Mock, vi } from "vitest";
 import FormLogin from "./FormLogin";
+import { loginUser } from "../../../common/functions/api";
 
 const navigateMock = vi.fn();
 
@@ -21,7 +22,7 @@ const getAllComponents = () => {
 };
 
 vi.mock("react-router-dom", async (importOriginal) => {
-  const actual: [] = await importOriginal();
+  const actual: [] = await importOriginal(); 
   return {
     ...actual,
     useNavigate() {
@@ -31,13 +32,21 @@ vi.mock("react-router-dom", async (importOriginal) => {
   };
 });
 
+vi.mock('../../../common/functions/api', () => ({
+  loginUser: vi.fn(),
+}));
+
 describe("FormLogin", () => {
+  const mockLoginUser = loginUser as Mock;
+
+  
   test("Should render correctly on the screen", () => {
     render(
       <MemoryRouter>
         <FormLogin />
       </MemoryRouter>
     );
+
 
     const emailInput: HTMLInputElement = screen.getByPlaceholderText("E-mail");
     const passwordInput: HTMLInputElement =
@@ -56,16 +65,29 @@ describe("FormLogin", () => {
 
   //fix this
   test("Should validate the field inputs, open/close snackbar and send the user to homepage by triggering useNavigate", async () => {
+    mockLoginUser.mockResolvedValueOnce({
+      data: 'user-id'
+    });
+    
+
     render(<FormLogin />);
     const { emailInput, passwordInput, loginButton } = getAllComponents();
 
     act(() => {
       fireEvent.change(emailInput, {
         target: { value: "sidney.e.s.s.jr@gmail.com" },
-      });
+      }); 
       fireEvent.change(passwordInput, { target: { value: "1234Abc@" } });
       fireEvent.click(loginButton);
     });
+
+    await waitFor(() => {
+      expect(mockLoginUser).toHaveBeenCalledWith({
+        email: "sidney.e.s.s.jr@gmail.com",
+        password: "1234Abc@",
+      })
+    })
+
     const snackBar = await screen.findByText("Successfully Logged In");
 
     expect(snackBar).toBeVisible();
@@ -77,9 +99,13 @@ describe("FormLogin", () => {
     navigateMock.mockRestore();
 
     expect(snackBar).not.toBeVisible();
-  });
+  }); 
 
   test("Should show to user an error message of input with valid value but of an nonexistent user on dummy data base", async () => {
+    mockLoginUser.mockResolvedValueOnce({
+      errors: 'User not found, please use an existent user or create a account!'
+    });
+
     render(<FormLogin />);
     const { emailInput, passwordInput, loginButton } = getAllComponents();
 
@@ -88,16 +114,23 @@ describe("FormLogin", () => {
       fireEvent.change(passwordInput, { target: { value: "123456aA#" } });
       fireEvent.click(loginButton);
     });
-    const errorMessage = await screen.findByText(
-      "User not found, please use an existent user or create a account!"
-    );
+
+    await waitFor(() => {
+      expect(mockLoginUser).toHaveBeenCalledWith({
+        email: "teste@email.com",
+        password: "123456aA#",
+      })
+    })
+
 
     await waitFor(() => expect(navigateMock).not.toHaveBeenCalled(), {
       timeout: 4100,
     });
-
+    
     navigateMock.mockRestore();
-    expect(errorMessage).toBeInTheDocument();
+    await waitFor(() => screen.getByText(
+      "User not found, please use an existent user or create a account!"
+    ));
   });
 
   test("Should show to the user error messages of inputs without a valid value", async () => {

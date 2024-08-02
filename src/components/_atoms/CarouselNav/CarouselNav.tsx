@@ -49,7 +49,7 @@ const CarouselNav: React.FC<CarouselNavProps> = ({ items }) => {
     }
 
     return (
-        <nav className="relative bg-bgwhite pb-[0.9rem] ml-10 lg:ml-0 dark:bg-dkrbgitenseblue">
+        <nav className="relative bg-bgwhite py-[0.95rem] ml-10 lg:ml-0 dark:bg-dkrbgitenseblue">
             <div className="overflow-x-auto whitespace-nowrap flex items-center space-x-4 p-4 scrollbar-hide">
                 {actualItems.map((item, index) => (
                     <div
