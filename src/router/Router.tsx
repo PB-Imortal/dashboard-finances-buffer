@@ -3,7 +3,7 @@ import RootLayout from "./RootLayout";
 import ProtectedRoute from "./ProtectedRoute";
 
 import HomePage from "../pages/HomePage";
-import Statement from "../components/_organisms/Statement";
+import Statement from "../components/_organisms/Statement/Statement";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
