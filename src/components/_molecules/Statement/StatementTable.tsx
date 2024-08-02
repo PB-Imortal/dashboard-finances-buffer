@@ -19,13 +19,15 @@ export function StatementTable() {
 
     const viewPort = {
         isMobile: (screenSize.width < 710),
-        isTablet: (screenSize.width > 709),
+        isTablet: (screenSize.width >= 710),
         isLaptop: (screenSize.width > 890),
     }
 
+    const transactions = statementContext.userAccounting.transactions.slice(0, 14)
+
     function filterStatement(filter: string) {
-        if (filter === '') { return statementContext.userData?.accounting.transactions }
-        return statementContext.userData?.accounting.transactions.filter((transaction: AccountDetails) => {
+        if (filter === '') { return transactions}
+        return transactions.filter((transaction: AccountDetails) => {
             return (transaction.description.toLowerCase().includes(filter))
         })
     }
@@ -45,13 +47,11 @@ export function StatementTable() {
                         </>
                     }
                     <TableHeader content='Amount' />
-
                     {viewPort.isLaptop && <TableHeader content='Receipt' />}
-
                 </TableRow>
             </thead>
 
-            <tbody className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 330)}px`}}>
+            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 390)}px`}}>
                 {filterStatement(statementContext.filter)?.map((transaction: AccountDetails) => {
 
                     const isDebit = (transaction.amount < 0)

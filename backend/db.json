@@ -2,7 +2,7 @@
   "users": [
     {
       "userid": "test@test.com",
-      "password": "",
+      "password": "auau",
       "fullname": "Joseph Tesddas",
       "birthdate": "2023-09-22",
       "accounting": {
