@@ -23,7 +23,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
   return (
     <button
       data-testid="burger-menu"
-      className={`my-auto bg-bgwhite dark:bg-dkrbgitenseblue px-4 py-9 flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
+      className={`my-auto bg-bgwhite bg-transparent px-4 py-9 flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
