@@ -19,7 +19,7 @@ export default function RootLayout() {
       <StatementContextProvider>
         <div className="flex flex-col flex-1 max-w-full">
           <NavBar />
-          <div className="sm: -ml-14 md:ml-0">
+          <div className="sm: -ml-14 md:ml-0 dark:bg-dkrbgblue">
             <Outlet />
           </div>
         </div>
