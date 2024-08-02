@@ -13,17 +13,17 @@ export function StatementHead() {
     {
       label: "Money",
       icon: MoneyIcon,
-      amount: statementContext.userAccounting.money,
+      amount: statementContext.userAccounting?.money,
     },
     {
       label: "Expenses",
       icon: ExpensesIcon,
-      amount: statementContext.userAccounting.expenses,
+      amount: statementContext.userAccounting?.expenses,
     },
     {
       label: "Earnings",
       icon: EarningsIcon,
-      amount: statementContext.userAccounting.earnings,
+      amount: statementContext.userAccounting?.earnings,
     },
   ];
 
