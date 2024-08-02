@@ -196,7 +196,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               Profile
             </NavLink>
             <NavLink
-              to="#"
+              to="/notifications"
               activeImgSrc={NotificationSideBarActive}
               inactiveImgSrc={NotificationSideBar}
               setIsOpen={setIsOpen}
