@@ -34,11 +34,11 @@ export interface UserData {
 export const StatementContext = createContext<any>(undefined)
 
 export const StatementContextProvider = ({children}: {children: ReactNode}) => {
-    const [filter, setFilter] = useState<TransactionsFilter>();
+    const [filteredData, setFilteredData] = useState<TransactionsFilter>();
     const userAccounting = useUserData()?.accounting
 
     return (
-    <StatementContext.Provider value={{filter, setFilter, userAccounting}}>
+    <StatementContext.Provider value={{filteredData, setFilteredData, userAccounting}}>
         {children}
     </StatementContext.Provider>)
 }

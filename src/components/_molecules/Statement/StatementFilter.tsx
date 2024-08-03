@@ -1,93 +1,77 @@
-import { useContext, useRef } from "react"
-import { StatementContext } from "./apiEntities"
-import type { TransactionsFilter, Transaction } from "./apiEntities";
+import { useContext } from "react";
+import { StatementContext } from "./apiEntities";
+import type { Transaction } from "./apiEntities";
 
 export function StatementFilter() {
-
+  
+  const date = new Date();
   const statementContext = useContext(StatementContext);
+  const filteredData = {year: filterYear(`${date.getFullYear()}`),};
 
-  const termRef = useRef(null);
-  const monthRef = useRef(null);
-  const yearRef = useRef(null);
-  const date = new Date()
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-
-  const filteredData = {
-    month: filterMonth(`${date.getMonth()}`)
-    year: filterYear(`${date.getFullYear()}`)
-  }
-  console.log(filteredData.year)
+  const months = [
+    {label: "Jan", value: "01"}, {label: "Feb", value: "02"}, {label: "Mar", value: "03"}, {label: "Apr", value: "04"}, 
+    {label: "May", value: "05"}, {label: "June", value: "06"}, {label: "July", value: "07"}, {label: "Aug", value: "08"}, 
+    {label: "Sept", value: "09"}, {label: "Oct", value: "10"}, {label: "Nov", value: "11"}, {label: "Dec", value: "12"}
+  ];
 
   function filterTerm() {
     return statementContext.userAccounting.transactions.filter((transaction: Transaction) => {
       return (transaction.description === statementContext.filter.term)
     })
-  }
+  };
   
   function filterMonth(month: string) {
     return filteredData.year.filter((transaction: Transaction) => {
       return (transaction.date.slice(3,5) === month)
     })
-  }
+  };
 
   function filterYear(year: string) {
     return statementContext.userAccounting.transactions?.filter((transaction: Transaction) => {
       return (transaction.date.slice(6,10) === year)
     })
-  }
-
-  function filterMonthAndYear(month: string, year: string) {
-    return statementContext.userAccounting.transactions.filter((transaction: Transaction) => {
-      return (transaction.date.slice(3,5) === month) && (transaction.date.slice(6,10) === year)
-    })
-  }
+  };
 
   function handleSelectYear(e: any) {
     filteredData.year = filterYear(e.target.value)
-    console.log(filteredData.year)
-  }
-  function handleSelectMonth(e: any) {
-    console.log(e.target.value)
-    filteredData.month = filterMonth(e.target.value)
-  }
+  };
 
-  function setFilter() {
-    statementContext.setFilter({
-      term: termRef.current.value,
-      month: monthRef.current.value,
-      year: yearRef.current.value
-    })
-  }
+  function handleSelectMonth(e: any) {
+    filteredData.month = filterMonth(e.target.value)
+  };
+
+  function handleFilter() {
+    statementContext.setFilteredData(filteredData.year)
+  };
 
   function getYearsGap() {
     const gap = []
     for (let i = date.getFullYear(); i >= 2008; i--) { gap.push(i) }
     return gap
-  }
+  };
 
   return (
     <form className="flex justify-end gap-3 items-center">
-      <button onClick={(e) => { e.preventDefault(); return setFilter() }}>Filter</button>
+      <button onClick={(e) => { e.preventDefault(); return handleFilter()}}>Filter</button>
 
       <input
         type="text"
         className="bg-bgwhite border-separate rounded-md px-2"
         placeholder="Search"
-        ref={termRef}
       />
 
-      <select ref={monthRef} onChange={(e) => handleSelectMonth(e)}className="border-separate rounded-md px-2">
+      <select onChange={(e) => handleSelectMonth(e)}className="border-separate rounded-md px-2">
         {months.map(month =>
-          <option key={month} value={month}>{month}</option>)
+          <option key={month.value} value={month.value}>{month.label}</option>)
         }
       </select>
 
-      <select ref={yearRef} onChange={(e) => handleSelectYear(e)}className="border-separate rounded-md px-2">
+      <select onChange={(e) => handleSelectYear(e)}className="border-separate rounded-md px-2">
         {getYearsGap().map(year =>
           <option key={year} value={year}>{year}</option>)
         }
       </select>
 
     </form>
-  )
-}
+  );
+};

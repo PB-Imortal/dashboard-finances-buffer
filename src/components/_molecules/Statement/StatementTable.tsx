@@ -42,7 +42,7 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 390)}px`}}>
+            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 365)}px`}}>
                 {statementContext.userAccounting?.transactions.map((transaction: Transaction) => {
 
                     const isDebit = (transaction.amount < 0)
