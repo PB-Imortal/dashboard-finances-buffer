@@ -8,7 +8,6 @@ import {
 import { vi } from "vitest";
 import * as api from "../../../common/functions/api";
 import FormCreateAccount from "./FormCreateAccount";
-
 const navigateMock = vi.fn();
 
 vi.spyOn(api, "postCreateAccount").mockResolvedValue({
@@ -35,6 +34,7 @@ describe("FormCreateAccount", () => {
       useNavigate() {
         return navigateMock;
       },
+      Link: vi.fn().mockImplementation(({ children }) => children),
     };
   });
 
