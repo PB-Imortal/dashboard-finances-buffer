@@ -7,7 +7,7 @@ export default function Statement() {
     
 
     return (
-        <div className='bg-bggrey flex flex-col gap-4 p-4 w-full'>
+        <div className='bg-bggrey flex flex-col gap-4 p-4 w-full dark:bg-dkrbgblue'>
             <StatementHead />
             <StatementFilter />
             <StatementTable />

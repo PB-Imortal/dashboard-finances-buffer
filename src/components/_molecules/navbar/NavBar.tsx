@@ -26,7 +26,7 @@ export default function NavBar() {
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="space-y-0 justify-start  grow lg:ml-12 mt-2"
+          styles="space-y-0 justify-start  grow lg:ml-12 mt-2 "
           onChange={(e) => {statementContext?.setFilter(e.target.value.toLowerCase())}}
         >
           {" "}
@@ -34,7 +34,7 @@ export default function NavBar() {
         <div className="  sm:hidden md:flex  justify-around mt-4 mx-7 align-middle">
           <Link to="">
             <ButtonComponent
-              styles="my-auto"
+              styles="my-auto dark:bg-dkrbgitenseblue"
               arialabeltext="Settings button"
               bgcolor="bg-bgwhite"
             >
@@ -43,7 +43,7 @@ export default function NavBar() {
           </Link>
           <Link to="">
             <ButtonComponent
-              styles="my-auto"
+              styles="my-auto dark:bg-dkrbgitenseblue"
               arialabeltext="Notifications button"
               bgcolor="bg-bgwhite"
             >
@@ -52,7 +52,7 @@ export default function NavBar() {
           </Link>
           <Link to="Profile" className="">
             <ButtonComponent
-              styles=""
+              styles="dark:bg-dkrbgitenseblue"
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >

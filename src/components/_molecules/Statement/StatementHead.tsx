@@ -29,7 +29,7 @@ export function StatementHead() {
 
   return (
     <div 
-      className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden"
+      className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden dark:text-txtgrey"
     >
       {accounting.map((item) => <HeadBlock key={item.label} data={item}/>)}
     </div>
