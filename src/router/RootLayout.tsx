@@ -13,11 +13,11 @@ export default function RootLayout() {
         {screenSize.width <= 1023 ? (
           <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
         ) : (
-          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex" />
+          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex dark:bg-dkrbgblue" />
         )}
       </div>
       <StatementContextProvider>
-        <div className="flex flex-col flex-1 max-w-full">
+        <div className="flex flex-col flex-1 max-w-full dark:bg-dkrbgblue">
           <NavBar />
           <div className="sm: -ml-14 md:ml-0 dark:bg-dkrbgblue">
             <Outlet />
