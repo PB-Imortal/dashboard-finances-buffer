@@ -150,7 +150,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
           tabIndex={0}
         ></div>
       )}
-      <div
+      <div data-testid="sidebar" 
         className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[16px] rounded-br-[16px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <ul>
