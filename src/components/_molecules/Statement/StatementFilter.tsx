@@ -1,8 +1,10 @@
+import SimpleLogo from "../../../assets/simpleLogo.svg"
+import FilterIcon from "../../../assets/filter.svg"
+
 import { useContext, useState, useRef } from "react";
 import { StatementContext } from "./apiEntities";
 import type { Transaction } from "./apiEntities";
 import ButtonComponent from "../../_atoms/Button/Button";
-import SimpleLogo from "../../../assets/simpleLogo.svg"
 
 export function StatementFilter() {
 
@@ -31,10 +33,11 @@ export function StatementFilter() {
 
       <ButtonComponent
         arialabeltext="Filter"
-        className="font-semibold py-1 px-2 text-txtpurple bg-white rounded-2xl"
+        className="flex items-center gap-1 font-semibold px-2 text-txtpurple rounded-2xl"
         bgcolor="bg-bgwhite"
         onClick={(e) => { e.preventDefault(); return toggleDisplayModal() }}>
-        Filter
+          <img src={FilterIcon} />
+          Filter
       </ButtonComponent>
 
       {
