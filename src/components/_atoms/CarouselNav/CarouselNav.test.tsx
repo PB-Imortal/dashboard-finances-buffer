@@ -46,7 +46,7 @@ describe('CarouselNav Component', () => {
 
     expect(secondItem.classList.contains('text-bgblack')).toBe(true);
     expect(secondItem.classList.contains('font-bold')).toBe(true);
-    expect(screen.getByText('Back').classList.contains('text-bggrey')).toBe(true);
+    expect(screen.getByText('Back').classList.contains('text-txtgrey')).toBe(true);
   });
 
   test('correct item is highlighted after interaction', () => {
@@ -61,7 +61,7 @@ describe('CarouselNav Component', () => {
 
     expect(thirdItem.classList.contains('text-bgblack')).toBe(true);
     expect(thirdItem.classList.contains('font-bold')).toBe(true);
-    expect(screen.getByText('Back').classList.contains('text-bggrey')).toBe(true);
-    expect(screen.getByText('Edit Profile').classList.contains('text-bggrey')).toBe(true);
+    expect(screen.getByText('Back').classList.contains('text-txtgrey')).toBe(true);
+    expect(screen.getByText('Edit Profile').classList.contains('text-txtgrey')).toBe(true);
   });
 });
