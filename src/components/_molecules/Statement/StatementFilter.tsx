@@ -29,11 +29,13 @@ export function StatementFilter() {
   return (
     <form className="flex justify-end gap-3 items-center">
 
-      <button
-        className="bg-txtpurple font-semibold py-0 px-2 text-bgwhite rounded-2xl"
+      <ButtonComponent
+        arialabeltext="Filter"
+        className="font-semibold py-1 px-2 text-txtpurple bg-white rounded-2xl"
+        bgcolor="bg-bgwhite"
         onClick={(e) => { e.preventDefault(); return toggleDisplayModal() }}>
         Filter
-      </button>
+      </ButtonComponent>
 
       {
         displayModal &&
