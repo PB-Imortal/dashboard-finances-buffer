@@ -5,17 +5,8 @@ import ButtonComponent from "../../_atoms/Button/Button";
 
 export function StatementFilter() {
 
-  const date = new Date();
   const statementContext = useContext(StatementContext);
-  const months = [
-    { label: "Jan", value: "01" }, { label: "Feb", value: "02" }, { label: "Mar", value: "03" }, { label: "Apr", value: "04" },
-    { label: "May", value: "05" }, { label: "June", value: "06" }, { label: "July", value: "07" }, { label: "Aug", value: "08" },
-    { label: "Sept", value: "09" }, { label: "Oct", value: "10" }, { label: "Nov", value: "11" }, { label: "Dec", value: "12" }
-  ];
   const [displayModal, setDisplayModal] = useState(false)
-
-  const monthSelectRef = useRef(null);
-  const yearSelectRef = useRef(null);
 
   function toggleDisplayModal() {
     setDisplayModal(!displayModal)
