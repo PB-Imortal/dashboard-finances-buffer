@@ -15,6 +15,7 @@ export default function LockIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite"
       />
       <path
         d="M12 17.09V14.5"
@@ -22,6 +23,7 @@ export default function LockIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite"
       />
       <path
         d="M12.5303 13.2197C12.8232 13.5126 12.8232 13.9875 12.5303 14.2804C12.2374 14.5733 11.7626 14.5733 11.4697 14.2804C11.1768 13.9875 11.1768 13.5126 11.4697 13.2197C11.7626 12.9268 12.2374 12.9268 12.5303 13.2197"
@@ -29,6 +31,7 @@ export default function LockIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite"
       />
       <path
         d="M8 9V7V7C8 4.791 9.791 3 12 3V3C14.209 3 16 4.791 16 7V7V9"
@@ -36,6 +39,7 @@ export default function LockIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite"
       />
     </svg>
   );

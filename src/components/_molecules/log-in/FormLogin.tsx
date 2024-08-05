@@ -81,16 +81,16 @@ export default function FormLogin() {
           arialabeltext="Login button"
           bgcolor="bg-bgblack"
           textColor="text-txwhite"
-          styles="h-12"
+          styles="h-12 dark:bg-bgwhite dark:text-txblack"
           type="submit"
         >
           {isSubmitting ? <InfiniteSpinner /> : "Log in"}
         </ButtonComponent>
-        <p className="self-center">Or</p>
+        <p className="self-center dark:text-txwhite">Or</p>
         <Link
           to={"/signin"}
           aria-label="create account button"
-          className="border border-zinc-600/[.35] h-12 flex justify-center items-center bg-bgwhite text-txblack rounded-md"
+          className="border border-zinc-600/[.35] h-12 flex justify-center items-center bg-bgwhite text-txblack rounded-md dark:bg-transparent dark:text-txwhite dark:border-txwhite"
         >
           Create account
         </Link>
