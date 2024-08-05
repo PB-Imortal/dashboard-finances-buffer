@@ -8,7 +8,7 @@ import { StatementContextProvider } from "../components/_molecules/Statement/api
 export default function RootLayout() {
   const screenSize = useScreenSize();
   return (
-    <main className="flex bg-bggrey">
+    <main className="flex bg-bggrey dark:bg-dkrbgblue">
       <div>
         {screenSize.width <= 1023 ? (
           <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
