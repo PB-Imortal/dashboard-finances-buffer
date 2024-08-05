@@ -28,18 +28,20 @@ export const router = createBrowserRouter([
           <ProtectedRoute children={<Statement />} redirectPath={"/login"} />
         ),
       },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute children={<Profile />} redirectPath={"/login"} />
+        ),
+      },
+      {
+        path: "/setting",
+        element: (
+          <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
+        ),
+      },
     ],
   },
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
-  {
-    path: "/profile",
-    element: <ProtectedRoute children={<Profile />} redirectPath={"/login"} />,
-  },
-  {
-    path: "/setting",
-    element: (
-      <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
-    ),
-  },
 ]);
