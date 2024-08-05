@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Moon from "../assets/DarkModeIcon.svg";
 import Sun from "../assets/LightModeIcon.svg";
@@ -16,13 +16,9 @@ const SettingPage: React.FC = () => {
     localStorage.setItem("darkMode", JSON.stringify(newMode));
   };
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, [isDarkMode]);
-
   return (
     <>
-      <div className="flex h-screen dark:bg-dkrbgblue">
+      <div className={`flex h-screen ${isDarkMode ? "dark" : ""}`}>
         <div className="flex-1 p-4 dark:text-bgwhite ml-12 lg:ml-0">
           <div className="flex items-center justify-between ">
             <h1 className="text-2xl font-bold">Settings</h1>
