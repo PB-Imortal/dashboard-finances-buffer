@@ -33,7 +33,7 @@ export function StatementFilter() {
 
       <ButtonComponent
         arialabeltext="Filter"
-        className="flex items-center gap-1 font-semibold px-2 text-txtpurple rounded-2xl text-lg"
+        className="flex items-center gap-1 font-semibold px-2 text-txtpurple rounded-2xl text-lg hover:opacity-70"
         bgcolor="bg-bgwhite"
         onClick={(e) => { e.preventDefault(); return toggleDisplayModal() }}>
           <img src={FilterIcon} />
