@@ -33,7 +33,7 @@ export function StatementTable() {
     }
 
     return (
-        <table className='bg-bgwhite border-separate gap-3 px-6 py-3 rounded-2xl text-center'>
+        <table className='bg-bgwhite border-separate gap-3 px-6 py-3 rounded-2xl text-center dark:bg-dkrbgitenseblue'>
             <thead>
                 <TableRow>
                     <TableHeader content='Description' />
@@ -85,7 +85,7 @@ export function StatementTable() {
                                     <ButtonComponent
                                         arialabeltext="Download"
                                         bgcolor="bg-bgwhite"
-                                        styles="border">
+                                        styles="border dark:text-txblack">
                                         Download
                                     </ButtonComponent>
                                 </TableData>
