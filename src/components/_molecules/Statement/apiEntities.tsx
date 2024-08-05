@@ -26,7 +26,14 @@ export interface UserData {
   accounting: Account;
 }
 
-export const StatementContext = createContext<any>(undefined);
+export const StatementContext = createContext<
+  | {
+      filter: string;
+      setFilter: React.Dispatch<React.SetStateAction<string>>;
+      userAccounting: Account | undefined;
+    }
+  | undefined
+>(undefined);
 
 export const StatementContextProvider = ({
   children,
