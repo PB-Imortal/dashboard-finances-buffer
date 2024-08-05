@@ -41,7 +41,7 @@ export default function NavBar() {
               <SettingUpperbarIcon />
             </ButtonComponent>
           </Link>
-          <Link to="">
+          <Link to="notifications">
             <ButtonComponent
               styles="my-auto dark:bg-dkrbgitenseblue"
               arialabeltext="Notifications button"

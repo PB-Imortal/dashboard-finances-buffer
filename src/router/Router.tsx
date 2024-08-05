@@ -9,6 +9,7 @@ import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import SignInPage from "../pages/SigninPage";
 import SettingPage from "../pages/SettingPage";
+import NotificationPage from "../pages/NotificationPage";
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: (
           <ProtectedRoute children={<Profile />} redirectPath={"/login"} />
+        ),
+      },
+      {
+        path: "/notifications",
+        element: (
+          <ProtectedRoute children={<NotificationPage />} reditectPath={"/login"} />
         ),
       },
       {
