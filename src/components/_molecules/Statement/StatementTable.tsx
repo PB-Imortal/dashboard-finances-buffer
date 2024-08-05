@@ -28,8 +28,7 @@ export function StatementTable() {
             <thead>
                 <TableRow>
                     <TableHeader content='Description' />
-                    {
-                        viewPort.isTablet &&
+                    {viewPort.isTablet &&
                         <>
                             <TableHeader content='Transaction ID' />
                             <TableHeader content='Type' />
@@ -42,13 +41,15 @@ export function StatementTable() {
                 </TableRow>
             </thead>
 
-            <tbody role="table-body" className="block overflow-y-scroll" style={{maxHeight:`${(window.innerHeight - 365)}px`}}>
+            <tbody 
+                role="table-body" 
+                className="block overflow-y-scroll" 
+                style={{maxHeight:`${(window.innerHeight - 370)}px`}}>
                 {statementContext.filteredData?.map((transaction: Transaction) => {
 
                     const isDebit = (transaction.amount < 0)
                     return (
                         <TableRow key={transaction.id}>
-
                             <TableData>
                                 <span className="flex gap-2 items-center">
                                     <img src={isDebit ? arrowDownIcon : arrowUpIcon} alt="arrow" />
@@ -56,8 +57,7 @@ export function StatementTable() {
                                 </span>
                             </TableData>
 
-                            {
-                                viewPort.isTablet &&
+                            {viewPort.isTablet &&
                                 <>
                                     <TableData>{transaction.id}</TableData>
                                     <TableData>{transaction.type}</TableData>
@@ -70,8 +70,7 @@ export function StatementTable() {
                                 {isDebit ? `-$${transaction.amount.toString().substring(1)}` : `+$${transaction.amount}`}
                             </TableData>
 
-                            {
-                                viewPort.isLaptop &&
+                            {viewPort.isLaptop &&
                                 <TableData>
                                     <ButtonComponent
                                         arialabeltext="Download"
@@ -81,7 +80,6 @@ export function StatementTable() {
                                     </ButtonComponent>
                                 </TableData>
                             }
-
                         </TableRow>)
                 })
                 }
