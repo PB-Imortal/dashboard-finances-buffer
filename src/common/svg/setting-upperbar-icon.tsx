@@ -15,6 +15,7 @@ export default function SettingUpperbarIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite" 
       />
       <circle
         cx="15.9998"
@@ -24,6 +25,7 @@ export default function SettingUpperbarIcon() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="dark:stroke-txwhite" 
       />
     </svg>
   );
