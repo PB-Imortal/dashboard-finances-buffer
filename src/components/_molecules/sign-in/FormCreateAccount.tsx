@@ -11,7 +11,7 @@ import {
 import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
 import LockIcon from "../../../common/svg/LockIcon";
 import OkIcon from "../../../common/svg/OkIcon";
-import { useAuth } from "../../../providers/context/AuthContext";
+import { useAuthContext } from "../../../providers/context/AuthContext";
 import ButtonComponent from "../../_atoms/Button/Button";
 import FormInput from "../../_atoms/Input/FormInput";
 
@@ -27,7 +27,7 @@ export default function FormCreateAccount() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
-  const { setIsLoggedIn, setUserId } = useAuth();
+  const { setIsLoggedIn, setUserId } = useAuthContext();
 
   async function onSubmit(data: CreateAccountFields) {
     const resp = await postCreateAccount(data);

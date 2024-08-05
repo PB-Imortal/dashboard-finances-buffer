@@ -2,7 +2,7 @@
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "./",
-        "types": ["cypress", "node"],
+        "types": ["jest","cypress", "node"],
         "strict": false
     },
     "include": ["**/*.ts"],

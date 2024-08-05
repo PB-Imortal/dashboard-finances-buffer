@@ -103,8 +103,8 @@ describe("SignInPage", () => {
 
     cy.get(".h-dvh :nth-child(1) :nth-child(2)")
       .should("be.visible")
-      .should("have.css", "width", "618.9757080078125px")
-      .should("have.css", "height", "593.9931030273438px");
+      .should("have.css", "width", "618.732666015625px")
+      .should("have.css", "height", "593.7847290039062px");
 
     cy.get("h1").should("be.visible").should("include.text", "Create account");
     cy.get("p")
