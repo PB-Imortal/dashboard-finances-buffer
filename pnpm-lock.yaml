@@ -17,9 +17,15 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      dashboard-finances-buffer:
+        specifier: 'file:'
+        version: file:(@types/react@18.3.3)
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      fetch-mock:
+        specifier: ^11.0.0
+        version: 11.0.0
       json-server:
         specifier: ^1.0.0-beta.1
         version: 1.0.0-beta.1
@@ -79,8 +85,8 @@ importers:
         specifier: ^14.5.2
         version: 14.5.2(@testing-library/dom@10.1.0)
       '@types/cypress':
-        specifier: ^0.1.6
-        version: 0.1.6
+        specifier: ^1.1.3
+        version: 1.1.3
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -109,7 +115,7 @@ importers:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.40)
       cypress:
-        specifier: ^13.13.1
+        specifier: ^13.13.2
         version: 13.13.2
       eslint:
         specifier: ^8.57.0
@@ -163,7 +169,7 @@ importers:
         specifier: ^5.3.4
         version: 5.3.5(@types/node@20.14.14)
       vitest:
-        specifier: ^2.0.3
+        specifier: ^2.0.5
         version: 2.0.5(@types/node@20.14.14)(jsdom@24.1.1)
 
 packages:
@@ -1594,8 +1600,9 @@ packages:
   '@types/cross-spawn@6.0.6':
     resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
 
-  '@types/cypress@0.1.6':
-    resolution: {integrity: sha512-FYKQLvCsRYxZ3fp+XsoCiJZ1aK3x17RmaZjHI4Ou43khFkXPycrQaXo9b1J07PNlEfWnRtUc9loxHXzKjSsbYg==}
+  '@types/cypress@1.1.3':
+    resolution: {integrity: sha512-OXe0Gw8LeCflkG1oPgFpyrYWJmEKqYncBsD/J0r17r0ETx/TnIGDNLwXt/pFYSYuYTpzcq1q3g62M9DrfsBL4g==}
+    deprecated: This is a stub types definition for cypress (https://cypress.io). cypress provides its own type definitions, so you don't need @types/cypress installed!
 
   '@types/doctrine@0.0.9':
     resolution: {integrity: sha512-eOIHzCUSH7SMfonMG1LsC2f8vxBFtho6NGBznK41R84YzPuvSBzrhEps33IsQiOW9+VL6NQ9DbjQJznk/S4uRA==}
@@ -2308,6 +2315,9 @@ packages:
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
 
+  'dashboard-finances-buffer@file:':
+    resolution: {directory: '', type: directory}
+
   dashdash@1.14.1:
     resolution: {integrity: sha512-jRFi8UDGo6j+odZiEpjazZaWqEal3w/basFjQHQEwVtZJGDpxbH1MeYluwCS8Xq5wmLJooDlMgvVarmWfGM44g==}
     engines: {node: '>=0.10'}
@@ -2658,6 +2668,15 @@ packages:
   fd-slicer@1.1.0:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
 
+  fetch-mock@11.0.0:
+    resolution: {integrity: sha512-AD2Gh1xDQBLBs4iJpSxar19cTOH/Gu9hf1ko2J4hHW1UbR+ZHOfmIAqfT+Wlku4U8cYbffjaTbGv7mqe5kPi3w==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      node-fetch: '*'
+    peerDependenciesMeta:
+      node-fetch:
+        optional: true
+
   figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -2845,6 +2864,9 @@ packages:
   globby@14.0.2:
     resolution: {integrity: sha512-s3Fq41ZVh7vbbe2PN3nrW7yC7U7MFVc5c98/iTl9c2GawNMKx/J648KQRW6WKkuU8GIbbh2IXfIRQjOZnXcTnw==}
     engines: {node: '>=18'}
+
+  globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
 
   gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
@@ -3085,6 +3107,9 @@ packages:
   is-stream@3.0.0:
     resolution: {integrity: sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  is-subset@0.1.1:
+    resolution: {integrity: sha512-6Ybun0IkarhmEqxXCNw/C0bna6Zb/TkfUX9UbwJtK6ObwAVCxmAP308WWTHviM/zAqXk05cdhYsUsZeGQh99iw==}
 
   is-symbol@1.0.4:
     resolution: {integrity: sha512-C/CPBqKWnvdcxqIARxyOh4v1UUEOCHpgDa0WYgpKDFMszcrPcffg5uhwSgPCLD2WWxmq6isisz87tzT01tuGhg==}
@@ -4033,6 +4058,10 @@ packages:
 
   regexparam@2.0.2:
     resolution: {integrity: sha512-A1PeDEYMrkLrfyOwv2jwihXbo9qxdGD3atBYQA9JJgreAx8/7rC6IUkWOw2NQlOxLp2wL0ifQbh1HuidDfYA6w==}
+    engines: {node: '>=8'}
+
+  regexparam@3.0.0:
+    resolution: {integrity: sha512-RSYAtP31mvYLkAHrOlh25pCNQ5hWnT106VukGaaFfuJrZFkGRX5GhUAdPqpSDXxOhA2c4akmRuplv1mRqnBn6Q==}
     engines: {node: '>=8'}
 
   regexpu-core@5.3.2:
@@ -6521,7 +6550,9 @@ snapshots:
     dependencies:
       '@types/node': 20.14.14
 
-  '@types/cypress@0.1.6': {}
+  '@types/cypress@1.1.3':
+    dependencies:
+      cypress: 13.13.2
 
   '@types/doctrine@0.0.9': {}
 
@@ -7326,6 +7357,23 @@ snapshots:
       untildify: 4.0.0
       yauzl: 2.10.0
 
+  dashboard-finances-buffer@file:(@types/react@18.3.3):
+    dependencies:
+      '@hookform/resolvers': 3.9.0(react-hook-form@7.52.1(react@18.3.1))
+      '@mui/base': 5.0.0-beta.40(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/express': 4.17.21
+      express: 4.19.2
+      json-server: 1.0.0-beta.1
+      node: 22.5.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-hook-form: 7.52.1(react@18.3.1)
+      react-router-dom: 6.26.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
   dashdash@1.14.1:
     dependencies:
       assert-plus: 1.0.0
@@ -7742,6 +7790,16 @@ snapshots:
     dependencies:
       pend: 1.2.0
 
+  fetch-mock@11.0.0:
+    dependencies:
+      debug: 4.3.6(supports-color@8.1.1)
+      dequal: 2.0.3
+      globrex: 0.1.2
+      is-subset: 0.1.1
+      regexparam: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   figures@3.2.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -7964,6 +8022,8 @@ snapshots:
       slash: 5.1.0
       unicorn-magic: 0.1.0
 
+  globrex@0.1.2: {}
+
   gopd@1.0.1:
     dependencies:
       get-intrinsic: 1.2.4
@@ -8158,6 +8218,8 @@ snapshots:
   is-stream@2.0.1: {}
 
   is-stream@3.0.0: {}
+
+  is-subset@0.1.1: {}
 
   is-symbol@1.0.4:
     dependencies:
@@ -9032,6 +9094,8 @@ snapshots:
       '@babel/runtime': 7.25.0
 
   regexparam@2.0.2: {}
+
+  regexparam@3.0.0: {}
 
   regexpu-core@5.3.2:
     dependencies:
