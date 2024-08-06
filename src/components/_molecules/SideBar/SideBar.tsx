@@ -201,7 +201,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               inactiveImgSrc={NotificationSideBar}
               setIsOpen={setIsOpen}
             >
-              Notification
+              Notifications
             </NavLink>
             <NavLink
               to="/setting"
