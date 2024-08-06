@@ -22,11 +22,12 @@ interface BurgerMenuProps {
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
   const location = useLocation();
   const isSettingPage = location.pathname === "/setting";
+
   return (
     <button
       data-testid="burger-menu"
       className={`my-auto ${
-        isSettingPage ? "bg-transparent" : "bg-bgwhite dark:bg-dkrbgitenseblue"
+        isSettingPage ? "bg-bgwhite dark:bg-dkrbgitenseblue" : "bg-transparent"
       } px-4 py-[37px] flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
       onClick={() => setIsOpen(!isOpen)}
     >
