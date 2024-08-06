@@ -3,7 +3,6 @@ import { useTheme } from "../providers/context/ThemeContext";
 import Moon from '../assets/DarkModeIcon.svg';
 import Sun from '../assets/LightModeIcon.svg';
 import SideBar from '../components/_molecules/SideBar/SideBar';
-import DeskTopSideBar from '../components/_molecules/SideBar/DeskTopSideBar';
 import { useScreenSize } from "../hook/useHooks";
 
 const SettingPage: React.FC = () => {
