@@ -124,7 +124,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
   return (
     <div data-testid="desktopsidebar" className={`${styles}`}>
       <div
-        className={`m-3 top-0 left-0 z-40 w-64 h-[97.5vh] bg-white shadow-md p-8 rounded-[16px] dark:bg-dkrbgitenseblue`}
+        className={`m-3 top-0 left-0 z-40 w-64 h-[96.5vh] ml-4 mt-4 bg-white shadow-md p-8 rounded-[16px] dark:bg-dkrbgitenseblue`}
       >
         <ul>
           <li>
