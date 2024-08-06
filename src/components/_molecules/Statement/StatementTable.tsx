@@ -9,7 +9,7 @@ import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
 import { useContext } from "react"
-import { StatementContext, AccountDetails } from "./apiEntities"
+import { StatementContext, Transaction } from "./apiEntities"
 
 export function StatementTable() {
     const statementContext = useContext(StatementContext)
@@ -21,30 +21,19 @@ export function StatementTable() {
         isLaptop: screenSize.width > 890,
     }
 
-    const transactions = statementContext?.userAccounting?.transactions.slice(0, 14)
-
-    function filterStatement(filter: string) {
-        if (filter === "") {
-            return transactions
-        }
-        return transactions?.filter((transaction: AccountDetails) => {
-            return transaction.description.toLowerCase().includes(filter)
-        })
-    }
-
     return (
         <table className="bg-bgwhite border-separate gap-3 px-6 py-3 rounded-2xl text-center dark:bg-dkrbgitenseblue">
             <thead>
                 <TableRow>
                     <TableHeader content="Description" />
-                    {viewPort.isTablet && (
+                    {viewPort.isTablet && 
                         <>
                             <TableHeader content="Transaction ID" />
                             <TableHeader content="Type" />
                             <TableHeader content="Card" />
                             <TableHeader content="Date" />
                         </>
-                    )}
+                    }
                     <TableHeader content="Amount" />
                     {viewPort.isLaptop && <TableHeader content="Receipt" />}
                 </TableRow>
@@ -53,11 +42,11 @@ export function StatementTable() {
             <tbody
                 role="table-body"
                 className="block overflow-y-scroll"
-                style={{ maxHeight: `${window.innerHeight - 390}px` }}
+                style={{ maxHeight: `${window.innerHeight - 390}px`}}
             >
-                {filterStatement(statementContext?.filter ?? "")?.map(
-                    (transaction: AccountDetails) => {
-                        const isDebit = transaction.amount < 0
+                {statementContext.filteredData?.map(
+                    (transaction: Transaction) => {
+                        const isDebit = (transaction.amount < 0)
                         return (
                             <TableRow key={transaction.id}>
                                 <TableData>
@@ -70,7 +59,7 @@ export function StatementTable() {
                                     </span>
                                 </TableData>
 
-                                {viewPort.isTablet && (
+                                {viewPort.isTablet &&
                                     <>
                                         <TableData>{transaction.id}</TableData>
                                         <TableData>{transaction.type}</TableData>
@@ -79,7 +68,7 @@ export function StatementTable() {
                                         </TableData>
                                         <TableData>{transaction.date}</TableData>
                                     </>
-                                )}
+                                }
 
                                 <TableData variantStyle={isDebit ? "text-txtred" : "text-txtgreen"}>
                                     {isDebit

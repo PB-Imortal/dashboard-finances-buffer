@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-import { StatementContext } from "../Statement/apiEntities";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAvatar } from "../../../hook/useHooks";
 import ButtonComponent from "../../_atoms/Button/Button";
@@ -10,7 +9,6 @@ import SettingUpperbarIcon from "../../../common/svg/setting-upperbar-icon";
 
 export default function NavBar() {
   const { userAvatar, setUserAvatar } = useAvatar();
-  const statementContext = useContext(StatementContext) 
 
   useEffect(() => {
     const newAvatarUrl = `https://xsgames.co/randomusers/avatar.php?g=pixel&${new Date().getTime()}`;
@@ -27,7 +25,6 @@ export default function NavBar() {
           type="text"
           endSvg={<SearchIcon />}
           styles="space-y-0 justify-start  grow lg:ml-12 mt-2 "
-          onChange={(e) => {statementContext?.setFilter(e.target.value.toLowerCase())}}
         >
           {" "}
         </FormInput>
