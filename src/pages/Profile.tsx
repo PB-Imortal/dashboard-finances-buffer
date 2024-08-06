@@ -1,6 +1,6 @@
 import editIcon from "../assets/edit-icon.svg";
 import ButtonComponent from "../components/_atoms/Button/Button";
-import CarouselNav from "../components/_atoms/CarouselNav/CarouselNav";
+import CarouselNav from "../components/_molecules/CarouselNav/CarouselNav";
 import FormInput from "../components/_atoms/Input/FormInput";
 import { useAvatar, useFetchData } from "../hook/useHooks";
 
