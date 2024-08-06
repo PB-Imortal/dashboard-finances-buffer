@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import NavBar from "../components/_molecules/navbar/NavBar";
 import SideBar from "../components/_molecules/SideBar/SideBar";
 import DeskTopSideBar from "../components/_molecules/SideBar/DeskTopSideBar";
@@ -7,6 +7,10 @@ import { StatementContextProvider } from "../components/_molecules/Statement/api
 
 export default function RootLayout() {
   const screenSize = useScreenSize();
+  const location = useLocation();
+  const hideNavBarRoutes = ["/profile", "/setting", "/notification"];
+  const shouldHideNavBar = hideNavBarRoutes.includes(location.pathname);
+
   return (
     <main className="flex bg-bggrey dark:bg-dkrbgblue">
       <div>
@@ -18,7 +22,7 @@ export default function RootLayout() {
       </div>
       <StatementContextProvider>
         <div className="flex flex-col flex-1 max-w-full dark:bg-dkrbgblue">
-          <NavBar />
+          {!shouldHideNavBar && <NavBar />}
           <div className="sm: -ml-14 md:ml-0 dark:bg-dkrbgblue">
             <Outlet />
           </div>
