@@ -3,13 +3,22 @@ import { useTheme } from "../providers/context/ThemeContext";
 import Moon from '../assets/DarkModeIcon.svg';
 import Sun from '../assets/LightModeIcon.svg';
 import SideBar from '../components/_molecules/SideBar/SideBar';
+import DeskTopSideBar from '../components/_molecules/SideBar/DeskTopSideBar';
+import { useScreenSize } from "../hook/useHooks";
 
 const SettingPage: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
+  const screenSize = useScreenSize();
 
   return (
     <div className={`flex h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <SideBar styles='' />
+      <div>
+        {screenSize.width <= 1023 ? (
+          <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
+        ) : (
+          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex dark:bg-dkrbgblue" />
+        )}
+      </div>
       <div className="flex-1 p-4 dark:text-white text-black lg:ml-0">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Settings</h1>
