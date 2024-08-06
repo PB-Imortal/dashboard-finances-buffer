@@ -20,10 +20,14 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
+  const location = useLocation();
+  const isSettingPage = location.pathname === "/setting";
   return (
     <button
       data-testid="burger-menu"
-      className={`my-auto bg-bgwhite dark:bg-dkrbgitenseblue px-4 py-9 flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
+      className={`my-auto ${
+        isSettingPage ? "bg-transparent" : "bg-bgwhite dark:bg-dkrbgitenseblue"
+      } px-4 py-[37px] flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
@@ -73,6 +77,7 @@ const NavLink: React.FC<NavLinkProps> = ({
         to === "/" ||
         to === "/statement" ||
         to === "/profile" ||
+        to === "/notifications" ||
         to === "/setting" ||
         to === "/login" ||
         to === "#"
@@ -146,8 +151,8 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
           tabIndex={0}
         ></div>
       )}
-      <div
-        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[18px] rounded-br-[18px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      <div data-testid="sidebar" 
+        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[16px] rounded-br-[16px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <ul>
           <li className="flex justify-center p-2">
@@ -158,7 +163,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
           </li>
           <li className="p-4">
             <button
-              className="absolute top-0 right-0 mt-1 mr-3 text-black text-[26px]"
+              className="absolute top-0 right-0 mt-1 mr-3 text-black dark:text-white text-[26px]"
               onClick={() => setIsOpen(false)}
             >
               &#120;
@@ -192,7 +197,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               Profile
             </NavLink>
             <NavLink
-              to="#"
+              to="/notifications"
               activeImgSrc={NotificationSideBarActive}
               inactiveImgSrc={NotificationSideBar}
               setIsOpen={setIsOpen}

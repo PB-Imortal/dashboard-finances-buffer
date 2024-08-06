@@ -3,12 +3,13 @@ import RootLayout from "./RootLayout";
 import ProtectedRoute from "./ProtectedRoute";
 
 import HomePage from "../pages/HomePage";
-import Statement from "../components/_organisms/Statement";
+import Statement from "../components/_organisms/Statement/Statement";
 import Profile from "../pages/Profile";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import SignInPage from "../pages/SigninPage";
 import SettingPage from "../pages/SettingPage";
+import NotificationPage from "../pages/NotificationPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,18 +29,26 @@ export const router = createBrowserRouter([
           <ProtectedRoute children={<Statement />} redirectPath={"/login"} />
         ),
       },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute children={<Profile />} redirectPath={"/login"} />
+        ),
+      },
+      {
+        path: "/notifications",
+        element: (
+          <ProtectedRoute children={<NotificationPage />} reditectPath={"/login"} />
+        ),
+      },
+      {
+        path: "/setting",
+        element: (
+          <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
+        ),
+      },
     ],
   },
   { path: "/login", element: <LoginPage /> },
   { path: "/signin", element: <SignInPage /> },
-  {
-    path: "/profile",
-    element: <ProtectedRoute children={<Profile />} redirectPath={"/login"} />,
-  },
-  {
-    path: "/setting",
-    element: (
-      <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
-    ),
-  },
 ]);

@@ -18,14 +18,21 @@ interface Account {
 }
 
 export interface UserData {
-    userid: string;
-    password: string;
-    fullname: string;
-    birthdate: string;
-    accounting: Account;
+  userid: string;
+  password: string;
+  fullname: string;
+  birthdate: string;
+  accounting: Account;
 }
 
-export const StatementContext = createContext<any>(undefined)
+export const StatementContext = createContext<
+  | {
+      filter: string;
+      setFilter: React.Dispatch<React.SetStateAction<string>>;
+      userAccounting: Account | undefined;
+    }
+  | undefined
+>(undefined);
 
 export const StatementContextProvider = ({children}: {children: ReactNode}) => {
     const userAccounting = useUserData()?.accounting

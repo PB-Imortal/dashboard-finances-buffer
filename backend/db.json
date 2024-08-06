@@ -230,6 +230,30 @@
       "email": "teste@teste.com",
       "password": "1234Abc@",
       "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "c64a",
+      "lastName": "Terra",
+      "firstName": "William",
+      "email": "teste@teste.com",
+      "password": "1234Abc@",
+      "confirmPassword": "1234Abc@"
+    },
+    {
+      "id": "a3cc",
+      "lastName": "Test Last Name",
+      "firstName": "Test First Name",
+      "email": "test@test.com",
+      "password": "1234Test@",
+      "confirmPassword": "1234Test@"
+    },
+    {
+      "id": "0e6e",
+      "lastName": "Test Last Name",
+      "firstName": "Test First Name",
+      "email": "test@test.com",
+      "password": "1234Test@",
+      "confirmPassword": "1234Test@"
     }
   ]
 }

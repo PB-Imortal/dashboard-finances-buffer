@@ -21,8 +21,8 @@ export function StatementFilter() {
     })
   };
 
-  function filterYear(year: string) {
-    return statementContext.userAccounting.transactions?.filter(
+  function filterYear(year: string, base: Transaction[]) {
+    return base.filter(
       (transaction: Transaction) => {
         return (transaction.date.slice(6, 10) === year)
       })

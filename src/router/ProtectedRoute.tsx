@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../providers/context/AuthContext";
+import { useAuthContext } from "../providers/context/AuthContext";
 
 export default function ProtectedRoute({
   children,
@@ -9,7 +9,7 @@ export default function ProtectedRoute({
   children: ReactNode;
   redirectPath: string;
 }) {
-  const auth = useAuth();
+  const auth = useAuthContext();
   if (!auth.isLoggedIn) {
     return <Navigate to={redirectPath} replace />;
   }

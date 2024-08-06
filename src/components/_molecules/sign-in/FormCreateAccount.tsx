@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Snackbar } from "@mui/base";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { postCreateAccount } from "../../../common/functions/api";
 import {
   CreateAccountFields,
@@ -11,7 +11,7 @@ import {
 import InfiniteSpinner from "../../../common/svg/InfiniteSpinner";
 import LockIcon from "../../../common/svg/LockIcon";
 import OkIcon from "../../../common/svg/OkIcon";
-import { useAuth } from "../../../providers/context/AuthContext";
+import { useAuthContext } from "../../../providers/context/AuthContext";
 import ButtonComponent from "../../_atoms/Button/Button";
 import FormInput from "../../_atoms/Input/FormInput";
 
@@ -27,7 +27,7 @@ export default function FormCreateAccount() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
-  const { setIsLoggedIn, setUserId } = useAuth();
+  const { setIsLoggedIn, setUserId } = useAuthContext();
 
   async function onSubmit(data: CreateAccountFields) {
     const resp = await postCreateAccount(data);
@@ -51,7 +51,7 @@ export default function FormCreateAccount() {
     <form
       noValidate
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-2 gap-x-8 gap-y-4 max-w-[492px] min-w-[288px] m-auto"
+      className="grid grid-cols-2 gap-x-8 gap-y-4 max-w-[492px] min-w-[288px] m-auto "
     >
       <FormInput
         {...register("lastName")}
@@ -100,12 +100,18 @@ export default function FormCreateAccount() {
         disabled={isSubmitting}
         bgcolor="bg-bgblack"
         type="submit"
-        styles=" p-3 text-txwhite rounded-md font-semibold col-span-2"
+        styles=" p-3 text-txwhite rounded-md font-semibold col-span-2 dark:text-txblack dark:bg-bgwhite"
         arialabeltext="Create account"
       >
         {isSubmitting ? <InfiniteSpinner /> : "Create account"}
       </ButtonComponent>
-
+      <Link
+          to={"/login"}
+          aria-label="create account button"
+          className="border border-zinc-600/[.35] h-12 col-span-2 flex justify-center items-center bg-bgwhite text-txblack rounded-md dark:bg-transparent dark:text-txwhite dark:border-txwhite"
+        >
+          Back to Login
+        </Link>
       {error && (
         <p className="text-red-500 text-sm col-span-2 text-center">{error}</p>
       )}

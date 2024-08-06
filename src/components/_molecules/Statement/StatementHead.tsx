@@ -13,23 +13,23 @@ export function StatementHead() {
     {
       label: "Money",
       icon: MoneyIcon,
-      amount: statementContext.userAccounting?.money,
+      amount: statementContext?.userAccounting?.money,
     },
     {
       label: "Expenses",
       icon: ExpensesIcon,
-      amount: statementContext.userAccounting?.expenses,
+      amount: statementContext?.userAccounting?.expenses,
     },
     {
       label: "Earnings",
       icon: EarningsIcon,
-      amount: statementContext.userAccounting?.earnings,
+      amount: statementContext?.userAccounting?.earnings,
     },
   ];
 
   return (
     <div 
-      className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden"
+      className="flex gap-6 overscroll-none rounded-2xl sm:overflow-scroll w-full md:overflow-hidden dark:text-txtgrey"
     >
       {accounting.map((item) => <HeadBlock key={item.label} data={item}/>)}
     </div>

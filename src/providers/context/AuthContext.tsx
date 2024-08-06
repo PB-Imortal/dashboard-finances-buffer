@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
-import { useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -15,7 +14,14 @@ export const AuthContext = createContext<AuthContextType>({
   setIsLoggedIn: () => {},
 });
 
-export const useAuth = () => useContext(AuthContext);
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAuthContext = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("useAuthContext must be used within a AuthContextProvider");
+  }
+  return context;
+};
 
 export default function AuthContextProvider({
   children,

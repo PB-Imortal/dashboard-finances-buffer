@@ -23,7 +23,7 @@ const FormInput = forwardRef(
     return (
       <div ref={ref} className={`space-y-3 ${styles} flex flex-col`}>
         <div className="flex justify-between">
-          <label htmlFor={id} className="font-semibold">
+          <label htmlFor={id} className="font-semibold dark:text-txwhite">
             {label}
           </label>
           <span className="text-red-500">{error}</span>

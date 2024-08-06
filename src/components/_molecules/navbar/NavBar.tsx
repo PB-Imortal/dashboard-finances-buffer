@@ -7,7 +7,6 @@ import NotificationUpperbarIcon from "../../../common/svg/NotificationUpperBarIc
 import SearchIcon from "../../../common/svg/SearchIcon";
 import SettingUpperbarIcon from "../../../common/svg/setting-upperbar-icon";
 
-
 export default function NavBar() {
   const { userAvatar, setUserAvatar } = useAvatar();
 
@@ -17,31 +16,32 @@ export default function NavBar() {
   }, [setUserAvatar]);
 
   return (
-    <div className="flex flex-row sm:bg-white md:bg-inherit h-fit">
-      <div className=" flex lg:mr-4 grow bg-white rounded md:rounded-lg  sm:justify-start justify-around  lg:ml-4 sm:px-2 sm:h-[88px] h-[120px]  lg:mt-4 dark:bg-dkrbgitenseblue">
+    <div className="flex flex-row sm:bg-white md:bg-inherit h-fit dark:bg-dkrbgblue">
+      <div className=" flex grow bg-white  sm:rounded-none sm:justify-start justify-around sm:px-2 sm:h-[88px] h-[120px] lg:mt-3 lg:-ml-2 lg:mr-2 lg:mb-2 lg:rounded-[16px] dark:bg-dkrbgitenseblue">
         <FormInput
           id="search"
           aria-label="Search box"
           placeholder="   Search something"
           type="text"
           endSvg={<SearchIcon />}
-          styles="space-y-0 justify-start  grow lg:ml-12 mt-2"
+          styles="space-y-0 justify-start  grow lg:ml-12 mt-2 "
+          onChange={(e) => {statementContext?.setFilter(e.target.value.toLowerCase())}}
         >
           {" "}
         </FormInput>
         <div className="  sm:hidden md:flex  justify-around mt-4 mx-7 align-middle">
           <Link to="">
             <ButtonComponent
-              styles="my-auto"
+              styles="my-auto dark:bg-dkrbgitenseblue"
               arialabeltext="Settings button"
               bgcolor="bg-bgwhite"
             >
               <SettingUpperbarIcon />
             </ButtonComponent>
           </Link>
-          <Link to="">
+          <Link to="notifications">
             <ButtonComponent
-              styles="my-auto"
+              styles="my-auto dark:bg-dkrbgitenseblue"
               arialabeltext="Notifications button"
               bgcolor="bg-bgwhite"
             >
@@ -50,7 +50,7 @@ export default function NavBar() {
           </Link>
           <Link to="Profile" className="">
             <ButtonComponent
-              styles=""
+              styles="dark:bg-dkrbgitenseblue"
               arialabeltext="Profile button"
               bgcolor="bg-bgwhite"
             >

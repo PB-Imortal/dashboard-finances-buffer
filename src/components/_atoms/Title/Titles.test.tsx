@@ -11,6 +11,6 @@ describe('Title component', () => {
   it('has the correct styles', () => {
     render(<Title>Styled Title</Title>);
     const titleElement = screen.getByText('Styled Title');
-    expect(titleElement).toHaveClass('text-black text-2xl font-extrabold');
+    expect(titleElement).toHaveClass('text-txblack text-2xl font-extrabold dark:text-txwhite');
   });
 });
