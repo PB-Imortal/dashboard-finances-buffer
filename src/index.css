@@ -11,11 +11,11 @@ body {
 }
 
 .base-Input-root {
-    @apply flex p-3 space-x-2 items-center border border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full dark:bg-dkrbgblue;
+    @apply flex p-3 space-x-2 items-center border bg-bgwhite border-borderln rounded-md outline-gray-300 text-base text-txinput placeholder-txinput w-full dark:bg-dkrbgblue;
 }
 
 .base-Input-input {
-    @apply rounded-md outline-none text-base text-txinput placeholder-txinput w-full dark:bg-dkrbgblue dark:text-txwhite dark:placeholder-txwhite;
+    @apply rounded-md outline-none text-base bg-bgwhite text-txblack placeholder-txinput w-full dark:bg-dkrbgblue dark:text-txwhite dark:placeholder-txwhite;
 }
 
 /* carousel profile navbar */
