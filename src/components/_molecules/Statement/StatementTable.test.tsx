@@ -3,40 +3,35 @@ import { StatementTable } from "./StatementTable";
 import { StatementContext } from "./apiEntities";
 import { ReactNode } from "react";
 
-function renderWithStatementContext(ui: ReactNode, filter = "") {
-  const userAccounting = {
-    transactions: [
-      {
-        description: "Spotify",
-        id: "#31426590",
-        type: "Shopping",
-        card: "1241432",
-        date: "28 Jan, 12.30 AM",
-        amount: -2500,
-      },
-      {
-        description: "Freepik Sales",
-        id: "#31426589",
-        type: "Transfer",
-        card: "1241432",
-        date: "28 Jan, 12.30 AM",
-        amount: 750,
-      },
-      {
-        description: "Mobile Service",
-        id: "#31426588",
-        type: "Transfer",
-        card: "1241432",
-        date: "28 Jan, 12.30 AM",
-        amount: -150,
-      },
-    ],
-    money: 1000,
-    expenses: 524.41,
-    earnings: 413.31,
-  };
+function renderWithStatementContext(ui: ReactNode) {
+  const filteredData = [
+    {
+      description: "Spotify",
+      id: "#31426590",
+      type: "Shopping",
+      card: "1241432",
+      date: "28 Jan, 12.30 AM",
+      amount: -2500,
+    },
+    {
+      description: "Freepik Sales",
+      id: "#31426589",
+      type: "Transfer",
+      card: "1241432",
+      date: "28 Jan, 12.30 AM",
+      amount: 750,
+    },
+    {
+      description: "Mobile Service",
+      id: "#31426588",
+      type: "Transfer",
+      card: "1241432",
+      date: "28 Jan, 12.30 AM",
+      amount: -150,
+    },
+  ];
   return render(
-    <StatementContext.Provider value={{ filter, userAccounting }}>
+    <StatementContext.Provider value={{ filteredData }}>
       {ui}
     </StatementContext.Provider>
   );
@@ -76,8 +71,4 @@ describe("StatementTable molecule", () => {
     });
   });
 
-  it("should render table body inner elements based on filter", async () => {
-    renderWithStatementContext(<StatementTable />, "o");
-    expect(screen.getByRole("table-body").childElementCount).toBe(2);
-  });
 });

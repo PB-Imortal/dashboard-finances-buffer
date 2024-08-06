@@ -1,21 +1,20 @@
-import { createContext, ReactNode } from "react";
-import { useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 import { useUserData } from "../../../hook/useHooks";
 
-export type AccountDetails = {
-  description: string;
-  id: string;
-  type: string;
-  card: string;
-  date: string;
-  amount: number;
-};
+export type Transaction = {
+    description: string;
+    id: string;
+    type: string;
+    card: string;
+    date: string;
+    amount: number;
+}
 
 interface Account {
-  transactions: AccountDetails[];
-  money: number;
-  expenses: number;
-  earnings: number;
+    transactions: Transaction[];
+    money: number;
+    expenses: number;
+    earnings: number;
 }
 
 export interface UserData {
@@ -26,26 +25,18 @@ export interface UserData {
   accounting: Account;
 }
 
-export const StatementContext = createContext<
-  | {
-      filter: string;
-      setFilter: React.Dispatch<React.SetStateAction<string>>;
-      userAccounting: Account | undefined;
-    }
-  | undefined
->(undefined);
+export const StatementContext = createContext<any>(undefined);
 
-export const StatementContextProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
-  const [filter, setFilter] = useState("");
-  const userAccounting = useUserData()?.accounting;
+export const StatementContextProvider = ({children}: {children: ReactNode}) => {
+    const userAccounting = useUserData()?.accounting
+    const [filteredData, setFilteredData] = useState<Transaction[]>();
 
-  return (
-    <StatementContext.Provider value={{ filter, setFilter, userAccounting }}>
-      {children}
-    </StatementContext.Provider>
-  );
-};
+    useEffect(() => {
+        setFilteredData(userAccounting?.transactions.slice(0,14))
+    }, [userAccounting])
+
+    return (
+    <StatementContext.Provider value={{filteredData, setFilteredData, userAccounting}}>
+        {children}
+    </StatementContext.Provider>)
+}
