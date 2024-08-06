@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
       {
         path: "/notifications",
         element: (
-          <ProtectedRoute children={<NotificationPage />} reditectPath={"/login"} />
+          <ProtectedRoute children={<NotificationPage />} redirectPath={"/login"} />
         ),
       },
       {

@@ -44,7 +44,7 @@ export function StatementTable() {
                 className="block overflow-y-scroll"
                 style={{ maxHeight: `${window.innerHeight - 390}px`}}
             >
-                {statementContext.filteredData.map(
+                {statementContext.filteredData?.map(
                     (transaction: Transaction) => {
                         const isDebit = (transaction.amount < 0)
                         return (

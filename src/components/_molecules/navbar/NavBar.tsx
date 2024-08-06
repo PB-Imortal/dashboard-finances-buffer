@@ -25,7 +25,6 @@ export default function NavBar() {
           type="text"
           endSvg={<SearchIcon />}
           styles="space-y-0 justify-start  grow lg:ml-12 mt-2 "
-          onChange={(e) => {statementContext?.setFilter(e.target.value.toLowerCase())}}
         >
           {" "}
         </FormInput>
