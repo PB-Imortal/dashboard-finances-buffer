@@ -19,7 +19,7 @@ export default defineConfig({
         "src/main.tsx",
         "**/*.config.{ts,js}",
         "**/*.stories.tsx",
-        "src/components/common/svg/**.tsx",
+        "src//common/svg/**.tsx",
         "src/providers/**",
       ],
     },
