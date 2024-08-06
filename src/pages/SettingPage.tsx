@@ -15,9 +15,7 @@ const SettingPage: React.FC = () => {
       <div>
         {screenSize.width <= 1023 ? (
           <SideBar styles="sm:flex md:flex lg:hidden xl:hidden" />
-        ) : (
-          <DeskTopSideBar styles="sm:hidden md:hidden lg:flex dark:bg-dkrbgblue" />
-        )}
+        ) : null}
       </div>
       <div className="flex-1 p-4 dark:text-white text-black lg:ml-0">
         <div className="flex items-center justify-between">
