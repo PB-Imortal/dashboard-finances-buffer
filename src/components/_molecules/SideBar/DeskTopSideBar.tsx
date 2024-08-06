@@ -13,10 +13,12 @@ import UserProfile from "../../../assets/user-profile-icon.svg";
 import SettingSideBarActive from "../../../assets/SettingSideBar-active.svg";
 import LogoutSideBarInactive from "../../../assets/logout-sidebar-icon.svg";
 import HomeHoverFunction from "../../../assets/HomeHoverFunction.svg";
-import PorifleHoverFunciton from "../../../assets/PorifleHoverFunciton.svg";
+import ProfileHoverFunction from "../../../assets/ProfileHoverFunciton.svg";
 import SettingHoverFunction from "../../../assets/SettingHoverFunction.svg";
 import LogoutHoverFunction from "../../../assets/LogoutHoverFunction.svg";
 import StatementHoverFunction from "../../../assets/StatementHoverFunction.svg";
+import NotificationsSideBarActive from "../../../assets/notification-sidebar-icon-active.svg";
+import NotificationsSideBar from "../../../assets/notification-sidebar-icon.svg";
 
 interface NavLinkImageProps {
   src: string;
@@ -169,12 +171,24 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
               to="/profile"
               activeImgSrc={UserProfileActive}
               inactiveImgSrc={UserProfile}
-              hoverImgSrc={PorifleHoverFunciton}
+              hoverImgSrc={ProfileHoverFunction}
               onMouseEnter={() => setHovered("Profile")}
               onMouseLeave={() => setHovered(null)}
               isHovered={hovered === "Profile"}
             >
               Profile
+            </NavLink>
+
+            <NavLink
+              to="/notifications"
+              activeImgSrc={NotificationsSideBarActive}
+              inactiveImgSrc={NotificationsSideBar}
+              // hoverImgSrc={NotificationsHoverFunction} // This image is missing
+              onMouseEnter={() => setHovered("Notifications")}
+              onMouseLeave={() => setHovered(null)}
+              isHovered={hovered === "Notifications"}
+            >
+              Notifications
             </NavLink>
 
             <NavLink
