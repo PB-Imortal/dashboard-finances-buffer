@@ -88,14 +88,14 @@ export function StatementFilter() {
             <span className="flex flex-row items-center justify-center gap-6">
               <ButtonComponent
                 arialabeltext="filter"
-                styles="font-semibold py-0 w-fit text-white"
+                styles="font-semibold py-1 w-fit text-white"
                 bgcolor="bg-bgblack">
                 Submit
               </ButtonComponent>
 
               <ButtonComponent
                 arialabeltext="filter"
-                styles="font-semibold py-0 w-fit text-white"
+                styles="font-semibold py-1 w-fit text-white"
                 bgcolor="bg-bgblack"
                 onClick={(e) => { e.preventDefault(); return toggleDisplayModal() }}>
                 Cancel
