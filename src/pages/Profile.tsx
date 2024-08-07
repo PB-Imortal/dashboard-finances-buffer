@@ -10,12 +10,12 @@ export default function Profile() {
 
   return (
     <section className="dark:bg-dkrbgblue">
-      <CarouselNav />
+      <CarouselNav/>
       <div className="flex">
         <div className="block smx:w-full lg:flex justify-center">
           <div className="flex justify-center p-10 smx:justify-center">
             <div className="relative">
-              <div className="relative flex flex-col items-end">
+              <div className="sticky top-[14.9rem] flex flex-col items-end">
                 <img
                   className="relative z-0"
                   src={userAvatar}

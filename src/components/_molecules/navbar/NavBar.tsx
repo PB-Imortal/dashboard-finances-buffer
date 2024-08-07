@@ -16,7 +16,7 @@ export default function NavBar() {
   }, [setUserAvatar]);
 
   return (
-    <div className="flex flex-row sm:bg-white md:bg-inherit h-fit dark:bg-dkrbgblue">
+    <div className="sticky top-0 z-20 flex-row sm:bg-white md:bg-inherit h-fit dark:bg-dkrbgblue">
       <div className=" flex grow bg-white  sm:rounded-none sm:justify-start justify-around sm:px-2 sm:h-[88px] h-[120px] lg:mt-4 lg:ml-2 lg:mr-4 lg:mb-2 lg:rounded-[16px] dark:bg-dkrbgitenseblue">
         <FormInput
           id="search"
