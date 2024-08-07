@@ -78,6 +78,7 @@ const NavLink: React.FC<NavLinkProps> = ({
         to === "/" ||
         to === "/statement" ||
         to === "/profile" ||
+        to === "/notifications" ||
         to === "/setting" ||
         to === "/login"
       ) {
