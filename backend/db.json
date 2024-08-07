@@ -254,6 +254,14 @@
       "email": "test@test.com",
       "password": "1234Test@",
       "confirmPassword": "1234Test@"
+    },
+    {
+      "id": "ccb3",
+      "lastName": "Peessoa",
+      "firstName": "Legal",
+      "email": "legal@pessoa.com",
+      "password": "123Teste@",
+      "confirmPassword": "123Teste@"
     }
   ]
 }
