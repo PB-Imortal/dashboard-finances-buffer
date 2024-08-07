@@ -11,7 +11,7 @@ export default function SignInPage() {
           alt="Website logo, a white sphere and on the right side the writing My Statement"
         />
         <img
-          className="hidden lg:block max-w-[618.75px]"
+          className="hidden lg:block w-[618.75px]"
           src={loginBg}
           alt="woman looking at floating graphics"
         />
