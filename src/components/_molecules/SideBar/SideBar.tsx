@@ -20,8 +20,6 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
-  const location = useLocation();
-  const isSettingPage = location.pathname === "/setting";
 
   return (
     <button

@@ -19,6 +19,7 @@ import LogoutHoverFunction from "../../../assets/LogoutHoverFunction.svg";
 import StatementHoverFunction from "../../../assets/StatementHoverFunction.svg";
 import NotificationsSideBarActive from "../../../assets/notification-sidebar-icon-active.svg";
 import NotificationsSideBar from "../../../assets/notification-sidebar-icon.svg";
+import NotificationsHoverFunction from "../../../assets/NotificationHoverSideBar.svg";
 
 interface NavLinkImageProps {
   src: string;
@@ -183,7 +184,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
               to="/notifications"
               activeImgSrc={NotificationsSideBarActive}
               inactiveImgSrc={NotificationsSideBar}
-              // hoverImgSrc={NotificationsHoverFunction} // This image is missing
+              hoverImgSrc={NotificationsHoverFunction} 
               onMouseEnter={() => setHovered("Notifications")}
               onMouseLeave={() => setHovered(null)}
               isHovered={hovered === "Notifications"}

@@ -7,7 +7,7 @@ const SettingPage: React.FC = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
 
   return (
-    <div className={`flex h-screen ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`flex h-full ${isDarkMode ? 'dark' : ''}`}>
       <div className="flex-1 p-4 dark:text-white text-black lg:ml-0">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Settings</h1>
