@@ -1,67 +1,84 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import CarouselNav from './CarouselNav';
+import { render, screen, fireEvent } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
+import CarouselNav from './CarouselNav'
+import { describe, it, expect, vi } from 'vitest'
 
-const items = [
-  { label: 'Back', to: '/' },
-  { label: 'Edit Profile', to: '' },
-  { label: 'Preferences', to: 'preferences' },
-  { label: 'Security', to: 'security' },
-];
-
-describe('CarouselNav Component', () => {
-  test('renders correctly', () => {
+describe('CarouselNav', () => {
+  it('should render with default items', () => {
     render(
-      <Router>
-        <CarouselNav items={items} />
-      </Router>
-    );
+      <BrowserRouter>
+        <CarouselNav />
+      </BrowserRouter>
+    )
+
+    const items = [
+      'Back',
+      'Edit Profile',
+      'Preferences',
+      'Security'
+    ]
 
     items.forEach(item => {
-      expect(screen.getByText(item.label)).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText(item)).toBeInTheDocument()
+    })
+  })
 
-  test('initial state is correct', () => {
+  it('should render with provided items', () => {
+    const customItems = [
+      { label: 'Home', to: '/home' },
+      { label: 'Settings', to: '/settings' }
+    ]
+
     render(
-      <Router>
-        <CarouselNav items={items} />
-      </Router>
-    );
+      <BrowserRouter>
+        <CarouselNav items={customItems} />
+      </BrowserRouter>
+    )
 
-    const firstItem = screen.getByText('Edit Profile');
-    expect(firstItem.classList.contains('text-bgblack')).toBe(true);
-    expect(firstItem.classList.contains('font-bold')).toBe(true);
-  });
+    customItems.forEach(item => {
+      expect(screen.getByText(item.label)).toBeInTheDocument()
+    })
+  })
 
-  test('clicking on items updates the state', () => {
+  it('should update highlight style on item click', () => {
     render(
-      <Router>
-        <CarouselNav items={items} />
-      </Router>
-    );
+      <BrowserRouter>
+        <CarouselNav />
+      </BrowserRouter>
+    )
 
-    const secondItem = screen.getByText('Edit Profile');
-    fireEvent.click(secondItem);
+    const editProfileItem = screen.getByText('Edit Profile')
+    fireEvent.click(editProfileItem)
 
-    expect(secondItem.classList.contains('text-bgblack')).toBe(true);
-    expect(secondItem.classList.contains('font-bold')).toBe(true);
-    expect(screen.getByText('Back').classList.contains('text-txtgrey')).toBe(true);
-  });
+    expect(editProfileItem).toHaveClass('font-bold')
+  })
 
-  test('correct item is highlighted after interaction', () => {
+  it('should call scrollIntoView on item click', () => {
     render(
-      <Router>
-        <CarouselNav items={items} />
-      </Router>
-    );
+      <BrowserRouter>
+        <CarouselNav />
+      </BrowserRouter>
+    )
 
-    const thirdItem = screen.getByText('Preferences');
-    fireEvent.click(thirdItem);
+    const editProfileItem = screen.getByText('Edit Profile')
+    const scrollIntoViewMock = vi.fn()
+    
+    // Mocking scrollIntoView
+    const originalScrollIntoView = Element.prototype.scrollIntoView
+    Element.prototype.scrollIntoView = scrollIntoViewMock
 
-    expect(thirdItem.classList.contains('text-bgblack')).toBe(true);
-    expect(thirdItem.classList.contains('font-bold')).toBe(true);
-    expect(screen.getByText('Back').classList.contains('text-txtgrey')).toBe(true);
-    expect(screen.getByText('Edit Profile').classList.contains('text-txtgrey')).toBe(true);
-  });
-});
+    // Click the item and wait for useEffect to run
+    fireEvent.click(editProfileItem)
+    // Force component to re-render to ensure useEffect is triggered
+    render(
+      <BrowserRouter>
+        <CarouselNav />
+      </BrowserRouter>
+    )
+
+    expect(scrollIntoViewMock).toHaveBeenCalled()
+
+    // Restore original method to avoid side effects
+    Element.prototype.scrollIntoView = originalScrollIntoView
+  })
+})

@@ -1,16 +1,13 @@
-
-
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Profile from './Profile';
-import { useAvatar, useFetchData, useScreenSize } from '../hook/useHooks';
-
+import { useAvatar, useFetchData } from '../hook/useHooks';
 
 vi.mock('../hook/useHooks');
 
 describe('Profile Page', () => {
-  it('should render the CarouselNav component', () => {
+  beforeEach(() => {
     (useAvatar as jest.Mock).mockReturnValue({
       userAvatar: 'avatar.png',
       changeAvatar: vi.fn(),
@@ -28,8 +25,9 @@ describe('Profile Page', () => {
       handleInputChange: vi.fn(),
       handleSave: vi.fn(),
     });
-    (useScreenSize as jest.Mock).mockReturnValue({ width: 800 });
+  });
 
+  it('should render the CarouselNav component', () => {
     render(
       <Router>
         <Profile />
@@ -111,5 +109,68 @@ describe('Profile Page', () => {
 
     fireEvent.click(screen.getByText('Save'));
     expect(handleSave).toHaveBeenCalledTimes(1);
+  });
+
+  it('should display error messages for invalid inputs', () => {
+    (useFetchData as jest.Mock).mockReturnValue({
+      formData: {
+        lastName: '',
+        firstName: '',
+        dateOfBirth: '',
+        email: '',
+        address: '',
+        country: '',
+      },
+      errors: {
+        lastName: ['Last name is required'],
+        firstName: ['First name is required'],
+        dateOfBirth: ['Date of birth is required'],
+        email: ['Email is required'],
+        address: ['Address is required'],
+        country: ['Country is required'],
+      },
+      handleInputChange: vi.fn(),
+      handleSave: vi.fn(),
+    });
+
+    render(
+      <Router>
+        <Profile />
+      </Router>
+    );
+
+    expect(screen.getByText('Last name is required')).toBeInTheDocument();
+    expect(screen.getByText('First name is required')).toBeInTheDocument();
+    expect(screen.getByText('Date of birth is required')).toBeInTheDocument();
+    expect(screen.getByText('Email is required')).toBeInTheDocument();
+    expect(screen.getByText('Address is required')).toBeInTheDocument();
+    expect(screen.getByText('Country is required')).toBeInTheDocument();
+  });
+
+  it('should call handleInputChange on input change', () => {
+    const handleInputChange = vi.fn();
+
+    (useFetchData as jest.Mock).mockReturnValue({
+      formData: {
+        lastName: '',
+        firstName: '',
+        dateOfBirth: '',
+        email: '',
+        address: '',
+        country: '',
+      },
+      errors: {},
+      handleInputChange,
+      handleSave: vi.fn(),
+    });
+
+    render(
+      <Router>
+        <Profile />
+      </Router>
+    );
+
+    fireEvent.change(screen.getByLabelText('Last Name'), { target: { value: 'Doe' } });
+    expect(handleInputChange).toHaveBeenCalledTimes(1);
   });
 });
