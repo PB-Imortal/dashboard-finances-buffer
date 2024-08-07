@@ -5,9 +5,10 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import { vi } from "vitest";
+import { Mock, vi } from "vitest";
 import * as api from "../../../common/functions/api";
 import FormCreateAccount from "./FormCreateAccount";
+import { postCreateAccount } from "../../../common/functions/api";
 const navigateMock = vi.fn();
 
 vi.spyOn(api, "postCreateAccount").mockResolvedValue({
@@ -38,6 +39,10 @@ describe("FormCreateAccount", () => {
     };
   });
 
+  vi.mock("../../../common/functions/api", () => ({
+    postCreateAccount: vi.fn(),
+  }));
+  
   beforeEach(() => {
     render(<FormCreateAccount />);
   });
@@ -125,4 +130,42 @@ describe("FormCreateAccount", () => {
       timeout: 3100,
     });
   });
+
+  it("should show a error message if server is off", async () => {
+    const mockPostCreateAccount = postCreateAccount as Mock
+
+    mockPostCreateAccount.mockResolvedValueOnce({
+      errors: "Failed to fetch",
+    });
+
+      const fields = fieldValues();
+      const button = screen.getByRole("button");
+      act(() => {
+        fireEvent.change(fields.lastName, { target: { value: "Teste" } });
+        fireEvent.change(fields.firstName, { target: { value: "Teste" } });
+        fireEvent.change(fields.email, {
+          target: { value: "teste@teste.com" },
+        });
+        fireEvent.change(fields.password, { target: { value: "1234Abc@" } });
+        fireEvent.change(fields.confPassword, {
+          target: { value: "1234Abc@" },
+        });
+
+        fireEvent.click(button);
+      });
+
+      await waitFor(() => expect(mockPostCreateAccount).toHaveBeenCalledWith({
+        email: "teste@teste.com", firstName: "Teste", lastName: "Teste", password: "1234Abc@", confirmPassword: "1234Abc@"
+      }))
+
+      await waitFor(() => expect(navigateMock).not.toHaveBeenCalled(), {
+        timeout: 3100,
+      });
+
+      navigateMock.mockRestore();
+
+      await waitFor(() => screen.getByText("Failed to fetch"))
+  });
 });
+
+// Failed to fetch  => é a mensagem de erro que da no errors do json
