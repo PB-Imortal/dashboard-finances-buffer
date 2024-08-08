@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { useAvatar, useScreenSize } from "./useHooks";
 
 describe("useHooks", () => {
@@ -30,9 +30,27 @@ describe("useHooks", () => {
 
       expect(result.current.width).toBe(800);
     });
+
+    it("should clean up the resize event listener on unmount", () => {
+      const { unmount } = renderHook(() => useScreenSize());
+
+      const removeEventListenerSpy = vi.spyOn(window, 'removeEventListener');
+
+      unmount();
+
+      expect(removeEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function));
+    });
   });
 
-  describe("changeAvatar", () => {
+  describe("useAvatar", () => {
+    it("should return the initial user avatar", () => {
+      const { result } = renderHook(() => useAvatar());
+
+      expect(result.current.userAvatar).toBe(
+        "https://xsgames.co/randomusers/assets/avatars/pixel/49.jpg"
+      );
+    });
+
     it("should change the user avatar", () => {
       const { result } = renderHook(() => useAvatar());
 
@@ -44,9 +62,7 @@ describe("useHooks", () => {
 
       expect(result.current.userAvatar).not.toBe(initialAvatar);
     });
-  });
 
-  describe("setUserAvatar", () => {
     it("should set the user avatar", () => {
       const { result } = renderHook(() => useAvatar());
 
