@@ -1,79 +1,36 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { useAvatar, useScreenSize } from "./useHooks";
+import { BrowserRouter as Router } from "react-router-dom";
+import { useFetchData } from "./useHooks";
+import { profileEditForm } from "../common/functions/validations";
 
-describe("useHooks", () => {
-  describe("useScreenSize", () => {
-    it("should return the initial screen width", () => {
-      Object.defineProperty(window, "innerWidth", {
-        writable: true,
-        configurable: true,
-        value: 1024,
-      });
+vi.mock("../common/functions/validations", () => ({
+  profileEditForm: {
+    safeParse: vi.fn(),
+  },
+}));
 
-      const { result } = renderHook(() => useScreenSize());
-
-      expect(result.current.width).toBe(1024);
+describe("useFetchData", () => {
+  it("should clear errors when validation succeeds", () => {
+    (profileEditForm.safeParse as jest.Mock).mockReturnValue({
+      success: true,
     });
 
-    it("should update screen width on resize", () => {
-      const { result } = renderHook(() => useScreenSize());
-
-      act(() => {
-        Object.defineProperty(window, "innerWidth", {
-          writable: true,
-          configurable: true,
-          value: 800,
-        });
-        window.dispatchEvent(new Event("resize"));
-      });
-
-      expect(result.current.width).toBe(800);
+    const { result } = renderHook(() => useFetchData(), {
+      wrapper: Router,
     });
 
-    it("should clean up the resize event listener on unmount", () => {
-      const { unmount } = renderHook(() => useScreenSize());
+    const event = {
+      target: {
+        id: "firstName",
+        value: "John",
+      },
+    };
 
-      const removeEventListenerSpy = vi.spyOn(window, 'removeEventListener');
-
-      unmount();
-
-      expect(removeEventListenerSpy).toHaveBeenCalledWith('resize', expect.any(Function));
-    });
-  });
-
-  describe("useAvatar", () => {
-    it("should return the initial user avatar", () => {
-      const { result } = renderHook(() => useAvatar());
-
-      expect(result.current.userAvatar).toBe(
-        "https://xsgames.co/randomusers/assets/avatars/pixel/49.jpg"
-      );
+    act(() => {
+      result.current.handleInputChange(event as React.ChangeEvent<HTMLInputElement>);
     });
 
-    it("should change the user avatar", () => {
-      const { result } = renderHook(() => useAvatar());
-
-      const initialAvatar = result.current.userAvatar;
-
-      act(() => {
-        result.current.changeAvatar();
-      });
-
-      expect(result.current.userAvatar).not.toBe(initialAvatar);
-    });
-
-    it("should set the user avatar", () => {
-      const { result } = renderHook(() => useAvatar());
-
-      const newAvatarUrl =
-        "https://xsgames.co/randomusers/assets/avatars/pixel/50.jpg";
-
-      act(() => {
-        result.current.setUserAvatar(newAvatarUrl);
-      });
-
-      expect(result.current.userAvatar).toBe(newAvatarUrl);
-    });
+    expect(result.current.errors).toEqual({});
   });
 });
