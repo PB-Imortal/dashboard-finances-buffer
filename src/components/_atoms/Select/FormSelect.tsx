@@ -1,13 +1,22 @@
-interface FormSelectProps {
+import {
+    ComponentPropsWithRef,
+    ForwardedRef,
+    forwardRef,
+  } from "react";
+
+interface FormSelectProps extends ComponentPropsWithRef<"select">{
     label: string;
     options: string[];
 } 
 
-export function FormSelect ({label, options}: FormSelectProps) {
-  return (
+export const FormSelect = forwardRef(({label, options, ...rest}: FormSelectProps, ref: ForwardedRef<HTMLSelectElement>) => {
+    return (
     <div className="flex gap-3 items-center">
         <label>{label}</label>
-        <select className="flex border p-3 rounded-md">
+        <select 
+            {...rest}
+            ref={ref}
+            className="flex border p-3 rounded-md">
             {
                 options.map(option => 
                 <option 
@@ -20,4 +29,4 @@ export function FormSelect ({label, options}: FormSelectProps) {
         </select>
     </div>
   );
-}
+});
