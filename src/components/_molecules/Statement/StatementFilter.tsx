@@ -11,6 +11,7 @@ import { StatementContext, Transaction } from "./apiEntities";
 import { formFilter } from "../../../common/functions/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { FormFilter } from "../../../common/functions/validations";
+import { FormSelect } from "../../_atoms/Select/FormSelect";
 
 export function StatementFilter() {
 
@@ -80,27 +81,41 @@ export function StatementFilter() {
               placeholder="Seach"
               type="text"
               startSvg={<SearchIcon />}
-              error={errors.term && errors.term?.message}
+              error={errors.term?.message}
             />
 
-            <div>
-              <label>Amount:</label>
+            <div className="flex items-center gap-3">
+              <span>Amount:</span>
               <span className="text-red-500">{errors.maxAmount?.message}</span>
-
               <span className="flex justify-center gap-1 w-fit">
                 <FormInput
+                  {...register("minAmount")}
                   aria-labelledby="Min Amount"
                   id="F002"
+                  placeholder="Min"
                   style={{ width: "88px"}}
+                  type="number"
                 />
                 <FormInput
+                  {...register("maxAmount")}
                   aria-labelledby="Max Amount"
                   id="F003"
+                  placeholder="Max"
                   style={{ width: "88px" }}
+                  type="number"
                 />
               </span>
-
             </div>
+
+            <FormSelect
+              label="Type"
+              options={["All", "Debit", "Credit"]}
+            />
+
+            <FormSelect
+              label="Category"
+              options={["Shopping", "Transfer"]}
+            />
 
             <span className="flex gap-3 justify-center">
               <ButtonComponent

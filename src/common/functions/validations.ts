@@ -80,9 +80,9 @@ export const formFilter = z.object({
     .coerce
     .number()
 
-}).refine((data) => data.maxAmount <= data.minAmount, 
+}).refine((data) => data.minAmount >= data.maxAmount, 
 { message: "Invalid amount",
-  path: ["errors.maxAmount.message"]
+  path: ["maxAmount"]
 })
 
 export type FormFilter = z.infer<typeof formFilter>
