@@ -14,7 +14,7 @@ import type { FormFilter } from "../../../common/functions/validations";
 import { FormSelect } from "../../_atoms/Select/FormSelect";
 
 export function StatementFilter() {
-
+  const date = new Date;
   const statementContext = useContext(StatementContext);
   const [displayModal, setDisplayModal] = useState(false);
   const [hasFilterError, setHasFilterError] = useState<string>("");
@@ -38,11 +38,9 @@ export function StatementFilter() {
     term,
     type }: FormFilter) {
 
-    console.log("Infos: ", category, date, term, type)
-
     const byDate = statementContext.userAccounting.transactions.filter(
       (transaction: Transaction) => 
-        transaction.date.slice(6,10).includes(date.slice(0, 3)) &&
+        transaction.date.slice(6,10).includes(date.slice(0, 4)) &&
         transaction.date.slice(3,5).includes(date.slice(5, 7))
     );
 
@@ -66,8 +64,6 @@ export function StatementFilter() {
     statementContext.setFilteredData(byTerm)
     toggleDisplayModal()
   };
-
-  console.log(errors)
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -105,14 +101,19 @@ export function StatementFilter() {
               label="Type:"
               options={["All", "Debit", "Credit"]}
             />
-
-            <FormInput
-              {...register("date")}
-              id="F002"
-              label="Date:"
-              type="month"
-            />
-
+            
+            <span className="flex gap-3 items-center">
+              <label htmlFor="filter-date">Date:</label>
+              <input
+                id="filter-date"
+                {...register("date")}
+                className="p-3 border rounded-md"
+                type="month"
+                min="2008-01"
+                max={`${date.getFullYear()}-12`}
+              />
+            </span>
+            
             <FormSelect
               {...register("category")}
               label="Category:"
