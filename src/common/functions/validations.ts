@@ -69,20 +69,10 @@ export const profileEditForm = z.object({
 export type ProfileForm = z.infer<typeof profileEditForm>;
 
 export const formFilter = z.object({
-  term: z
-    .string(),
-    
-  minAmount: z
-    .coerce
-    .number(),
-
-  maxAmount: z
-    .coerce
-    .number()
-
-}).refine((data) => data.minAmount <= data.maxAmount, 
-{ message: "Invalid amount",
-  path: ["maxAmount"]
-})
+  category: z.string(),
+  date: z.string(),
+  term: z.string(),
+  type: z.string(),
+});
 
 export type FormFilter = z.infer<typeof formFilter>

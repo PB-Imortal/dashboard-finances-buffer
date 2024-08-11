@@ -5,7 +5,7 @@ import SearchIcon from "../../../common/svg/SearchIcon";
 import ButtonComponent from "../../_atoms/Button/Button";
 import FormInput from "../../_atoms/Input/FormInput";
 
-import { useContext, useState, useRef } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { StatementContext, Transaction } from "./apiEntities";
 import { formFilter } from "../../../common/functions/validations";
@@ -17,10 +17,7 @@ export function StatementFilter() {
 
   const statementContext = useContext(StatementContext);
   const [displayModal, setDisplayModal] = useState(false);
-  const [hasFilterError, setHasFilterError] = useState<string>("")
-  const typeSelectRef = useRef(null);
-  const searchInputRef = useRef(null);
-  const categorySelectRef = useRef(null);
+  const [hasFilterError, setHasFilterError] = useState<string>("");
 
   const {
     register,
@@ -35,28 +32,41 @@ export function StatementFilter() {
     setHasFilterError("")
   };
 
-  function onSubmit() {
+  function onSubmit({
+    category,
+    date,
+    term,
+    type }: FormFilter) {
+
+    console.log("Infos: ", category, date, term, type)
     const byCatergory = statementContext.userAccounting.transactions.filter(
       (transaction: Transaction) =>
-        (transaction.type == categorySelectRef.current.value)
-    )
+        (transaction.type == category)
+    );
 
     const byType = byCatergory.filter(
       (transaction: Transaction) => {
-        if (typeSelectRef.current.value === "Debit") return transaction.amount < 0;
+        if (type === "Debit") { return transaction.amount < 0 };
         return transaction.amount >= 0;
-      })
-    if (byType.length === 0) { setHasFilterError("No matching transactions"); return }
-    statementContext.setFilteredData(byType)
+      });
+
+    const byTerm = byType.filter(
+      (transaction: Transaction) => {
+        return (transaction.description.includes(term))
+      }
+    );
+
+    if (byTerm.length === 0) { setHasFilterError("No matching transactions"); return }
+    statementContext.setFilteredData(byTerm)
     toggleDisplayModal()
-  }
+  };
 
   console.log(errors)
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex justify-end gap-3 items-center">
-
+      className="flex justify-end gap-3 items-center"
+    >
       <ButtonComponent
         arialabeltext="Filter"
         className="flex items-center gap-2 font-semibold px-2 rounded-2xl text-lg hover:opacity-70"
@@ -69,7 +79,7 @@ export function StatementFilter() {
       {
         displayModal &&
         <div className="bg-black bg-opacity-50 flex fixed w-full h-full top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 justify-center z-50 items-center">
-          <div className="flex flex-col bg-bgwhite p-8 rounded-2xl gap-9 font-[600] inset-3">
+          <div className="flex flex-col bg-bgwhite p-8 rounded-2xl gap-7 font-[600] inset-3">
             <span className="flex flex-row items-center gap-2 font-[700] text-2xl">
               <img src={SimpleLogo} />
               Filter
@@ -84,37 +94,23 @@ export function StatementFilter() {
               error={errors.term?.message}
             />
 
-            <div className="flex items-center gap-3">
-              <span>Amount:</span>
-              <span className="text-red-500">{errors.maxAmount?.message}</span>
-              <span className="flex justify-center gap-1 w-fit">
-                <FormInput
-                  {...register("minAmount")}
-                  aria-labelledby="Min Amount"
-                  id="F002"
-                  placeholder="Min"
-                  style={{ width: "88px"}}
-                  type="number"
-                />
-                <FormInput
-                  {...register("maxAmount")}
-                  aria-labelledby="Max Amount"
-                  id="F003"
-                  placeholder="Max"
-                  style={{ width: "88px" }}
-                  type="number"
-                />
-              </span>
-            </div>
-
             <FormSelect
-              label="Type"
+              {...register("type")}
+              label="Type:"
               options={["All", "Debit", "Credit"]}
             />
 
+            <FormInput
+              {...register("date")}
+              id="F002"
+              label="Date:"
+              type="month"
+            />
+
             <FormSelect
-              label="Category"
-              options={["Shopping", "Transfer"]}
+              {...register("category")}
+              label="Category:"
+              options={["All", "Shopping", "Transfer"]}
             />
 
             <span className="flex gap-3 justify-center">
