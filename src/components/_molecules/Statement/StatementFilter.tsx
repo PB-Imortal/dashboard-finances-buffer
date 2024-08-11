@@ -39,22 +39,28 @@ export function StatementFilter() {
     type }: FormFilter) {
 
     console.log("Infos: ", category, date, term, type)
-    const byCatergory = statementContext.userAccounting.transactions.filter(
+
+    const byDate = statementContext.userAccounting.transactions.filter(
+      (transaction: Transaction) => 
+        transaction.date.slice(6,10).includes(date.slice(0, 3)) &&
+        transaction.date.slice(3,5).includes(date.slice(5, 7))
+    );
+
+    const byCatergory = category === "All" ? byDate : byDate.filter(
       (transaction: Transaction) =>
         (transaction.type == category)
     );
 
-    const byType = byCatergory.filter(
+    const byType = type === "All" ? byCatergory : byCatergory.filter(
       (transaction: Transaction) => {
         if (type === "Debit") { return transaction.amount < 0 };
-        return transaction.amount >= 0;
+        return transaction.amount > 0;
       });
 
     const byTerm = byType.filter(
       (transaction: Transaction) => {
         return (transaction.description.includes(term))
-      }
-    );
+      });
 
     if (byTerm.length === 0) { setHasFilterError("No matching transactions"); return }
     statementContext.setFilteredData(byTerm)
