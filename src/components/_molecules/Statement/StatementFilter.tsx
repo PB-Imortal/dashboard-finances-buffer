@@ -17,7 +17,7 @@ export function StatementFilter() {
   const date = new Date;
   const statementContext = useContext(StatementContext);
   const [displayModal, setDisplayModal] = useState(false);
-  const [hasFilterError, setHasFilterError] = useState<string>("");
+  const [hasNoMatch, setHasNoMatch] = useState<string>("");
 
   const {
     register,
@@ -29,7 +29,7 @@ export function StatementFilter() {
 
   function toggleDisplayModal() {
     setDisplayModal(!displayModal)
-    setHasFilterError("")
+    setHasNoMatch("")
   };
 
   function onSubmit({
@@ -60,7 +60,7 @@ export function StatementFilter() {
         return (transaction.description.includes(term))
       });
 
-    if (byTerm.length === 0) { setHasFilterError("No matching transactions"); return }
+    if (byTerm.length === 0) { setHasNoMatch("No matching found."); return }
     statementContext.setFilteredData(byTerm)
     toggleDisplayModal()
   };
@@ -139,7 +139,7 @@ export function StatementFilter() {
               </ButtonComponent>
             </span>
 
-            {hasFilterError && <span className="text-txtred p-0">{hasFilterError}</span>}
+            {hasNoMatch && <span className="text-txtred p-0">{hasNoMatch}</span>}
           </div>
         </div>
       }
