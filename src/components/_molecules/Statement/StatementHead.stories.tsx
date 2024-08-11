@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { StatementHead } from './StatementHead';
 
 const meta = {
-  title: 'molecules/StatementHeader',
+  title: "molecules/StatementHeader",
   component: StatementHead,
   tags: ["autodocs"]
 } satisfies Meta<typeof StatementHead>;
