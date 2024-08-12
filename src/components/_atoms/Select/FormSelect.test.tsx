@@ -14,13 +14,13 @@ describe("FormStatement", () => {
                 label={mockData.label} 
                 options={mockData.options} 
                 data-testid={mockData.testId}
-            />);
-        
+            />
+        );
         const label = screen.getByText(mockData.label);
-
         expect(label).toBeInTheDocument();
+
         mockData.options.map(option => 
-            expect(screen.getByText(option)).toBeInTheDocument())
+            expect(screen.getByText(option)).toBeInTheDocument());
     });
 
     it("should render options as select children", () => {
@@ -32,6 +32,6 @@ describe("FormStatement", () => {
             />
         );
         const select = screen.getByTestId(mockData.testId);
-        expect(select.childElementCount).toBe(mockData.options.length)
+        expect(select.childElementCount).toBe(mockData.options.length);
     })
 })
