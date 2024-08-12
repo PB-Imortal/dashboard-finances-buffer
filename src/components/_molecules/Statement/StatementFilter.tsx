@@ -90,7 +90,7 @@ export function StatementFilter() {
             <FormInput
               {...register("term")}
               id="F001"
-              placeholder="Seach"
+              placeholder="Search"
               type="text"
               startSvg={<SearchIcon />}
               error={errors.term?.message}
