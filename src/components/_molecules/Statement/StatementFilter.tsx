@@ -99,7 +99,7 @@ export function StatementFilter() {
             <FormSelect
               {...register("type")}
               label="Type:"
-              forwId="S002"
+              forwId="S001"
               options={["All", "Debit", "Credit"]}
             />
             

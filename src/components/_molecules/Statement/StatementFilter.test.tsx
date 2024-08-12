@@ -75,6 +75,8 @@ describe("StatementFilter", () => {
         await user.selectOptions(screen.getByLabelText("Type:"), "Credit");
         await user.selectOptions(screen.getByLabelText("Category:"), "Shopping");
 
+        await user.click(screen.getByText("Submit"));
+
         expect(screen.getByText("No matching found.")).toBeInTheDocument();
     });
 
