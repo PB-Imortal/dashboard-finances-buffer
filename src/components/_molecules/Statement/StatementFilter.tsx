@@ -99,6 +99,7 @@ export function StatementFilter() {
             <FormSelect
               {...register("type")}
               label="Type:"
+              forwId="S002"
               options={["All", "Debit", "Credit"]}
             />
             
@@ -117,6 +118,7 @@ export function StatementFilter() {
             <FormSelect
               {...register("category")}
               label="Category:"
+              forwId="S002"
               options={["All", "Shopping", "Transfer"]}
             />
 
