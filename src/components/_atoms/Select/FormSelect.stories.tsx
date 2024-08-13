@@ -14,7 +14,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: "Label",
+    label: "Label:",
+    forwId: "001",
     options: ["01", "02"]
   }
 };
