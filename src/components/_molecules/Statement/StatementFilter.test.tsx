@@ -44,7 +44,7 @@ function renderWithStatementContext(ui: ReactElement) {
 
 describe("StatementFilter", () => {
 
-    it("should render primarly only the filter button", () => {
+    it("should render initially only the filter button", () => {
         renderWithStatementContext(<StatementFilter />);
 
         expect(screen.getAllByRole("button").length).toBe(1);
@@ -97,12 +97,6 @@ describe("StatementFilter", () => {
 
             await user.click(screen.getByRole("button"));
             expect(screen.getAllByRole("button").length).toBe(3);
-
-            await user.selectOptions(
-                screen.getByLabelText("Type:"), "All");
-
-            await user.selectOptions(
-                screen.getByLabelText("Category:"), "All");
 
             await user.click(screen.getByText("Submit"));
             expect(screen.getAllByRole("button").length).toBe(1);
