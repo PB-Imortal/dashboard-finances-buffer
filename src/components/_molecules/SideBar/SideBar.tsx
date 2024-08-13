@@ -20,33 +20,29 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, setIsOpen }) => {
-
   return (
     <button
       data-testid="burger-menu"
-      className={`my-auto bg-bgwhite dark:bg-dkrbgitenseblue px-4 py-[37px] flex flex-col justify-center items-center gap-1 ${isOpen ? "z-20" : "z-60"}`}
+      className={`my-auto bg-bgwhite dark:bg-dkrbgitenseblue px-4 py-[37px] flex flex-col justify-center items-center gap-1 ${
+        isOpen ? "z-20" : "z-60"
+      }`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
       <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
       <span className="block w-5 h-0.5 bg-black dark:bg-bgwhite"></span>
     </button>
-);
+  );
 };
 
 interface NavLinkImageProps {
   src: string;
   alt: string;
-  isActive: boolean;
   className?: string;
 }
 
 const NavLinkImage: React.FC<NavLinkImageProps> = ({ src, alt, className }) => (
-  <img
-    src={src}
-    alt={alt}
-    className={`transition-transform duration-300 ${className}`}
-  />
+  <img src={src} alt={alt} className={`transition-transform duration-300 ${className}`} />
 );
 
 interface NavLinkProps {
@@ -94,7 +90,6 @@ const NavLink: React.FC<NavLinkProps> = ({
       <NavLinkImage
         src={isActive ? activeImgSrc : inactiveImgSrc}
         alt=""
-        isActive={isActive}
         className={getImageClassName()}
       />
       <span>{children}</span>
@@ -112,14 +107,14 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Escape") {
-      setIsOpen((prev) => !prev);
+      setIsOpen(false);
     }
   };
 
   useEffect(() => {
     const handleDocumentKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen((prev) => !prev);
+        setIsOpen(false);
       }
     };
 
@@ -146,10 +141,14 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
           onClick={() => setIsOpen(false)}
           onKeyDown={handleKeyDown}
           tabIndex={0}
+          data-testid="overlay"
         ></div>
       )}
-      <div data-testid="sidebar" 
-        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[16px] rounded-br-[16px] p-5 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+      <div
+        data-testid="sidebar"
+        className={`fixed top-0 left-0 z-40 w-64 h-full bg-white dark:bg-dkrbgitenseblue shadow-md transform ease-in-out duration-300 rounded-tr-[16px] rounded-br-[16px] p-5 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <ul>
           <li className="flex justify-center p-2">
@@ -160,6 +159,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
           </li>
           <li className="p-4">
             <button
+              data-testid="close-button"
               className="absolute top-0 right-0 mt-1 mr-3 text-black dark:text-white text-[26px]"
               onClick={() => setIsOpen(false)}
             >

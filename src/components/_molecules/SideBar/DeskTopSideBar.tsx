@@ -185,7 +185,7 @@ const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
               to="/notifications"
               activeImgSrc={NotificationsSideBarActive}
               inactiveImgSrc={NotificationsSideBar}
-              hoverImgSrc={NotificationsHoverFunction} 
+              hoverImgSrc={NotificationsHoverFunction}
               onMouseEnter={() => setHovered("Notifications")}
               onMouseLeave={() => setHovered(null)}
               isHovered={hovered === "Notifications"}
