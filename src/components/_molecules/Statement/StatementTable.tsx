@@ -9,7 +9,7 @@ import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
 import { useContext } from "react"
-import { StatementContext } from "./apiEntities"
+import { StatementContext } from "./StatementContextProvider"
 import { Transaction } from "../../../common/entities/entities"
 
 export function StatementTable() {

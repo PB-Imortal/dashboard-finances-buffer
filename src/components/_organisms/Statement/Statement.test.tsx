@@ -5,7 +5,7 @@ import Statement from './Statement';
 import { StatementHead } from '../../_molecules/Statement/StatementHead';
 import { StatementFilter } from '../../_molecules/Statement/StatementFilter';
 import { StatementTable } from '../../_molecules/Statement/StatementTable';
-import { StatementContext } from '../../_molecules/Statement/apiEntities';
+import { StatementContext } from '../../_molecules/Statement/StatementContextProvider';
 
 vi.mock('../../_molecules/Statement/StatementHead');
 vi.mock('../../_molecules/Statement/StatementFilter');

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Statement from "./Statement";
 import { BrowserRouter } from "react-router-dom";
-import { StatementContext } from "../../_molecules/Statement/apiEntities";
+import { StatementContext } from "../../_molecules/Statement/StatementContextProvider";
 
 const meta: Meta<typeof Statement> = {
   title: "organisms/Statement",

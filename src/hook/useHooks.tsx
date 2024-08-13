@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { profileEditForm, ProfileForm } from "../common/functions/validations"
-import { UserData } from "../components/_molecules/Statement/apiEntities"
+import { UserData } from "../components/_molecules/Statement/StatementContextProvider"
 
 export const useAvatar = () => {
     const [userAvatar, setUserAvatar] = useState(

@@ -3,7 +3,7 @@ import NavBar from "../components/_molecules/navbar/NavBar";
 import SideBar from "../components/_molecules/SideBar/SideBar";
 import DeskTopSideBar from "../components/_molecules/SideBar/DeskTopSideBar";
 import { useScreenSize } from "../hook/useHooks";
-import { StatementContextProvider } from "../components/_molecules/Statement/apiEntities";
+import { StatementContextProvider } from "../components/_molecules/Statement/StatementContextProvider";
 
 export default function RootLayout() {
   const screenSize = useScreenSize();
