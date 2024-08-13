@@ -88,7 +88,7 @@ describe("StatementFilter", () => {
 
         await user.click(screen.getByText("Submit"));
 
-        expect(screen.getByText("No matching found."))
+        expect(screen.getByText("No matches."))
             .toBeInTheDocument();
     });
 

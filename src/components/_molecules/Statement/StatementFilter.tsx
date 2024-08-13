@@ -60,7 +60,7 @@ export function StatementFilter() {
         return (transaction.description.includes(term))
       });
 
-    if (byTerm.length === 0) { setHasNoMatch("No matching found."); return }
+    if (byTerm.length === 0) { setHasNoMatch("No matches."); return }
     statementContext.setFilteredData(byTerm)
     toggleDisplayModal()
   };
