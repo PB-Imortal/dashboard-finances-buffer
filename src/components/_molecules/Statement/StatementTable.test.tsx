@@ -10,7 +10,7 @@ function renderWithStatementContext(ui: ReactNode) {
       id: "#31426590",
       type: "Shopping",
       card: "1241432",
-      date: "28 Jan, 12.30 AM",
+      date: "28/01/2024",
       amount: -2500,
     },
     {
@@ -18,7 +18,7 @@ function renderWithStatementContext(ui: ReactNode) {
       id: "#31426589",
       type: "Transfer",
       card: "1241432",
-      date: "28 Jan, 12.30 AM",
+      date: "23/01/2024",
       amount: 750,
     },
     {
@@ -26,7 +26,7 @@ function renderWithStatementContext(ui: ReactNode) {
       id: "#31426588",
       type: "Transfer",
       card: "1241432",
-      date: "28 Jan, 12.30 AM",
+      date: "20/01/2024",
       amount: -150,
     },
   ];

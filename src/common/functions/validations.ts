@@ -67,3 +67,14 @@ export const profileEditForm = z.object({
 });
 
 export type ProfileForm = z.infer<typeof profileEditForm>;
+
+export const formFilter = z.object({
+  category: z.string(),
+  date: z.string(),
+  term: z
+  .string()
+  .regex(/^[a-zA-z\s]*$/, "Invalid term."),
+  type: z.string(),
+});
+
+export type FormFilter = z.infer<typeof formFilter>

@@ -24,8 +24,8 @@ describe('Statement Component', () => {
         expenses: 0,
         earnings: 0,
       },
-      filter: '',
-      setFilter: vi.fn()
+      filteredData: [],
+      setFilteredData: vi.fn()
     };
 
     render(
