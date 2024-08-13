@@ -24,7 +24,7 @@ const filteredData = [
     id: "#31426590",
     type: "Shopping",
     card: "1241432",
-    date: "28 Jan, 12.30 AM",
+    date: "29/01/2024",
     amount: -2500,
   },
   {
@@ -32,7 +32,7 @@ const filteredData = [
     id: "#31426589",
     type: "Transfer",
     card: "1241432",
-    date: "28 Jan, 12.30 AM",
+    date: "25/01/2024",
     amount: 750,
   },
   {
@@ -40,7 +40,7 @@ const filteredData = [
     id: "#31426588",
     type: "Transfer",
     card: "1241432",
-    date: "28 Jan, 12.30 AM",
+    date: "23/01/2024",
     amount: -150,
   },
 ];
