@@ -9,7 +9,7 @@ const meta: Meta<typeof Statement> = {
   tags: ["autodocs"],
   decorators: [
     (Story) => (
-      <StatementContext.Provider value={{ userAccounting, filter }}>
+      <StatementContext.Provider value={{ userAccounting, filteredData }}>
         <BrowserRouter>
           <Story />
         </BrowserRouter>
@@ -18,38 +18,40 @@ const meta: Meta<typeof Statement> = {
   ],
 };
 
-const filter = "";
+const filteredData = [
+  {
+    description: "Spotify",
+    id: "#31426590",
+    type: "Shopping",
+    card: "1241432",
+    date: "28 Jan, 12.30 AM",
+    amount: -2500,
+  },
+  {
+    description: "Freepik Sales",
+    id: "#31426589",
+    type: "Transfer",
+    card: "1241432",
+    date: "28 Jan, 12.30 AM",
+    amount: 750,
+  },
+  {
+    description: "Mobile Service",
+    id: "#31426588",
+    type: "Transfer",
+    card: "1241432",
+    date: "28 Jan, 12.30 AM",
+    amount: -150,
+  },
+];
+
 const userAccounting = {
-  transactions: [
-    {
-      description: "Spotify",
-      id: "#31426590",
-      type: "Shopping",
-      card: "1241432",
-      date: "28 Jan, 12.30 AM",
-      amount: -2500,
-    },
-    {
-      description: "Freepik Sales",
-      id: "#31426589",
-      type: "Transfer",
-      card: "1241432",
-      date: "28 Jan, 12.30 AM",
-      amount: 750,
-    },
-    {
-      description: "Mobile Service",
-      id: "#31426588",
-      type: "Transfer",
-      card: "1241432",
-      date: "28 Jan, 12.30 AM",
-      amount: -150,
-    },
-  ],
   money: 1000,
   expenses: 524.41,
   earnings: 413.31,
 };
+
+
 export default meta;
 
 type Story = StoryObj<typeof Statement>;
