@@ -115,5 +115,5 @@ describe("StatementFilter", () => {
 
         await user.click(screen.getByText("Submit"));
         expect(screen.getByText("Invalid term.")).toBeInTheDocument();
-    }); 
+    });
 });
