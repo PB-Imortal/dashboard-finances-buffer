@@ -15,7 +15,6 @@ const renderWithStatementContext = (ui: ReactElement, userAccounting:any) => {
     );
 };
 
-
 describe('StatementHead molecule', () => {
 
     it('should render with correct data', () => {
