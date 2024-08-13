@@ -77,4 +77,4 @@ export const formFilter = z.object({
   type: z.string(),
 });
 
-export type FormFilter = z.infer<typeof formFilter>
+export type FormFilter = z.infer<typeof formFilter>;

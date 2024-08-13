@@ -94,9 +94,6 @@ describe("StatementFilter", () => {
             await user.click(screen.getByRole("button"));
             expect(screen.getAllByRole("button").length).toBe(3);
 
-            await user.selectOptions(
-                screen.getByLabelText("Type:"), "All")
-
             await user.click(screen.getByText("Submit"));
             expect(screen.getAllByRole("button").length).toBe(1);
         });
