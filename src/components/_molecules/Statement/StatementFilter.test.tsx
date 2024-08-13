@@ -6,6 +6,8 @@ import { StatementFilter } from "./StatementFilter";
 import { ReactElement } from "react";
 
 function renderWithStatementContext(ui: ReactElement) {
+    const date = new Date;
+    const currentDate = `00/${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}/${date.getFullYear()}`
     const setFilteredData = vi.fn();
     const userAccounting = {
         transactions: [
@@ -14,7 +16,7 @@ function renderWithStatementContext(ui: ReactElement) {
                 id: "#31426590",
                 type: "Shopping",
                 card: "1241432",
-                date: "28 Jan, 12.30 AM",
+                date: currentDate,
                 amount: -2500,
             },
             {
@@ -22,7 +24,7 @@ function renderWithStatementContext(ui: ReactElement) {
                 id: "#31426589",
                 type: "Transfer",
                 card: "1241432",
-                date: "28 Jan, 12.30 AM",
+                date: currentDate,
                 amount: 750,
             },
             {
@@ -30,7 +32,7 @@ function renderWithStatementContext(ui: ReactElement) {
                 id: "#31426588",
                 type: "Transfer",
                 card: "1241432",
-                date: "28 Jan, 12.30 AM",
+                date: currentDate,
                 amount: -150,
             },
         ]
