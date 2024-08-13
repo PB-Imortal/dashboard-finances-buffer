@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { StatementContext } from './StatementContextProvider';
+import { StatementContext } from '../../../providers/context/StatementContextProvider';
 import { StatementTable } from './StatementTable';
 
 const meta = {

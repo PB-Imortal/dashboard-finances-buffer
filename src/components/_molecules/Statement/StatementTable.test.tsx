@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { StatementTable } from "./StatementTable";
-import { StatementContext } from "./StatementContextProvider";
+import { StatementContext } from "../../../providers/context/StatementContextProvider";
 import { ReactNode } from "react";
 
 function renderWithStatementContext(ui: ReactNode) {

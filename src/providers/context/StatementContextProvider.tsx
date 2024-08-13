@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
-import { useUserData } from "../../../hook/useHooks";
-import { Transaction } from "../../../common/entities/entities";
+import { useUserData } from "../../hook/useHooks";
+import { Transaction } from "../../common/entities/entities";
 
 export const StatementContext = createContext<any>(undefined);
 

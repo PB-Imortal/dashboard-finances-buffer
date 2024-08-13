@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { StatementContext } from './StatementContextProvider';
+import { StatementContext } from '../../../providers/context/StatementContextProvider';
 import { render, screen } from "@testing-library/react";
 import { StatementHead } from "./StatementHead";
 

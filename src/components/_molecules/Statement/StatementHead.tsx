@@ -4,7 +4,7 @@ import EarningsIcon from "../../../assets/earnings-icon.svg";
 
 import { HeadBlock} from "../../_atoms/HeadBlock/HeadBlock";
 import { useContext } from "react";
-import { StatementContext } from "./StatementContextProvider";
+import { StatementContext } from "../../../providers/context/StatementContextProvider";
 
 export function StatementHead() {
   const statementContext = useContext(StatementContext)

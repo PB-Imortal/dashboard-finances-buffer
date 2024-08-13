@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { StatementContext } from "./StatementContextProvider";
+import { StatementContext } from "../../../providers/context/StatementContextProvider";
 import { StatementFilter } from "./StatementFilter";
 import { ReactElement } from "react";
 
