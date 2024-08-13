@@ -7,11 +7,12 @@ import FormInput from "../../_atoms/Input/FormInput";
 
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { StatementContext, Transaction } from "./apiEntities";
+import { StatementContext } from "./apiEntities";
 import { formFilter } from "../../../common/functions/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { FormFilter } from "../../../common/functions/validations";
 import { FormSelect } from "../../_atoms/Select/FormSelect";
+import { Transaction } from "../../../common/entities/entities";
 
 export function StatementFilter() {
   const date = new Date;

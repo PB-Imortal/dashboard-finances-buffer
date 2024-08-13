@@ -1,29 +1,6 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
 import { useUserData } from "../../../hook/useHooks";
-
-export type Transaction = {
-    description: string;
-    id: string;
-    type: string;
-    card: string;
-    date: string;
-    amount: number;
-}
-
-interface Account {
-    transactions: Transaction[];
-    money: number;
-    expenses: number;
-    earnings: number;
-}
-
-export interface UserData {
-  userid: string;
-  password: string;
-  fullname: string;
-  birthdate: string;
-  accounting: Account;
-}
+import { Transaction } from "../../../common/entities/entities";
 
 export const StatementContext = createContext<any>(undefined);
 

@@ -1,8 +1,4 @@
-export type BalanceInfo = {
-    label: string;
-    icon: string;
-    amount?: number;
-}
+import { BalanceInfo } from "../../../common/entities/entities";
 
 export function HeadBlock({ data }: { readonly data: BalanceInfo }) {
     return (

@@ -9,7 +9,8 @@ import { TableData } from "../../_atoms/TableData/TableData"
 
 import { useScreenSize } from "../../../hook/useHooks"
 import { useContext } from "react"
-import { StatementContext, Transaction } from "./apiEntities"
+import { StatementContext } from "./apiEntities"
+import { Transaction } from "../../../common/entities/entities"
 
 export function StatementTable() {
     const statementContext = useContext(StatementContext)
