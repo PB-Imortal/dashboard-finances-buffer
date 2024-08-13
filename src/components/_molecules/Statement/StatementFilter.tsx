@@ -109,6 +109,7 @@ export function StatementFilter() {
                 id="filter-date"
                 {...register("date")}
                 className="p-3 border rounded-md"
+                defaultValue={`${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}`}
                 type="month"
                 min="2008-01"
                 max={`${date.getFullYear()}-12`}
