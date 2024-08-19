@@ -1,4 +1,4 @@
-import { StatementContextProvider } from '../../_molecules/Statement/apiEntities'
+import { StatementContextProvider } from '../../../providers/context/StatementContextProvider'
 import { StatementFilter } from '../../_molecules/Statement/StatementFilter'
 import { StatementHead } from '../../_molecules/Statement/StatementHead'
 import { StatementTable } from '../../_molecules/Statement/StatementTable'

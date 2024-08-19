@@ -7,14 +7,14 @@ import FormInput from "../../_atoms/Input/FormInput";
 
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { StatementContext, Transaction } from "./apiEntities";
+import { StatementContext } from "../../../providers/context/StatementContextProvider";
 import { formFilter } from "../../../common/functions/validations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { FormFilter } from "../../../common/functions/validations";
 import { FormSelect } from "../../_atoms/Select/FormSelect";
+import { Transaction } from "../../../common/entities/entities";
 
 export function StatementFilter() {
-  const date = new Date;
   const statementContext = useContext(StatementContext);
   const [displayModal, setDisplayModal] = useState(false);
   const [hasNoMatch, setHasNoMatch] = useState<string>("");
@@ -22,7 +22,7 @@ export function StatementFilter() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm<FormFilter>({
     resolver: zodResolver(formFilter),
   });
@@ -31,6 +31,13 @@ export function StatementFilter() {
     setDisplayModal(!displayModal)
     setHasNoMatch("")
   };
+
+  function getCurrentDate () {
+    const date = new Date;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0")
+    return `${year}-${month}`
+  }
 
   function onSubmit({
     category,
@@ -48,7 +55,7 @@ export function StatementFilter() {
       (transaction: Transaction) =>
         (transaction.type == category)
     );
-
+    
     const byType = type === "All" ? byCatergory : byCatergory.filter(
       (transaction: Transaction) => {
         if (type === "Debit") { return transaction.amount < 0 };
@@ -109,10 +116,10 @@ export function StatementFilter() {
                 id="filter-date"
                 {...register("date")}
                 className="p-3 border rounded-md"
-                defaultValue={`${date.getFullYear()}-${date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1}`}
+                defaultValue={getCurrentDate()}
                 type="month"
                 min="2008-01"
-                max={`${date.getFullYear()}-12`}
+                max={getCurrentDate()}
               />
             </span>
             

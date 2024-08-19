@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { StatementContext } from './apiEntities';
+import { StatementContext } from '../../../providers/context/StatementContextProvider';
 import { render, screen } from "@testing-library/react";
 import { StatementHead } from "./StatementHead";
 
@@ -14,7 +14,6 @@ const renderWithStatementContext = (ui: ReactElement, userAccounting:any) => {
         <StatementContext.Provider value={{ userAccounting }}>{ui}</StatementContext.Provider>
     );
 };
-
 
 describe('StatementHead molecule', () => {
 
