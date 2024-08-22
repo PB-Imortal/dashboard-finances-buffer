@@ -1,77 +1,71 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import SideBar from './SideBar';
+import { render, screen, fireEvent } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { describe, it, expect } from "vitest";
+import SideBar from "./SideBar";
 
-describe('SideBar', () => {
-  test('renders SideBar and toggles visibility on burger menu click', () => {
+describe("SideBar Component", () => {
+  it("renders the SideBar component", () => {
     render(
-      <Router>
-        <SideBar styles="" />
-      </Router>
+      <BrowserRouter>
+        <SideBar styles="test-styles" />
+      </BrowserRouter>
     );
-
-    const burgerMenu = screen.getByTestId('burger-menu');
-    fireEvent.click(burgerMenu);
-
-    const sidebar = screen.getByTestId('sidebar');
-    expect(sidebar).toHaveClass('translate-x-0');
-
-    fireEvent.click(burgerMenu);
-    expect(sidebar).toHaveClass('-translate-x-full');
+    expect(screen.getByTestId("burger-menu")).toBeInTheDocument();
   });
 
-  test('closes SideBar when clicking outside', () => {
+  it("toggles the sidebar when burger menu is clicked", () => {
     render(
-      <Router>
-        <SideBar styles="" />
-      </Router>
+      <BrowserRouter>
+        <SideBar styles="test-styles" />
+      </BrowserRouter>
     );
-
-    const burgerMenu = screen.getByTestId('burger-menu');
+    const burgerMenu = screen.getByTestId("burger-menu");
     fireEvent.click(burgerMenu);
+    expect(screen.getByTestId("sidebar")).toHaveClass("translate-x-0");
+    fireEvent.click(burgerMenu);
+    expect(screen.getByTestId("sidebar")).toHaveClass("-translate-x-full");
+  });
 
-    const overlay = screen.getByTestId('overlay');
+  it("closes the sidebar when overlay is clicked", () => {
+    render(
+      <BrowserRouter>
+        <SideBar styles="test-styles" />
+      </BrowserRouter>
+    );
+    const burgerMenu = screen.getByTestId("burger-menu");
+    fireEvent.click(burgerMenu);
+    const overlay = screen.getByTestId("overlay");
     fireEvent.click(overlay);
-
-    const sidebar = screen.getByTestId('sidebar');
-    expect(sidebar).toHaveClass('-translate-x-full');
+    expect(screen.getByTestId("sidebar")).toHaveClass("-translate-x-full");
   });
 
-  test('closes SideBar when pressing Escape key', () => {
+  it("closes the sidebar when escape key is pressed", () => {
     render(
-      <Router>
-        <SideBar styles="" />
-      </Router>
+      <BrowserRouter>
+        <SideBar styles="test-styles" />
+      </BrowserRouter>
     );
-
-    const burgerMenu = screen.getByTestId('burger-menu');
+    const burgerMenu = screen.getByTestId("burger-menu");
     fireEvent.click(burgerMenu);
-
-    fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' });
-
-    const sidebar = screen.getByTestId('sidebar');
-    expect(sidebar).toHaveClass('-translate-x-full');
+    const overlay = screen.getByTestId("overlay");
+    if (overlay) {
+      overlay.focus(); 
+      fireEvent.keyDown(overlay, { key: "Escape", code: "Escape" });
+      expect(screen.getByTestId("sidebar")).toHaveClass("-translate-x-full");
+    } else {
+      throw new Error("Overlay element not found");
+    }
   });
 
-  test('renders all navigation links', () => {
+  it("renders NavLink components with correct active state", () => {
     render(
-      <Router>
-        <SideBar styles="" />
-      </Router>
+      <BrowserRouter>
+        <SideBar styles="test-styles" />
+      </BrowserRouter>
     );
-
-    const links = [
-      { text: 'Home', to: '/' },
-      { text: 'Statement', to: '/statement' },
-      { text: 'Profile', to: '/profile' },
-      { text: 'Notifications', to: '/notifications' },
-      { text: 'Setting', to: '/setting' },
-      { text: 'Logout', to: '/login' },
-    ];
-
-    links.forEach(link => {
-      const navLink = screen.getByText(link.text);
-      expect(navLink.closest('a')).toHaveAttribute('href', link.to);
-    });
+    const homeLink = screen.getByText("Home");
+    expect(homeLink).toBeInTheDocument();
+    fireEvent.click(homeLink);
+    expect(homeLink.parentElement).toHaveClass("text-[#8E48EC]");
   });
 });

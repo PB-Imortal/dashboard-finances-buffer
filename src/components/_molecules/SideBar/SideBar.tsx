@@ -42,7 +42,11 @@ interface NavLinkImageProps {
 }
 
 const NavLinkImage: React.FC<NavLinkImageProps> = ({ src, alt, className }) => (
-  <img src={src} alt={alt} className={`transition-transform duration-300 ${className}`} />
+  <img
+    src={src}
+    alt={alt}
+    className={`transition-transform duration-300 ${className}`}
+  />
 );
 
 interface NavLinkProps {
@@ -51,6 +55,7 @@ interface NavLinkProps {
   inactiveImgSrc: string;
   children: React.ReactNode;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  alt: string;
 }
 
 const NavLink: React.FC<NavLinkProps> = ({
@@ -72,8 +77,7 @@ const NavLink: React.FC<NavLinkProps> = ({
         to === "/profile" ||
         to === "/notifications" ||
         to === "/setting" ||
-        to === "/login" ||
-        to === "#"
+        to === "/login"
       ) {
         return "dark:invert";
       }
@@ -174,6 +178,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={HomeIconActive}
               inactiveImgSrc={HomeIconInactive}
               setIsOpen={setIsOpen}
+              alt="Home"
             >
               Home
             </NavLink>
@@ -182,6 +187,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={StatementIconActive}
               inactiveImgSrc={StatementIconInactive}
               setIsOpen={setIsOpen}
+              alt="Statement"
             >
               Statement
             </NavLink>
@@ -190,6 +196,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={ProfileIconActive}
               inactiveImgSrc={ProfileIconInactive}
               setIsOpen={setIsOpen}
+              alt="Profile"
             >
               Profile
             </NavLink>
@@ -198,6 +205,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={NotificationSideBarActive}
               inactiveImgSrc={NotificationSideBar}
               setIsOpen={setIsOpen}
+              alt="Notifications"
             >
               Notifications
             </NavLink>
@@ -206,6 +214,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={SettingSideBarActive}
               inactiveImgSrc={SettingSideBar}
               setIsOpen={setIsOpen}
+              alt="Settings"
             >
               Setting
             </NavLink>
@@ -214,6 +223,7 @@ const SideBar: React.FC<SideBarProps> = ({ styles }) => {
               activeImgSrc={LogoutSideBarIcon}
               inactiveImgSrc={LogoutSideBarIcon}
               setIsOpen={setIsOpen}
+              alt="Logout"
             >
               Logout
             </NavLink>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// Importing the assets
+// Importando os assets
 import LogoIcon from "../../../assets/BlackLogo.svg";
 import HomeIconActive from "../../../assets/home-active-icon.svg";
 import HomeIconInactive from "../../../assets/home-sidebar-icon.svg";
@@ -21,203 +21,150 @@ import NotificationsSideBarActive from "../../../assets/notification-sidebar-ico
 import NotificationsSideBar from "../../../assets/notification-sidebar-icon.svg";
 import NotificationsHoverFunction from "../../../assets/NotificationHoverSideBar.svg";
 
-interface NavLinkImageProps {
-  src: string;
-  alt: string;
-  isHovered: boolean;
-  className?: string;
-}
-
-const NavLinkImage: React.FC<NavLinkImageProps> = ({
-  src,
-  alt,
-  isHovered,
-  className,
-}) => (
-  <img
-    src={src}
-    alt={alt}
-    className={`transition-transform duration-300 ${className}`}
-    style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
-  />
-);
-
-interface NavLinkProps {
+interface NavItemProps {
   to: string;
-  activeImgSrc: string;
-  inactiveImgSrc: string;
-  hoverImgSrc?: string;
-  children: React.ReactNode;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-  isHovered?: boolean;
+  label: string;
+  activeImg: string;
+  inactiveImg: string;
+  hoverImg?: string;
 }
 
-const NavLink: React.FC<NavLinkProps> = ({
+const NavItem: React.FC<NavItemProps> = ({
   to,
-  activeImgSrc,
-  inactiveImgSrc,
-  hoverImgSrc,
-  children,
-  onMouseEnter,
-  onMouseLeave,
-  isHovered = false,
+  label,
+  activeImg,
+  inactiveImg,
+  hoverImg,
 }) => {
   const location = useLocation();
+  const [isHovered, setIsHovered] = useState(false);
+
   const isActive = location.pathname === to;
 
-  const textColorClass = isActive
-    ? "text-purple-600"
-    : isHovered
-      ? "text-[#AE7EED] dark:text-[#CBB2FF]"
-      : "text-gray-700 dark:text-gray-300";
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
 
-  const getImageClassName = () => {
-    if (!isActive && !isHovered) {
-      if (
-        to === "/" ||
-        to === "/statement" ||
-        to === "/profile" ||
-        to === "/notifications" ||
-        to === "/setting" ||
-        to === "/login"
-      ) {
-        return "dark:invert";
-      }
-    }
-    return "";
-  };
+  const iconSrc = isActive
+    ? activeImg
+    : isHovered && hoverImg
+      ? hoverImg
+      : inactiveImg;
+
+  const textColorClass = getTextColorClass(isActive, isHovered);
 
   return (
     <Link
       to={to}
       className={`flex items-center gap-2 transition-colors duration-300 ${textColorClass}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <NavLinkImage
-        src={
-          isActive
-            ? activeImgSrc
-            : isHovered && hoverImgSrc
-              ? hoverImgSrc
-              : inactiveImgSrc
-        }
-        alt=""
-        isHovered={isHovered}
-        className={getImageClassName()}
+      <img
+        src={iconSrc}
+        alt={label}
+        className={`transition-transform duration-300 ${
+          !isActive && !isHovered ? "dark:invert" : ""
+        }`}
+        style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
       />
       <span
         className="transition-transform duration-300"
         style={{ transform: isHovered ? "scale(1.05)" : "scale(1)" }}
       >
-        {children}
+        {label}
       </span>
     </Link>
   );
 };
 
+const getTextColorClass = (isActive: boolean, isHovered: boolean): string => {
+  if (isActive) {
+    return "text-purple-600";
+  }
+  if (isHovered) {
+    return "text-[#AE7EED] dark:text-[#CBB2FF]";
+  }
+  return "text-gray-700 dark:text-gray-300";
+};
+
 interface DeskTopSideBarProps {
   styles: string;
-  isDarkMode?: boolean;
 }
 
 const DeskTopSideBar: React.FC<DeskTopSideBarProps> = ({ styles }) => {
-  const [hovered, setHovered] = useState<string | null>(null);
-
   return (
-    <div data-testid="desktopsidebar" className={`${styles}`}>
-      <div
-        className={`m-3 top-0 left-0 z-40 w-64 h-[96.5vh] ml-4 mt-4 bg-white shadow-md p-8 rounded-[16px] dark:bg-dkrbgitenseblue`}
-      >
+    <div data-testid="desktopsidebar" className={styles}>
+      <div className="m-3 top-0 left-0 z-40 w-64 h-[96.5vh] ml-4 mt-4 bg-white shadow-md p-8 rounded-[16px] dark:bg-dkrbgitenseblue">
         <ul>
-          <li>
-            <div className="flex justify-center p-2">
-              <img src={LogoIcon} alt="Logo" className=" h-auto dark:invert" />
-            </div>
+          <li className="flex justify-center p-2">
+            <img src={LogoIcon} alt="Logo" className="h-auto dark:invert" />
           </li>
           <li className="p-4">
             <div className="border-t border-#DFDFE0"></div>
           </li>
         </ul>
 
-        {/* Sidebar Content */}
-        <div className="p-4">
-          <nav className="flex flex-col gap-12 font-[600] dark:text-bgwhite">
-            <NavLink
-              to="/"
-              activeImgSrc={HomeIconActive}
-              inactiveImgSrc={HomeIconInactive}
-              hoverImgSrc={HomeHoverFunction}
-              onMouseEnter={() => setHovered("Home")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Home"}
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              to="/statement"
-              activeImgSrc={StatementIconActive}
-              inactiveImgSrc={StatementIconInactive}
-              hoverImgSrc={StatementHoverFunction}
-              onMouseEnter={() => setHovered("Statement")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Statement"}
-            >
-              Statement
-            </NavLink>
-
-            {/* Additional Links */}
-            <NavLink
-              to="/profile"
-              activeImgSrc={UserProfileActive}
-              inactiveImgSrc={UserProfile}
-              hoverImgSrc={ProfileHoverFunction}
-              onMouseEnter={() => setHovered("Profile")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Profile"}
-            >
-              Profile
-            </NavLink>
-
-            <NavLink
-              to="/notifications"
-              activeImgSrc={NotificationsSideBarActive}
-              inactiveImgSrc={NotificationsSideBar}
-              hoverImgSrc={NotificationsHoverFunction}
-              onMouseEnter={() => setHovered("Notifications")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Notifications"}
-            >
-              Notifications
-            </NavLink>
-
-            <NavLink
-              to="/setting"
-              activeImgSrc={SettingSideBarActive}
-              inactiveImgSrc={SettingSideBar}
-              hoverImgSrc={SettingHoverFunction}
-              onMouseEnter={() => setHovered("Setting")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Setting"}
-            >
-              Setting
-            </NavLink>
-
-            <NavLink
-              to="/login"
-              activeImgSrc={LogoutSideBarInactive}
-              inactiveImgSrc={LogoutSideBarInactive}
-              hoverImgSrc={LogoutHoverFunction}
-              onMouseEnter={() => setHovered("Logout")}
-              onMouseLeave={() => setHovered(null)}
-              isHovered={hovered === "Logout"}
-            >
-              Logout
-            </NavLink>
-          </nav>
-        </div>
+        <nav className="p-4 flex flex-col gap-12 font-semibold dark:text-bgwhite">
+          {[
+            {
+              to: "/",
+              label: "Home",
+              activeImg: HomeIconActive,
+              inactiveImg: HomeIconInactive,
+              hoverImg: HomeHoverFunction,
+              alt:"Home",
+            },
+            {
+              to: "/statement",
+              label: "Statement",
+              activeImg: StatementIconActive,
+              inactiveImg: StatementIconInactive,
+              hoverImg: StatementHoverFunction,
+              alt: "Statement",
+            },
+            {
+              to: "/profile",
+              label: "Profile",
+              activeImg: UserProfileActive,
+              inactiveImg: UserProfile,
+              hoverImg: ProfileHoverFunction,
+              alt: "Profile",
+            },
+            {
+              to: "/notifications",
+              label: "Notifications",
+              activeImg: NotificationsSideBarActive,
+              inactiveImg: NotificationsSideBar,
+              hoverImg: NotificationsHoverFunction,
+              alt: "Notifications",
+            },
+            {
+              to: "/setting",
+              label: "Settings",
+              activeImg: SettingSideBarActive,
+              inactiveImg: SettingSideBar,
+              hoverImg: SettingHoverFunction,
+              alt: "Settings",
+            },
+            {
+              to: "/login",
+              label: "Logout",
+              activeImg: LogoutSideBarInactive,
+              inactiveImg: LogoutSideBarInactive,
+              hoverImg: LogoutHoverFunction,
+              alt: "Logout",
+            },
+          ].map(({ to, label, activeImg, inactiveImg, hoverImg }) => (
+            <NavItem
+              key={label}
+              to={to}
+              label={label}
+              activeImg={activeImg}
+              inactiveImg={inactiveImg}
+              hoverImg={hoverImg}
+            />
+          ))}
+        </nav>
       </div>
     </div>
   );
