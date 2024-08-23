@@ -2,6 +2,7 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import { useUserData } from "../../hook/useHooks";
 import { Transaction } from "../../common/entities/entities";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const StatementContext = createContext<any>(undefined);
 
 export const StatementContextProvider = ({children}: {children: ReactNode}) => {
