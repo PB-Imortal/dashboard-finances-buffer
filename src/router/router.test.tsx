@@ -4,7 +4,9 @@ import { vi } from "vitest";
 import { router } from "./Router";
 import * as auth from "../providers/context/AuthContext";
 
-const useSpy = vi.spyOn(auth, "useAuthContext").mockReturnValue({ isLoggedIn: true });
+const useSpy = vi.spyOn(auth, "useAuthContext").mockReturnValue({
+  isLoggedIn: true,
+} as auth.AuthContextType);
 
 describe("Router", () => {
   vi.mock("react", async (importOriginal) => {
@@ -83,7 +85,9 @@ describe("Router", () => {
       initialIndex: 0,
     });
 
-    useSpy.mockReturnValue({ isLoggedIn: false });
+    useSpy.mockReturnValue({
+      isLoggedIn: false,
+    } as auth.AuthContextType);
 
     render(<RouterProvider router={fakeRoute} />);
 
