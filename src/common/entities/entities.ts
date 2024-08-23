@@ -1,18 +1,18 @@
 export type Transaction = {
-    description: string;
-    id: string;
-    type: string;
-    card: string;
-    date: string;
-    amount: number;
+  description: string;
+  id: string;
+  type: string;
+  card: string;
+  date: string;
+  amount: number;
 };
 
 export interface Account {
-    transactions: Transaction[];
-    money: number;
-    expenses: number;
-    earnings: number;
-};
+  transactions: Transaction[];
+  money: number;
+  expenses: number;
+  earnings: number;
+}
 
 export interface UserData {
   userid: string;
@@ -20,10 +20,10 @@ export interface UserData {
   fullname: string;
   birthdate: string;
   accounting: Account;
-};
+}
 
 export type BalanceInfo = {
-    label: string;
-    icon: string;
-    amount?: number;
+  label: string;
+  icon: string;
+  amount?: number;
 };
