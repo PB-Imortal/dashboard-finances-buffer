@@ -16,7 +16,7 @@ describe("DeskTopSideBar", () => {
     expect(screen.getByText("Statement")).toBeInTheDocument();
     expect(screen.getByText("Profile")).toBeInTheDocument();
     expect(screen.getByText("Notifications")).toBeInTheDocument();
-    expect(screen.getByText("Setting")).toBeInTheDocument();
+    expect(screen.getByText("Settings")).toBeInTheDocument();
     expect(screen.getByText("Logout")).toBeInTheDocument();
   });
 
