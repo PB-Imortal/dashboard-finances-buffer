@@ -14,6 +14,7 @@ describe("FormStatement", () => {
                 label={mockData.label} 
                 options={mockData.options} 
                 data-testid={mockData.testId}
+                forwId="S001"
             />
         );
         const label = screen.getByText(mockData.label);
@@ -29,6 +30,7 @@ describe("FormStatement", () => {
                 label={mockData.label} 
                 options={mockData.options} 
                 data-testid={mockData.testId}
+                forwId="S001"
             />
         );
         const select = screen.getByTestId(mockData.testId);
