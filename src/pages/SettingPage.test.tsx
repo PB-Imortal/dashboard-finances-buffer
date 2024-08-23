@@ -15,7 +15,7 @@ describe("SettingPage", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     isDarkMode = false;
-    useTheme.mockReturnValue({ isDarkMode, toggleDarkMode });
+    (useTheme as jest.Mock).mockReturnValue({ isDarkMode, toggleDarkMode });
   });
 
   test("should initialize with light mode", () => {
@@ -72,12 +72,11 @@ describe("SettingPage", () => {
 
     expect(screen.getByAltText("Light Mode")).toBeInTheDocument();
     expect(screen.getByText("Light Mode")).toBeInTheDocument();
-
   });
 
   test("should initialize with dark mode if the state is set to true", () => {
     isDarkMode = true;
-    useTheme.mockReturnValue({ isDarkMode, toggleDarkMode });
+    (useTheme as jest.Mock).mockReturnValue({ isDarkMode, toggleDarkMode });
     render(
       <BrowserRouter>
         <SettingPage />
