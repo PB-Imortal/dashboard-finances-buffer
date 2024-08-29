@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
 import { describe, expect, vi } from "vitest";
 import RootLayout from "./RootLayout";
-import { BrowserRouter } from "react-router-dom";
 
 const viUseScreenSizeMock = vi.fn();
 

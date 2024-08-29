@@ -1,54 +1,85 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "./RootLayout";
 import ProtectedRoute from "./ProtectedRoute";
 
-import HomePage from "../pages/HomePage";
-import Statement from "../components/_organisms/Statement/Statement";
-import Profile from "../pages/Profile";
-import NotFound from "../pages/NotFound";
-import LoginPage from "../pages/LoginPage";
-import SignInPage from "../pages/SigninPage";
-import SettingPage from "../pages/SettingPage";
-import NotificationPage from "../pages/NotificationPage";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("../pages/HomePage"));
+const Statement = lazy(() => import("../components/_organisms/Statement/Statement"));
+const Profile = lazy(() => import("../pages/Profile"));
+const Notification = lazy(() => import("../pages/NotificationPage"));
+const Setting = lazy(() => import("../pages/SettingPage"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+const Login = lazy(() => import("../pages/LoginPage"));
+const SignIn = lazy(() => import("../pages/SigninPage"));
+const RootLayout = lazy(() => import("./RootLayout"));
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: (
+      <Suspense>
+        <RootLayout />
+      </Suspense>
+    ),
     errorElement: <NotFound />,
     children: [
       {
         index: true,
         element: (
-          <ProtectedRoute children={<HomePage />} redirectPath={"/login"} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProtectedRoute children={<Home />} redirectPath={"/login"} />
+          </Suspense>
         ),
       },
       {
         path: "/statement",
         element: (
-          <ProtectedRoute children={<Statement />} redirectPath={"/login"} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProtectedRoute children={<Statement />} redirectPath={"/login"} />,
+          </Suspense>
         ),
       },
       {
         path: "/profile",
         element: (
-          <ProtectedRoute children={<Profile />} redirectPath={"/login"} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProtectedRoute children={<Profile />} redirectPath={"/login"} />,
+          </Suspense>
         ),
       },
       {
         path: "/notifications",
         element: (
-          <ProtectedRoute children={<NotificationPage />} redirectPath={"/login"} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProtectedRoute children={<Notification />} redirectPath={"/login"} />,
+          </Suspense>
         ),
       },
       {
         path: "/setting",
         element: (
-          <ProtectedRoute children={<SettingPage />} redirectPath={"/login"} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ProtectedRoute children={<Setting />} redirectPath={"/login"} />,
+          </Suspense>
         ),
       },
     ],
   },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signin", element: <SignInPage /> },
+  {
+    path: "/login",
+    element: (
+      <Suspense>
+        <Login />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/signin",
+    element: (
+      <Suspense>
+        <SignIn />
+      </Suspense>
+    ),
+  },
 ]);
