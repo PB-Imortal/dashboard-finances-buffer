@@ -10,33 +10,40 @@
 
 ✅ Cadastro
 
-✅ …..
+✅ Editor de Perfil
 
-✅ ………
+✅ Visualizador de Statements / Operações
 
-### ☂️ Libraries
+✅ Filtro de Busca
 
-RRD →
+✅ Modo Escuro
 
-RHF →
+### ☂️ Frameworks & Libraries
 
-ZOD →
+Vite - Ferramenta de gerenciamento de pacotes e criação de projetos.
 
-BaseUI →
+React → Lib/framework para desenvolvimento do projeto.
 
-Tailwind →
+React-Router-DOM → Lib para roteamento de páginas em SPAs (Single-Page Applications).
 
-Storybook →
+React-Hook-Form → Criação mais fácil de formulários compatíveis com React.
 
-Cypress →
+Typescript → Fornece suporte forte a tipos e debug pré-produção.
 
-Vitest →
+JSON-server → Muito útil para simular um back-end que aceita entradas JSON.
 
-React →
+ZOD → Lib para validação de formulários.
 
-Express →
+BaseUI → Variação simples da MaterialUI que fornece componentes pré-prontos e facilita implementação de acessibilidade.
 
-Typescript →
+Tailwind → Framework de CSS que agiliza a estilização através de personalização por tag.
+
+Storybook → Para criação e visualização de documentações para cada componente.
+
+Cypress → Para testes conectados.
+
+Vitest e React-Testing-Library → Para testes por componente.
+
 
 ### 🚩 Husky
 
@@ -68,6 +75,9 @@ $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
+
+# Execute o servidor da aplicação num terminal à parte
+$ npm run server
 
 # O servidor inciará tipicamente na porta:5173
 ```
