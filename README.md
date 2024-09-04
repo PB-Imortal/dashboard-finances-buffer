@@ -30,6 +30,8 @@ React-Hook-Form → Criação mais fácil de formulários compatíveis com React
 
 Typescript → Fornece suporte forte a tipos e debug pré-produção.
 
+JSON-server → Muito útil para simular um back-end que aceita entradas JSON.
+
 ZOD → Lib para validação de formulários.
 
 BaseUI → Variação simples da MaterialUI que fornece componentes pré-prontos e facilita implementação de acessibilidade.
@@ -73,6 +75,9 @@ $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
 $ npm run dev
+
+# Execute o servidor da aplicação num terminal à parte
+$ npm run server
 
 # O servidor inciará tipicamente na porta:5173
 ```
