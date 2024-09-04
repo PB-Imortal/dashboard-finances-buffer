@@ -1,8 +1,12 @@
 import { render, screen } from "@testing-library/react";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, createMemoryRouter, RouterProvider } from "react-router-dom";
 import { vi } from "vitest";
 import { router } from "./Router";
 import * as auth from "../providers/context/AuthContext";
+import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import SignInPage from "../pages/SigninPage";
+import Profile from "../pages/Profile";
 
 const useSpy = vi.spyOn(auth, "useAuthContext").mockReturnValue({
   isLoggedIn: true,
@@ -34,12 +38,11 @@ describe("Router", () => {
   });
 
   it("should navigate to path /", () => {
-    const fakeRoute = createMemoryRouter(router.routes, {
-      initialEntries: ["/"],
-      initialIndex: 0,
-    });
-
-    render(<RouterProvider router={fakeRoute} />);
+    render(
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
+    );
 
     const element = screen.getByRole("heading", {
       name: "Welcome to My statement",
@@ -50,32 +53,29 @@ describe("Router", () => {
   });
 
   it("should navigate to path /login", () => {
-    const fakeRoute = createMemoryRouter(router.routes, {
-      initialEntries: ["/login"],
-      initialIndex: 0,
-    });
-
-    render(<RouterProvider router={fakeRoute} />);
+    render(
+      <BrowserRouter>
+        <LoginPage />
+      </BrowserRouter>
+    );
     expect(screen.getByRole("heading", { name: "Log in", level: 1 }));
   });
 
   it("should navigate to path /signin", () => {
-    const fakeRoute = createMemoryRouter(router.routes, {
-      initialEntries: ["/signin"],
-      initialIndex: 0,
-    });
-
-    render(<RouterProvider router={fakeRoute} />);
+    render(
+      <BrowserRouter>
+        <SignInPage />
+      </BrowserRouter>
+    );
     expect(screen.getByRole("heading", { name: "Create account", level: 1 }));
   });
 
   it("should navigate to path /profile", () => {
-    const fakeRoute = createMemoryRouter(router.routes, {
-      initialEntries: ["/profile"],
-      initialIndex: 0,
-    });
-
-    render(<RouterProvider router={fakeRoute} />);
+    render(
+      <BrowserRouter>
+        <Profile />
+      </BrowserRouter>
+    );
     expect(screen.getByText(/Edit Profile/));
   });
 
